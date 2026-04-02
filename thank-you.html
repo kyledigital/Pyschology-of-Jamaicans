@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Payment received | The Psychology of Jamaicans</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lora:ital,wght@0,400;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --green:#1B4332;
+    --gold:#C9963A;
+    --gold-light:#E8B96A;
+    --cream:#FDF6EC;
+    --warm-white:#FAF7F2;
+    --charcoal:#1A1A1A;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    min-height:100vh;
+    background:var(--charcoal);
+    color:var(--cream);
+    font-family:'Lora',Georgia,serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:2rem;
+    position:relative;
+    overflow:hidden;
+  }
+
+  body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    background:
+      radial-gradient(circle at top right, rgba(201,150,58,.16), transparent 30%),
+      radial-gradient(circle at bottom left, rgba(27,67,50,.5), transparent 38%);
+    pointer-events:none;
+  }
+
+  .panel{
+    width:min(100%, 760px);
+    background:linear-gradient(180deg, rgba(27,67,50,.94), rgba(26,26,26,.98));
+    border:1px solid rgba(201,150,58,.28);
+    border-radius:16px;
+    padding:3.5rem 2.5rem;
+    text-align:center;
+    position:relative;
+    box-shadow:0 24px 80px rgba(0,0,0,.35);
+  }
+
+  .eyebrow{
+    font-family:'Space Mono',monospace;
+    font-size:.7rem;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:1.25rem;
+  }
+
+  h1{
+    font-family:'Playfair Display',Georgia,serif;
+    font-size:clamp(2.4rem,7vw,4.8rem);
+    line-height:1;
+    margin-bottom:1rem;
+  }
+
+  .lead{
+    font-size:1.1rem;
+    line-height:1.9;
+    color:rgba(253,246,236,.82);
+    max-width:520px;
+    margin:0 auto;
+  }
+
+  .support{
+    margin:2rem auto 0;
+    max-width:560px;
+    padding:1rem 1.25rem;
+    border-radius:8px;
+    background:rgba(253,246,236,.06);
+    color:rgba(253,246,236,.78);
+    line-height:1.7;
+  }
+
+  .support strong{color:var(--cream);}
+
+  .btn-primary{
+    display:inline-block;
+    margin-top:2rem;
+    background:var(--gold);
+    color:var(--charcoal);
+    font-family:'Space Mono',monospace;
+    font-size:.8rem;
+    font-weight:700;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    padding:1rem 2.5rem;
+    border-radius:4px;
+    text-decoration:none;
+    transition:background .2s,transform .2s,box-shadow .2s;
+    box-shadow:0 4px 24px rgba(201,150,58,.35);
+  }
+
+  .btn-primary:hover{
+    background:var(--gold-light);
+    transform:translateY(-2px);
+    box-shadow:0 8px 32px rgba(201,150,58,.5);
+  }
+
+  .footer-note{
+    margin-top:2rem;
+    font-family:'Space Mono',monospace;
+    font-size:.68rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:rgba(253,246,236,.45);
+    line-height:1.8;
+  }
+
+  @media(max-width:640px){
+    .panel{padding:2.5rem 1.5rem;}
+    .btn-primary{width:100%;text-align:center;}
+  }
+</style>
+</head>
+<body>
+  <main class="panel">
+    <p class="eyebrow">The Psychology of Jamaicans</p>
+    <h1>Payment received</h1>
+    <p class="lead">Your download link is in your Payhip receipt email.</p>
+    <p class="support">If you did not receive an email within 5 minutes, contact: <strong id="support-email">kylehector12@gmail.com</strong></p>
+    <a href="index.html" class="btn-primary">Back to homepage</a>
+    <p class="footer-note">The Unwritten Rules of How We Really Move</p>
+  </main>
+  <script>
+    const supportEmail = window.localStorage.getItem("supportEmail") || "kylehector12@gmail.com";
+    document.getElementById("support-email").textContent = supportEmail;
+  </script>
+</body>
+</html>
