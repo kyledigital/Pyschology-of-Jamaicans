@@ -6,7 +6,6 @@
 <title>The Psychology of Jamaicans — The Unwritten Rules</title>
 <script>
   const PAYHIP_PRODUCT_URL = "https://payhip.com/b/5QwFv";
-  const PAYHIP_SAMPLE_URL = "PASTE_PAYHIP_FREE_SAMPLE_PRODUCT_URL_HERE";
   const SUPPORT_EMAIL = "kylehector12@gmail.com";
   const PAYHIP_STORE_NAME = "Kylehector";  // optional, for embed
 </script>
@@ -436,45 +435,6 @@
   }
 
   /* ── CTA FINAL ── */
-  .sample-offer{background:var(--warm-white);color:var(--charcoal);}
-  .sample-panel{
-    background:linear-gradient(135deg, rgba(27,67,50,.08), rgba(201,150,58,.12));
-    border:1px solid rgba(27,67,50,.12);
-    border-radius:12px;
-    padding:3rem;
-    box-shadow:0 18px 50px rgba(0,0,0,.08);
-  }
-  .sample-panel h2{color:var(--green);}
-  .sample-copy{
-    max-width:580px;
-    color:#3f3f3f;
-    font-size:1rem;
-    line-height:1.8;
-    margin-bottom:2rem;
-  }
-  .sample-actions{
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
-    gap:1rem;
-  }
-  .sample-button{
-    border:none;
-    cursor:pointer;
-  }
-  .sample-status{
-    font-size:.92rem;
-    line-height:1.6;
-    min-height:1.5rem;
-  }
-  .sample-status.is-error{color:#8B1E1E;}
-  .btn-disabled{
-    opacity:.55;
-    pointer-events:none;
-    cursor:not-allowed;
-    box-shadow:none;
-  }
-
   .cta-final{
     background:var(--charcoal);
     text-align:center;
@@ -560,14 +520,11 @@
     .hero h1{font-size:3rem;}
     .price{font-size:2.5rem;}
     .price-block{padding:1.5rem 2rem;}
-    .sample-panel{padding:2rem;}
   }
   @media(max-width:480px){
     .parts-grid{grid-template-columns:1fr;}
     .cta-group{flex-direction:column;align-items:center;}
     .btn-primary,.btn-secondary{width:100%;text-align:center;}
-    .sample-actions{align-items:stretch;}
-    .sample-button{width:100%;text-align:center;}
   }
 
   /* ── FADE IN ON SCROLL (CSS only) ── */
@@ -804,24 +761,6 @@
 </section>
 
 <!-- ══ FINAL CTA ═══════════════════════════════════════════════════════════════ -->
-<section class="sample-offer">
-  <div class="container container-narrow">
-    <div class="sample-panel reveal">
-      <span class="section-label">Not Ready Yet?</span>
-      <h2>Get a free sample chapter</h2>
-      <p class="sample-copy">
-        Read a sample chapter before you decide.
-        Get a clear feel for the tone, insight and practical value inside the book.
-      </p>
-
-      <div class="sample-actions">
-        <a href="#" id="sample-button" class="btn-primary sample-button">Get the free sample</a>
-        <p id="sample-status" class="sample-status" aria-live="polite"></p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="cta-final" id="buy">
   <div class="container container-narrow" style="text-align:center;">
     <div class="reveal">
@@ -925,26 +864,6 @@
     });
   });
 
-  const sampleButton = document.getElementById("sample-button");
-  const sampleStatus = document.getElementById("sample-status");
-  const hasSampleUrl = isConfigured(PAYHIP_SAMPLE_URL);
-
-  if (sampleButton) {
-    if (hasSampleUrl) {
-      applyLinkTarget(sampleButton, PAYHIP_SAMPLE_URL);
-      sampleButton.addEventListener("click", () => {
-        trackClick("sample_click", { href: PAYHIP_SAMPLE_URL });
-      });
-      sampleStatus.textContent = "";
-      sampleStatus.className = "sample-status";
-    } else {
-      sampleButton.href = "#";
-      sampleButton.classList.add("btn-disabled");
-      sampleButton.setAttribute("aria-disabled", "true");
-      sampleStatus.textContent = "Sample link not set yet.";
-      sampleStatus.className = "sample-status is-error";
-    }
-  }
 </script>
 </body>
 </html>
