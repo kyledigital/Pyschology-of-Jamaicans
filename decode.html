@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Do You Really Understand Jamaica? | Cultural Decoder</title>
+  <meta
+    name="description"
+    content="Test your understanding of Jamaican culture with a quick interactive decoder, then head back to get the full book."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lora:wght@400;600&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --ink: #121212;
+      --ink-soft: #0a221a;
+      --panel: rgba(10, 34, 26, 0.95);
+      --panel-soft: rgba(20, 50, 39, 0.92);
+      --line: rgba(253, 246, 236, 0.12);
+      --line-strong: rgba(201, 150, 58, 0.32);
+      --text: #fdf6ec;
+      --muted: rgba(253, 246, 236, 0.74);
+      --gold: #c9963a;
+      --gold-light: #e8b96a;
+      --green: #234838;
+      --rose: #f0a1ae;
+      --shadow: 0 24px 64px rgba(0, 0, 0, 0.34);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-pill: 999px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(201, 150, 58, 0.18), transparent 26%),
+        radial-gradient(circle at 82% 18%, rgba(45, 106, 79, 0.18), transparent 24%),
+        linear-gradient(180deg, #111111 0%, #0d2018 42%, #143227 100%);
+      color: var(--text);
+      font-family: "Lora", serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(253, 246, 236, 0.05) 0 2px, transparent 2px),
+        radial-gradient(circle at 75% 35%, rgba(201, 150, 58, 0.05) 0 1px, transparent 1px);
+      background-size: 160px 160px, 200px 200px;
+      opacity: 0.55;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page-shell {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: flex-start;
+      padding-bottom: 24px;
+    }
+
+    .home-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      font-family: "Space Mono", monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--muted);
+      transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease;
+    }
+
+    .home-link:hover,
+    .home-link:focus-visible {
+      transform: translateY(-2px);
+      border-color: var(--line-strong);
+      background: rgba(255, 255, 255, 0.07);
+      outline: none;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      margin-bottom: 28px;
+    }
+
+    .hero-copy,
+    .hero-aside,
+    .quiz-shell {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(20, 50, 39, 0.94), rgba(10, 34, 26, 0.98));
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 40px;
+    }
+
+    .hero-aside {
+      padding: 28px;
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+
+    .eyebrow,
+    .kicker,
+    .progress-label {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      font-family: "Space Mono", monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      padding: 10px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(201, 150, 58, 0.22);
+      background: rgba(201, 150, 58, 0.08);
+      color: var(--gold-light);
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      letter-spacing: -0.03em;
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: clamp(2.9rem, 5vw, 4.8rem);
+      line-height: 0.95;
+    }
+
+    .hero-subtitle {
+      margin: 18px 0 0;
+      max-width: 28ch;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.8vw, 1.18rem);
+      line-height: 1.75;
+    }
+
+    .hero-actions,
+    .result-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .hero-note {
+      margin: 18px 0 0;
+      color: rgba(253, 246, 236, 0.66);
+      line-height: 1.75;
+      max-width: 42ch;
+    }
+
+    .rhythm-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .rhythm-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 42px;
+      padding: 0 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(201, 150, 58, 0.2);
+      background: rgba(253, 246, 236, 0.04);
+      color: rgba(253, 246, 236, 0.82);
+      font-family: "Space Mono", monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .rhythm-icon {
+      width: 18px;
+      height: 18px;
+      color: var(--gold-light);
+      flex: 0 0 auto;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .stat-card,
+    .aside-card {
+      padding: 18px;
+      border: 1px solid rgba(253, 246, 236, 0.08);
+      border-radius: var(--radius-lg);
+      background: rgba(253, 246, 236, 0.035);
+    }
+
+    .stat-card strong {
+      display: block;
+      font-family: "Playfair Display", serif;
+      font-size: 1.55rem;
+      margin-bottom: 8px;
+    }
+
+    .stat-card span,
+    .aside-card p,
+    .chip {
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.65;
+    }
+
+    .aside-card h3 {
+      font-size: 1.04rem;
+      margin-bottom: 8px;
+    }
+
+    .button,
+    .answer-button,
+    .next-button {
+      appearance: none;
+      border: none;
+      cursor: pointer;
+      font: inherit;
+      transition:
+        transform 0.24s ease,
+        box-shadow 0.24s ease,
+        border-color 0.24s ease,
+        background 0.24s ease,
+        color 0.24s ease,
+        opacity 0.24s ease;
+    }
+
+    .button,
+    .next-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 22px;
+      border-radius: var(--radius-pill);
+      font-family: "Space Mono", monospace;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .button.primary,
+    .next-button {
+      background: linear-gradient(180deg, #efca7c 0%, var(--gold) 100%);
+      color: #1a1a1a;
+      box-shadow: 0 16px 38px rgba(201, 150, 58, 0.26);
+    }
+
+    .button.primary:hover,
+    .button.primary:focus-visible,
+    .next-button:hover,
+    .next-button:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 42px rgba(201, 150, 58, 0.3);
+      outline: none;
+    }
+
+    .button.secondary {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+    }
+
+    .button.secondary:hover,
+    .button.secondary:focus-visible {
+      transform: translateY(-2px);
+      border-color: var(--line-strong);
+      background: rgba(255, 255, 255, 0.08);
+      outline: none;
+    }
+
+    .quiz-shell {
+      padding: 34px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .quiz-shell::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -120px;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(201, 150, 58, 0.16), transparent 70%);
+      pointer-events: none;
+    }
+
+    .screen {
+      display: none;
+      animation: fadeScreen 0.32s ease;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    .start-screen.active,
+    .result-screen.active {
+      display: grid;
+      place-items: center;
+      min-height: 520px;
+    }
+
+    @keyframes fadeScreen {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .intro-card,
+    .result-card {
+      width: min(760px, 100%);
+      padding: 40px;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(253, 246, 236, 0.08);
+      background: linear-gradient(180deg, rgba(253, 246, 236, 0.04), rgba(201, 150, 58, 0.08));
+      text-align: center;
+    }
+
+    .intro-card p,
+    .result-card p {
+      margin: 16px auto 0;
+      max-width: 46ch;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .kicker {
+      color: var(--gold-light);
+      margin-bottom: 14px;
+    }
+
+    .kicker::before,
+    .result-badge::before {
+      content: "";
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin-right: 8px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at center, var(--gold-light) 0 2px, transparent 2px),
+        radial-gradient(circle at center, transparent 0 5px, rgba(232, 185, 106, 0.55) 5px 6px, transparent 6px);
+      box-shadow: 0 0 0 1px rgba(232, 185, 106, 0.18);
+      vertical-align: -2px;
+    }
+
+    .chip-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .chip {
+      padding: 10px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(253, 246, 236, 0.08);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .quiz-screen {
+      gap: 26px;
+    }
+
+    .quiz-screen.active {
+      display: grid;
+    }
+
+    .quiz-topbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .progress-label {
+      color: rgba(253, 246, 236, 0.68);
+      margin-bottom: 8px;
+    }
+
+    .progress-copy strong {
+      display: block;
+      font-family: "Space Mono", monospace;
+      font-size: 0.98rem;
+      letter-spacing: 0.02em;
+    }
+
+    .progress-bar {
+      width: min(280px, 100%);
+      height: 12px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      display: block;
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #efca7c 0%, var(--gold) 40%, rgba(255,255,255,0.32) 50%, var(--gold) 60%, #efca7c 100%);
+      background-size: 200% 100%;
+      transition: width 0.38s cubic-bezier(.2, .8, .2, 1);
+      animation: progressShimmer 2.2s linear infinite;
+    }
+
+    .card-shell {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 26px;
+      align-items: stretch;
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.28s ease, transform 0.28s ease;
+    }
+
+    .card-shell.is-transitioning {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    .image-panel {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid rgba(253, 246, 236, 0.08);
+      background: #304336;
+      min-height: 420px;
+    }
+
+    .image-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .image-tag {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      padding: 10px 14px;
+      border-radius: var(--radius-pill);
+      background: rgba(26, 26, 26, 0.86);
+      border: 1px solid rgba(253, 246, 236, 0.1);
+      font-family: "Space Mono", monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .image-tag::before {
+      content: "";
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin-right: 8px;
+      border-radius: 3px;
+      background:
+        linear-gradient(90deg, var(--gold-light) 0 26%, transparent 26% 38%, var(--gold-light) 38% 64%, transparent 64% 76%, var(--gold-light) 76% 100%);
+      vertical-align: -1px;
+      opacity: 0.88;
+    }
+
+    .content-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      min-height: 420px;
+      padding: 12px 0;
+    }
+
+    .question {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1.08;
+    }
+
+    .question-text {
+      margin: 12px 0 0;
+      color: rgba(253, 246, 236, 0.7);
+      line-height: 1.8;
+    }
+
+    .answer-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .answer-button {
+      width: 100%;
+      padding: 18px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(253, 246, 236, 0.1);
+      background: rgba(253, 246, 236, 0.035);
+      color: var(--text);
+      text-align: left;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .answer-button:hover,
+    .answer-button:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(201, 150, 58, 0.42);
+      background: rgba(201, 150, 58, 0.12);
+      outline: none;
+    }
+
+    .answer-button:disabled {
+      cursor: default;
+    }
+
+    .answer-button.correct {
+      border-color: rgba(45, 106, 79, 0.8);
+      background: rgba(45, 106, 79, 0.22);
+      color: #effaf3;
+      animation: correctPop 0.42s cubic-bezier(.2, .8, .2, 1.12) forwards;
+    }
+
+    .answer-button.incorrect {
+      border-color: rgba(240, 161, 174, 0.56);
+      background: rgba(240, 161, 174, 0.12);
+      color: #ffe1e6;
+      animation: incorrectShake 0.44s ease forwards;
+    }
+
+    .explanation-panel {
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(201, 150, 58, 0.2);
+      background: rgba(201, 150, 58, 0.09);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.24s ease, transform 0.24s ease;
+      pointer-events: none;
+    }
+
+    .explanation-panel.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .explanation-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Space Mono", monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+    }
+
+    .explanation-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 6px rgba(201, 150, 58, 0.12);
+    }
+
+    .explanation-answer {
+      margin-top: 12px;
+      font-family: "Playfair Display", serif;
+      font-size: 1.15rem;
+    }
+
+    .explanation-text {
+      margin-top: 8px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .quiz-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: auto;
+      padding-top: 6px;
+    }
+
+    .score-hint {
+      margin: 0;
+      color: rgba(253, 246, 236, 0.72);
+      font-family: "Space Mono", monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .next-button {
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .next-button.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .result-score {
+      margin-top: 20px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.3rem, 6vw, 4rem);
+      color: var(--gold-light);
+    }
+
+    .result-badge {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 18px;
+      padding: 12px 18px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(201, 150, 58, 0.24);
+      background: rgba(201, 150, 58, 0.08);
+      color: var(--gold-light);
+      font-family: "Space Mono", monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .microcopy {
+      color: rgba(253, 246, 236, 0.58);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 920px) {
+      .hero,
+      .card-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .image-panel,
+      .content-panel {
+        min-height: 0;
+      }
+
+      .image-panel {
+        min-height: 300px;
+      }
+    }
+
+    @keyframes correctPop {
+      0%   { transform: scale(1); }
+      38%  { transform: scale(1.042); }
+      62%  { transform: scale(0.99); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes incorrectShake {
+      0%, 100% { transform: translateX(0); }
+      16%       { transform: translateX(-8px); }
+      33%       { transform: translateX(6px); }
+      50%       { transform: translateX(-5px); }
+      67%       { transform: translateX(4px); }
+      84%       { transform: translateX(-2px); }
+    }
+
+    @keyframes progressShimmer {
+      0%   { background-position: 100% 0; }
+      100% { background-position: -100% 0; }
+    }
+
+    @keyframes confettiFly {
+      0%   { transform: translate(-50%, -50%) rotate(0deg) scale(1); opacity: 1; }
+      100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) rotate(var(--rot)) scale(0.25); opacity: 0; }
+    }
+
+    @media (max-width: 680px) {
+      .page-shell {
+        width: min(100% - 20px, 1120px);
+        padding-top: 18px;
+        padding-bottom: 32px;
+      }
+
+      .hero-copy,
+      .hero-aside,
+      .quiz-shell,
+      .intro-card,
+      .result-card {
+        padding: 24px;
+      }
+
+      .start-screen.active,
+      .result-screen.active {
+        min-height: 0;
+      }
+
+      .question {
+        font-size: 1.65rem;
+      }
+
+      .quiz-actions,
+      .hero-actions,
+      .result-actions,
+      .rhythm-row {
+        align-items: stretch;
+      }
+
+      .button,
+      .next-button,
+      .rhythm-pill {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .progress-bar {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <div class="topbar">
+      <a class="home-link" href="index.html" aria-label="Back to homepage">Back to homepage</a>
+    </div>
+
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <span class="eyebrow">Cultural Decoder</span>
+        <h1 id="page-title">Do You Really Understand Jamaica?</h1>
+        <p class="hero-subtitle">Test how well you read the signals, phrases, and unwritten rules behind everyday Jamaican culture.</p>
+        <div class="hero-actions">
+          <button class="button primary" id="hero-start-button" type="button">Start the Decoder</button>
+          <a class="button secondary" href="index.html#buy">Skip to the Book</a>
+        </div>
+        <p class="hero-note">
+          Five quick culture checks. See what you catch, what you miss, and why the deeper meaning matters.
+        </p>
+        <div class="rhythm-row" aria-label="Reggae inspired highlights">
+          <span class="rhythm-pill">
+            <svg class="rhythm-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M4 7.25A2.25 2.25 0 0 1 6.25 5h2.5A2.25 2.25 0 0 1 11 7.25v9.5A2.25 2.25 0 0 1 8.75 19h-2.5A2.25 2.25 0 0 1 4 16.75zm9 2A2.25 2.25 0 0 1 15.25 7h2.5A2.25 2.25 0 0 1 20 9.25v5.5A2.25 2.25 0 0 1 17.75 17h-2.5A2.25 2.25 0 0 1 13 14.75z"/>
+            </svg>
+            Sound System
+          </span>
+          <span class="rhythm-pill">
+            <svg class="rhythm-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M12 3.5a8.5 8.5 0 1 0 0 17a8.5 8.5 0 0 0 0-17m0 2a6.5 6.5 0 1 1 0 13a6.5 6.5 0 0 1 0-13m0 3.25a3.25 3.25 0 1 0 0 6.5a3.25 3.25 0 0 0 0-6.5m4.9-4.2a1.1 1.1 0 1 0 0 2.2a1.1 1.1 0 0 0 0-2.2"/>
+            </svg>
+            Vinyl Energy
+          </span>
+          <span class="rhythm-pill">
+            <svg class="rhythm-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M15.5 4v9.1a3.6 3.6 0 1 1-1.75-3.1V6.2l6.25-1.45v7.1a3.6 3.6 0 1 1-1.75-3.1V2.55z"/>
+            </svg>
+            Reggae Pulse
+          </span>
+        </div>
+      </div>
+
+      <aside class="hero-aside" aria-label="Decoder highlights">
+        <div class="stat-grid">
+          <div class="stat-card">
+            <strong>5</strong>
+            <span>interactive cards with instant feedback</span>
+          </div>
+          <div class="stat-card">
+            <strong>1 min</strong>
+            <span>quick taste of the deeper cultural breakdown</span>
+          </div>
+        </div>
+
+        <div class="aside-card">
+          <h3>Quick, sharp, and revealing</h3>
+          <p>
+            This is a fast way to test what you think you know before you go deeper.
+          </p>
+        </div>
+
+        <div class="aside-card">
+          <h3>More than a quiz</h3>
+          <p>
+            Every card reveals something real about how meaning, tone, and culture work in Jamaica.
+          </p>
+        </div>
+      </aside>
+    </section>
+
+    <main class="quiz-shell" aria-live="polite">
+      <section class="screen start-screen active" id="start-screen">
+        <div class="intro-card">
+          <span class="kicker">Ready?</span>
+          <h2>Think you can decode the culture?</h2>
+          <p>
+            Pick the answer that feels right. After each card, you'll see what it really means and how much of the culture you're actually reading.
+          </p>
+          <div class="chip-row">
+            <span class="chip">One card at a time</span>
+            <span class="chip">Instant explanations</span>
+            <span class="chip">Mobile friendly flow</span>
+          </div>
+          <div class="result-actions">
+            <button class="button primary" id="start-button" type="button">Start the Decoder</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen quiz-screen" id="quiz-screen">
+        <div class="quiz-topbar">
+          <div class="progress-copy">
+            <span class="progress-label" id="progress-label">Question 1 of 5</span>
+            <strong>Read the moment, then choose your answer.</strong>
+          </div>
+          <div class="progress-bar" aria-hidden="true">
+            <span class="progress-fill" id="progress-fill"></span>
+          </div>
+        </div>
+
+        <div class="card-shell" id="card-shell">
+          <div class="image-panel">
+            <img id="card-image" src="" alt="" />
+            <span class="image-tag" id="card-image-label">Culture Snapshot</span>
+          </div>
+
+          <div class="content-panel">
+            <div>
+              <span class="kicker" id="card-kicker">Card 1</span>
+              <h2 class="question" id="card-question"></h2>
+              <p class="question-text">Pick the answer that best matches the meaning in real life.</p>
+            </div>
+
+            <div class="answer-list" id="answer-list"></div>
+
+            <div class="explanation-panel" id="explanation-panel">
+              <div class="explanation-title">
+                <span class="explanation-dot" aria-hidden="true"></span>
+                <span>Correct answer</span>
+              </div>
+              <div class="explanation-answer" id="explanation-answer"></div>
+              <div class="explanation-text" id="explanation-text"></div>
+            </div>
+
+            <div class="quiz-actions">
+              <p class="score-hint" id="score-hint">Score: 0 / 5</p>
+              <button class="next-button" id="next-button" type="button">Next</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen result-screen" id="result-screen">
+        <div class="result-card">
+          <span class="kicker">Result</span>
+          <h2>Your Result</h2>
+          <div class="result-score" id="result-score">5 / 5</div>
+          <div class="result-badge" id="result-badge">Certified</div>
+          <p id="result-description">You really understand the culture.</p>
+          <div class="chip-row">
+            <span class="chip">Want the full breakdown?</span>
+          </div>
+          <div class="result-actions">
+            <a class="button primary" href="index.html#buy">Get the Book</a>
+            <button class="button secondary" id="restart-button" type="button">Play Again</button>
+          </div>
+          <p class="microcopy">
+            You've seen the surface. The book goes deeper into the patterns, pressures, and meanings behind how Jamaica really moves.
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const quizCards = [
+      {
+        label: "Hidden Meaning",
+        image:
+          "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1200&q=80",
+        alt: "A lively street scene at night with people and lights.",
+        question: "If someone says 'mi soon forward', what are they really telling you?",
+        options: ["They are leaving now", "They are on the way soon", "They are cancelling"],
+        correctIndex: 1,
+        explanation: "It means they are coming soon. In Jamaican speech, 'forward' often points to arrival, not departure."
+      },
+      {
+        label: "Public Respect",
+        image:
+          "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=1200&q=80",
+        alt: "People gathered in conversation outdoors.",
+        question: "Someone greets everybody in the space except you. What does that most likely signal?",
+        options: ["Nothing at all", "A possible slight or message", "They forgot how greetings work"],
+        correctIndex: 1,
+        explanation: "Public greetings can carry meaning. Being skipped can read as distance, disrespect, or a deliberate signal."
+      },
+      {
+        label: "Humour With Tension",
+        image:
+          "https://images.pexels.com/photos/30272899/pexels-photo-30272899.jpeg?auto=compress&cs=tinysrgb&w=1200",
+        alt: "A pair of brown suede casual boots displayed against a neutral background.",
+        question: "A friend laughs and says, 'Yuh a big person now,' right after you level up. What could that joke be carrying?",
+        options: ["Only pure praise", "Humour mixed with tension or envy", "Confusion about your age"],
+        correctIndex: 1,
+        explanation: "In Jamaica, jokes can be social commentary. The laughter may be real, but it can still carry pressure, comparison, or sharpness."
+      },
+      {
+        label: "Meaning of a Link",
+        image:
+          "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80",
+        alt: "Friends gathered together in conversation.",
+        question: "When someone says, 'Mi have a link,' what are they usually talking about?",
+        options: ["Just a random website", "A useful personal connection", "Only a family member"],
+        correctIndex: 1,
+        explanation: "A 'link' usually means a relationship that gives access, trust, help, or movement. It is social capital, not just contact info."
+      },
+      {
+        label: "Visibility and Risk",
+        image:
+          "https://images.unsplash.com/photo-1519996529931-28324d5a630e?auto=format&fit=crop&w=1200&q=80",
+        alt: "A person walking through a city street with visible valuables.",
+        question: "Why might people warn you not to look 'too flashy' in certain spaces?",
+        options: ["Because style is offensive", "Because visibility can increase risk", "Because bright colours are banned"],
+        correctIndex: 1,
+        explanation: "In some places, being highly visible can draw the wrong kind of attention. The warning is often about safety, not jealousy."
+      }
+    ];
+
+    const resultBands = [
+      {
+        minScore: 0,
+        maxScore: 2,
+        title: "Beginner",
+        description: "You're just getting started."
+      },
+      {
+        minScore: 3,
+        maxScore: 4,
+        title: "Getting There",
+        description: "You understand some things."
+      },
+      {
+        minScore: 5,
+        maxScore: 5,
+        title: "Certified",
+        description: "You really understand the culture."
+      }
+    ];
+
+    const startScreen = document.getElementById("start-screen");
+    const quizScreen = document.getElementById("quiz-screen");
+    const resultScreen = document.getElementById("result-screen");
+    const startButton = document.getElementById("start-button");
+    const heroStartButton = document.getElementById("hero-start-button");
+    const restartButton = document.getElementById("restart-button");
+    const progressLabel = document.getElementById("progress-label");
+    const progressFill = document.getElementById("progress-fill");
+    const cardShell = document.getElementById("card-shell");
+    const cardImage = document.getElementById("card-image");
+    const cardImageLabel = document.getElementById("card-image-label");
+    const cardKicker = document.getElementById("card-kicker");
+    const cardQuestion = document.getElementById("card-question");
+    const answerList = document.getElementById("answer-list");
+    const explanationPanel = document.getElementById("explanation-panel");
+    const explanationAnswer = document.getElementById("explanation-answer");
+    const explanationText = document.getElementById("explanation-text");
+    const nextButton = document.getElementById("next-button");
+    const scoreHint = document.getElementById("score-hint");
+    const resultScore = document.getElementById("result-score");
+    const resultBadge = document.getElementById("result-badge");
+    const resultDescription = document.getElementById("result-description");
+
+    let currentIndex = 0;
+    let score = 0;
+    let answered = false;
+    let currentOptions = [];
+
+    function shuffleOptions(card) {
+      const options = card.options.map((label, index) => ({
+        label,
+        isCorrect: index === card.correctIndex
+      }));
+
+      for (let i = options.length - 1; i > 0; i -= 1) {
+        const swapIndex = Math.floor(Math.random() * (i + 1));
+        [options[i], options[swapIndex]] = [options[swapIndex], options[i]];
+      }
+
+      return options;
+    }
+
+    function setActiveScreen(targetScreen) {
+      [startScreen, quizScreen, resultScreen].forEach((screen) => {
+        screen.classList.toggle("active", screen === targetScreen);
+      });
+    }
+
+    function updateScoreHint() {
+      scoreHint.textContent = `Score: ${score} / ${quizCards.length}`;
+    }
+
+    function renderQuestion() {
+      const card = quizCards[currentIndex];
+      answered = false;
+      cardShell.classList.add("is-transitioning");
+
+      window.setTimeout(() => {
+        progressLabel.textContent = `Question ${currentIndex + 1} of ${quizCards.length}`;
+        progressFill.style.width = `${((currentIndex + 1) / quizCards.length) * 100}%`;
+        cardImage.src = card.image;
+        cardImage.alt = card.alt;
+        cardImageLabel.textContent = card.label;
+        cardKicker.textContent = `Card ${currentIndex + 1}`;
+        cardQuestion.textContent = card.question;
+        answerList.innerHTML = "";
+        currentOptions = shuffleOptions(card);
+        explanationPanel.classList.remove("visible");
+        explanationAnswer.textContent = "";
+        explanationText.textContent = "";
+        nextButton.classList.remove("visible");
+        nextButton.textContent = currentIndex === quizCards.length - 1 ? "See Result" : "Next";
+
+        currentOptions.forEach((option, optionIndex) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "answer-button";
+          button.textContent = option.label;
+          button.addEventListener("click", () => handleAnswer(optionIndex));
+          answerList.appendChild(button);
+        });
+
+        updateScoreHint();
+        cardShell.classList.remove("is-transitioning");
+      }, 160);
+    }
+
+    function handleAnswer(selectedIndex) {
+      if (answered) return;
+      answered = true;
+
+      const card = quizCards[currentIndex];
+      const buttons = answerList.querySelectorAll(".answer-button");
+      const correctOption = currentOptions.find((option) => option.isCorrect);
+
+      buttons.forEach((button, buttonIndex) => {
+        button.disabled = true;
+
+        if (currentOptions[buttonIndex] && currentOptions[buttonIndex].isCorrect) {
+          button.classList.add("correct");
+        } else if (buttonIndex === selectedIndex) {
+          button.classList.add("incorrect");
+        }
+      });
+
+      if (currentOptions[selectedIndex] && currentOptions[selectedIndex].isCorrect) {
+        score += 1;
+      }
+
+      explanationAnswer.textContent = correctOption ? correctOption.label : card.options[card.correctIndex];
+      explanationText.textContent = card.explanation;
+      explanationPanel.classList.add("visible");
+      nextButton.classList.add("visible");
+      updateScoreHint();
+
+      window.setTimeout(() => {
+        explanationPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }, 80);
+    }
+
+    function burstConfetti(anchor) {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const colors = ["#e8b96a", "#c9963a", "#efca7c", "#2d6a4f", "#fdf6ec", "#f0a1ae", "#a8e6cf"];
+      const rect = anchor.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 3;
+      for (let i = 0; i < 44; i++) {
+        const el = document.createElement("div");
+        const angle = (Math.random() * 340 - 170 - 90) * (Math.PI / 180);
+        const dist  = 80 + Math.random() * 160;
+        const dx    = Math.cos(angle) * dist;
+        const dy    = Math.sin(angle) * dist;
+        const size  = 5 + Math.random() * 8;
+        const dur   = (0.65 + Math.random() * 0.5).toFixed(2);
+        const delay = (Math.random() * 0.14).toFixed(2);
+        el.style.cssText = [
+          `position:fixed`,
+          `left:${cx}px`,
+          `top:${cy}px`,
+          `width:${size}px`,
+          `height:${size}px`,
+          `background:${colors[i % colors.length]}`,
+          `border-radius:${Math.random() > 0.5 ? "50%" : "2px"}`,
+          `pointer-events:none`,
+          `z-index:9999`,
+          `--dx:${dx.toFixed(1)}px`,
+          `--dy:${dy.toFixed(1)}px`,
+          `--rot:${Math.round(Math.random() * 540 - 270)}deg`,
+          `animation:confettiFly ${dur}s cubic-bezier(.25,.46,.45,.94) ${delay}s forwards`
+        ].join(";");
+        document.body.appendChild(el);
+        window.setTimeout(() => el.remove(), 1500);
+      }
+    }
+
+    function showResult() {
+      const band = resultBands.find((item) => score >= item.minScore && score <= item.maxScore) || resultBands[0];
+      resultScore.textContent = `${score} / ${quizCards.length}`;
+      resultBadge.textContent = band.title;
+      resultDescription.textContent = band.description;
+      setActiveScreen(resultScreen);
+      resultScreen.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (score === quizCards.length) {
+        window.setTimeout(() => {
+          burstConfetti(document.querySelector(".result-card") || document.body);
+        }, 380);
+      }
+    }
+
+    function goToNextStep() {
+      if (!answered) return;
+
+      if (currentIndex === quizCards.length - 1) {
+        showResult();
+        return;
+      }
+
+      currentIndex += 1;
+      renderQuestion();
+      quizScreen.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function startQuiz() {
+      currentIndex = 0;
+      score = 0;
+      updateScoreHint();
+      setActiveScreen(quizScreen);
+      renderQuestion();
+      quizScreen.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    startButton.addEventListener("click", startQuiz);
+    heroStartButton.addEventListener("click", startQuiz);
+    nextButton.addEventListener("click", goToNextStep);
+    restartButton.addEventListener("click", startQuiz);
+  </script>
+</body>
+</html>
