@@ -1,24 +1,25 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en-GB">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>The Psychology of Jamaicans: The Unwritten Rules | Cultural Intelligence Ebook</title>
-<meta name="description" content="A premium ebook on the unwritten social, cultural and business rules that shape how Jamaica really moves. Practical, thoughtful insight for locals, the diaspora, expats and visitors."/>
+<title>The Psychology of Jamaicans | Cultural Intelligence Guide</title>
+<meta name="description" content="A premium cultural intelligence guide on the unwritten rules behind respect, tone, trust, pressure, safety, and how people really move in Jamaica."/>
 <meta name="theme-color" content="#143227"/>
 <link rel="canonical" href="https://jamaicanpsychology.kylehector.com/"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="The Psychology of Jamaicans"/>
-<meta property="og:title" content="The Psychology of Jamaicans: The Unwritten Rules"/>
-<meta property="og:description" content="A premium ebook on the unwritten rules behind Jamaican social life, trust, safety and business, written with honesty, clarity and practical value."/>
+<meta property="og:title" content="The Psychology of Jamaicans | Cultural Intelligence Guide"/>
+<meta property="og:description" content="A premium cultural intelligence guide on the unwritten rules behind respect, tone, trust, pressure, safety, and how people really move in Jamaica."/>
 <meta property="og:url" content="https://jamaicanpsychology.kylehector.com/"/>
 <meta property="og:image" content="https://jamaicanpsychology.kylehector.com/assets/images/kyle-hector-author.png"/>
 <meta property="og:image:alt" content="Portrait of Kyle Hector, author of The Psychology of Jamaicans"/>
 <meta property="og:locale" content="en_GB"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="The Psychology of Jamaicans: The Unwritten Rules"/>
+<meta name="twitter:title" content="The Psychology of Jamaicans | Cultural Intelligence Guide"/>
 <meta name="twitter:description" content="Clear, practical insight into the unwritten rules shaping how Jamaica really moves."/>
 <meta name="twitter:image" content="https://jamaicanpsychology.kylehector.com/assets/images/kyle-hector-author.png"/>
+<script src="assets/js/cultural-signals.js"></script>
 <script>
   const PAYHIP_PRODUCT_URL = "https://payhip.com/b/5QwFv";
   const SUPPORT_EMAIL = "kylehector12@gmail.com";
@@ -174,7 +175,7 @@
     width:auto;
   }
 
-  /* ── NOISE OVERLAY ── */
+  /* -- NOISE OVERLAY -- */
   body::before{
     content:'';
     position:fixed;inset:0;
@@ -182,7 +183,7 @@
     pointer-events:none;z-index:9999;opacity:.26;
   }
 
-  /* ── HERO ── */
+  /* -- HERO -- */
   .hero{
     min-height:100vh;
     display:grid;
@@ -555,7 +556,7 @@
 
   @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(6px);}}
 
-  /* ── STRIP ── */
+  /* -- STRIP -- */
   .strip{
     background:
       linear-gradient(90deg, rgba(15,47,37,.08), rgba(255,255,255,.08), rgba(15,47,37,.08)),
@@ -580,7 +581,124 @@
     opacity:.38;
   }
 
-  /* ── SECTIONS ── */
+  .signal-moment{
+    padding:4.25rem 2rem;
+    background:
+      radial-gradient(circle at top right, rgba(232,185,106,.14), transparent 24%),
+      linear-gradient(180deg, rgba(11,28,22,.98), rgba(10,20,16,.99));
+    position:relative;
+    isolation:isolate;
+  }
+  .signal-moment::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background-image:var(--texture-organic);
+    background-size:180px 180px;
+    opacity:.18;
+    pointer-events:none;
+    z-index:0;
+  }
+  .signal-moment > .container{
+    position:relative;
+    z-index:1;
+  }
+  .signal-layout{
+    display:grid;
+    grid-template-columns:minmax(0,.92fr) minmax(300px,1.08fr);
+    gap:2rem;
+    align-items:stretch;
+  }
+  .signal-copy p{
+    max-width:34rem;
+    color:rgba(253,246,236,.76);
+    font-size:1.02rem;
+    line-height:1.85;
+  }
+  .signal-copy h2{
+    color:var(--cream);
+    max-width:12ch;
+  }
+  .signal-card{
+    padding:2rem;
+    border-radius:30px;
+    border:1px solid rgba(253,246,236,.12);
+    background:
+      radial-gradient(circle at top right, rgba(232,185,106,.12), transparent 26%),
+      linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    box-shadow:0 24px 56px rgba(0,0,0,.24);
+  }
+  .signal-meta{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    flex-wrap:wrap;
+  }
+  .signal-kicker,.signal-rotation{
+    display:inline-flex;
+    align-items:center;
+    padding:.42rem .8rem;
+    border-radius:999px;
+    border:1px solid rgba(232,185,106,.24);
+    background:rgba(232,185,106,.08);
+    font-family:'Space Mono',monospace;
+    font-size:.6rem;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    color:var(--gold-light);
+  }
+  .signal-rotation{
+    border-color:rgba(253,246,236,.12);
+    background:rgba(253,246,236,.04);
+    color:rgba(253,246,236,.7);
+  }
+  .signal-scene{
+    margin-top:1.15rem;
+    font-family:'Playfair Display',Georgia,serif;
+    font-size:clamp(2rem,4.4vw,3rem);
+    line-height:1;
+    color:var(--cream);
+    max-width:11ch;
+  }
+  .signal-teaser{
+    margin-top:1rem;
+    color:rgba(253,246,236,.72);
+    font-size:1rem;
+    line-height:1.8;
+    max-width:36rem;
+  }
+  .signal-meaning{
+    margin-top:1.35rem;
+    padding-top:1.2rem;
+    border-top:1px solid rgba(253,246,236,.1);
+  }
+  .signal-meaning strong{
+    display:block;
+    font-family:'Space Mono',monospace;
+    font-size:.62rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--gold-light);
+  }
+  .signal-meaning p{
+    margin-top:.75rem;
+    color:rgba(253,246,236,.82);
+    line-height:1.85;
+  }
+  .signal-actions{
+    display:flex;
+    gap:.85rem;
+    flex-wrap:wrap;
+    margin-top:1.6rem;
+  }
+  .signal-actions .btn-primary,
+  .signal-actions .btn-secondary{
+    min-width:190px;
+    text-align:center;
+  }
+
+  /* -- SECTIONS -- */
   section{padding:7rem 2rem;}
 
   .container{max-width:1080px;margin:0 auto;}
@@ -685,7 +803,7 @@
     pointer-events:none;
   }
 
-  /* ── WHY SECTION ── */
+  /* -- WHY SECTION -- */
   .why{background:var(--warm-white);color:var(--charcoal);}
 
   .why-grid{
@@ -796,45 +914,53 @@
   }
   .collage-band{
     position:relative;
-    margin:0;
-    aspect-ratio:16 / 5;
+    margin:0 auto;
+    max-width:760px;
+    aspect-ratio:16 / 4.5;
     border-radius:28px;
     overflow:hidden;
     box-shadow:0 24px 56px rgba(0,0,0,.22);
-    min-height:clamp(180px, 24vw, 280px);
+    min-height:clamp(150px, 18vw, 220px);
   }
   .collage-band::after{
     content:'';
     position:absolute;
     inset:0;
     background:
-      linear-gradient(180deg, rgba(12,18,16,.08) 0%, rgba(12,18,16,.2) 55%, rgba(12,18,16,.7) 100%),
+      linear-gradient(180deg, rgba(12,18,16,.04) 0%, rgba(12,18,16,.12) 40%, rgba(12,18,16,.58) 100%),
+      linear-gradient(90deg, rgba(12,18,16,.58) 0%, rgba(12,18,16,.18) 34%, rgba(12,18,16,0) 62%),
       linear-gradient(90deg, rgba(232,185,106,.08), transparent 28%, transparent 72%, rgba(232,185,106,.08));
     pointer-events:none;
   }
   .collage-image{
     width:100%;
     height:100%;
-    min-height:clamp(180px, 24vw, 280px);
+    min-height:clamp(150px, 18vw, 220px);
     object-fit:cover;
     display:block;
     filter:contrast(1.03);
   }
   .collage-band figcaption{
     position:absolute;
-    left:1rem;
-    right:1rem;
-    bottom:1rem;
+    left:50%;
+    top:50%;
+    bottom:auto;
+    transform:translate(-50%, -8%);
     z-index:1;
-    max-width:480px;
+    max-width:320px;
+    padding:.7rem .85rem;
+    border-radius:14px;
+    background:linear-gradient(180deg, rgba(12,18,16,.38), rgba(12,18,16,.7));
     font-family:'Playfair Display',Georgia,serif;
-    font-size:1.05rem;
-    line-height:1.55;
+    font-size:.95rem;
+    line-height:1.45;
     color:var(--cream);
-    text-shadow:0 2px 18px rgba(0,0,0,.32);
+    text-align:center;
+    text-shadow:0 2px 12px rgba(0,0,0,.28);
+    box-shadow:0 10px 24px rgba(0,0,0,.16);
   }
 
-  /* ── WHAT'S INSIDE ── */
+  /* -- WHAT'S INSIDE -- */
   .inside{background:var(--charcoal);}
   .inside h2{color:var(--cream);}
   .inside-atmosphere{
@@ -986,7 +1112,7 @@
     50%,100%{border-right-color:transparent;}
   }
 
-  /* ── PREVIEW ── */
+  /* -- PREVIEW -- */
   .preview{background:var(--green);}
   .preview h2{color:var(--cream);}
 
@@ -1077,9 +1203,9 @@
   }
   .author-grid{
     display:grid;
-    grid-template-columns:minmax(220px, 320px) 1fr;
-    gap:4rem;
-    align-items:center;
+    grid-template-columns:minmax(150px, 220px) 1fr;
+    gap:2.4rem;
+    align-items:start;
   }
   .author-visual{
     display:grid;
@@ -1117,7 +1243,7 @@
     pointer-events:none;
   }
   .author-feature{
-    width:min(72vw, 300px);
+    width:min(54vw, 185px);
     margin:0;
     position:relative;
     border-radius:24px;
@@ -1136,9 +1262,7 @@
   }
   .author-feature img{
     width:100%;
-    aspect-ratio:2 / 3;
-    object-fit:cover;
-    object-position:center top;
+    height:auto;
     display:block;
   }
   .author-copy h2{color:var(--green);}
@@ -1199,19 +1323,21 @@
     font-style:normal;
   }
 
-  /* ── FOR WHO ── */
+  /* -- FOR WHO -- */
   .forwho{background:var(--warm-white);color:var(--charcoal);}
   .forwho h2{color:var(--green);}
   .community-lead{
     display:grid;
-    grid-template-columns:minmax(260px, 360px) minmax(0, 1fr);
-    gap:2rem;
+    grid-template-columns:minmax(220px, 300px) minmax(0, 1fr);
+    gap:1.6rem;
     align-items:center;
     margin-top:2.6rem;
   }
   .community-figure{
     position:relative;
     margin:0;
+    width:min(100%, 420px);
+    justify-self:start;
     border-radius:24px;
     overflow:hidden;
     box-shadow:0 20px 48px rgba(15,47,37,.14);
@@ -1228,8 +1354,7 @@
   }
   .community-figure img{
     width:100%;
-    aspect-ratio:1 / 1;
-    object-fit:cover;
+    height:auto;
     display:block;
   }
   .community-copy{
@@ -1242,6 +1367,188 @@
   }
   .community-lead + .audience-grid{
     margin-top:2.2rem;
+  }
+  .contribute-section{
+    background:linear-gradient(180deg, rgba(10,34,26,.98), rgba(8,20,15,.99));
+    color:var(--cream);
+  }
+  .contribute-shell{
+    padding:2.5rem;
+    border-radius:32px;
+    border:1px solid rgba(253,246,236,.1);
+    background:
+      radial-gradient(circle at top right, rgba(232,185,106,.12), transparent 26%),
+      linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    box-shadow:0 24px 56px rgba(0,0,0,.2);
+  }
+  .contribute-layout{
+    display:grid;
+    grid-template-columns:minmax(0, .84fr) minmax(0, 1.16fr);
+    gap:clamp(1.5rem, 3vw, 2.4rem);
+    align-items:start;
+  }
+  .contribute-copy,
+  .contribute-form-wrap{
+    min-width:0;
+  }
+  .contribute-copy h2{
+    color:var(--cream);
+    max-width:11ch;
+  }
+  .contribute-copy p{
+    color:rgba(253,246,236,.74);
+    line-height:1.85;
+    max-width:30rem;
+  }
+  .contribute-context{
+    margin-top:1.4rem;
+    padding:1rem 1.05rem;
+    border:1px solid rgba(253,246,236,.08);
+    border-left:3px solid rgba(232,185,106,.42);
+    border-radius:18px;
+    background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+    font-family:'Space Mono',monospace;
+    font-size:.66rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:rgba(253,246,236,.56);
+    line-height:1.8;
+    max-width:26rem;
+  }
+  .contribute-form{
+    display:grid;
+    gap:1.2rem;
+  }
+  .contribute-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1rem;
+  }
+  .field-group{
+    display:grid;
+    gap:.5rem;
+  }
+  .field-label{
+    font-family:'Space Mono',monospace;
+    font-size:.68rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold-light);
+  }
+  .field-label .req{
+    color:rgba(253,246,236,.56);
+  }
+  .field-input,
+  .field-textarea{
+    width:100%;
+    padding:1rem 1.05rem;
+    border-radius:18px;
+    border:1px solid rgba(253,246,236,.1);
+    background:rgba(255,255,255,.04);
+    color:var(--cream);
+    font-family:'Lora',Georgia,serif;
+    font-size:1rem;
+    line-height:1.65;
+    appearance:none;
+    resize:none;
+    transition:border-color .22s ease, background .22s ease;
+  }
+  .field-input::placeholder,
+  .field-textarea::placeholder{
+    color:rgba(253,246,236,.45);
+  }
+  .field-input:focus,
+  .field-textarea:focus{
+    outline:none;
+    border-color:rgba(232,185,106,.5);
+    background:rgba(255,255,255,.06);
+  }
+  .field-textarea{
+    min-height:7.4rem;
+  }
+  .field-check{
+    display:flex;
+    align-items:flex-start;
+    gap:.9rem;
+    padding:1rem;
+    border-radius:20px;
+    border:1px solid rgba(253,246,236,.1);
+    background:rgba(255,255,255,.03);
+  }
+  .field-check input[type="checkbox"]{
+    width:1.12rem;
+    height:1.12rem;
+    margin-top:.18rem;
+    appearance:none;
+    border:1px solid rgba(232,185,106,.55);
+    border-radius:5px;
+    background:rgba(255,255,255,.04);
+    position:relative;
+    flex:0 0 auto;
+  }
+  .field-check input[type="checkbox"]:checked{
+    background:var(--gold);
+    border-color:var(--gold);
+  }
+  .field-check input[type="checkbox"]:checked::after{
+    content:'';
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:.34rem;
+    height:.58rem;
+    transform:translate(-50%,-54%) rotate(45deg);
+    border:2px solid #11100d;
+    border-top:none;
+    border-left:none;
+  }
+  .field-check-text strong{
+    display:block;
+    color:var(--cream);
+    margin-bottom:.18rem;
+  }
+  .field-check-text span{
+    color:rgba(253,246,236,.68);
+    line-height:1.6;
+    font-size:.9rem;
+  }
+  .contribute-footer{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    flex-wrap:wrap;
+    margin-top:.2rem;
+  }
+  .contribute-note{
+    font-family:'Space Mono',monospace;
+    font-size:.68rem;
+    letter-spacing:.1em;
+    color:rgba(253,246,236,.58);
+  }
+  .contribute-success{
+    display:none;
+    padding:1.7rem;
+    border-radius:22px;
+    border:1px solid rgba(167,210,182,.25);
+    background:rgba(167,210,182,.07);
+    text-align:center;
+  }
+  .contribute-success.is-visible{
+    display:block;
+  }
+  .contribute-success strong{
+    display:block;
+    font-family:'Playfair Display',Georgia,serif;
+    font-size:2rem;
+    line-height:1;
+    color:var(--cream);
+    margin-bottom:.7rem;
+  }
+  .contribute-success p{
+    color:rgba(253,246,236,.78);
+    line-height:1.75;
+    max-width:34rem;
+    margin:0 auto;
   }
 
   .audience-grid{
@@ -1303,7 +1610,7 @@
     font-size:.9rem;line-height:1.7;color:#555;
   }
 
-  /* ── CTA FINAL ── */
+  /* -- CTA FINAL -- */
   .cta-final{
     background:linear-gradient(180deg, var(--charcoal) 0%, #161616 100%);
     text-align:center;
@@ -1609,7 +1916,7 @@
     white-space:nowrap;
   }
 
-  /* ── FOOTER ── */
+  /* -- FOOTER -- */
   footer{
     background:var(--green);
     padding:3rem 2rem;
@@ -1628,13 +1935,13 @@
     color:var(--gold);margin-bottom:1rem;
   }
 
-  /* ── DIVIDER ── */
+  /* -- DIVIDER -- */
   .gold-divider{
     height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);
     margin:4rem 0;opacity:.3;
   }
 
-  /* ── RESPONSIVE ── */
+  /* -- RESPONSIVE -- */
   @media(max-width:1024px){
     .hero-inner{
       grid-template-columns:1fr;
@@ -1660,6 +1967,22 @@
   }
   @media(max-width:900px){
     .chapter-nav{display:none;}
+    .signal-layout,
+    .contribute-layout{
+      grid-template-columns:1fr;
+    }
+    .signal-actions,
+    .contribute-footer{
+      align-items:stretch;
+    }
+    .signal-actions .btn-primary,
+    .signal-actions .btn-secondary,
+    .contribute-footer .btn-primary{
+      width:100%;
+    }
+    .contribute-row{
+      grid-template-columns:1fr;
+    }
   }
   @media(max-width:768px){
     .why-grid,.audience-grid,.author-grid,.reactions-grid,.community-lead{grid-template-columns:1fr;}
@@ -1695,6 +2018,8 @@
     .parts-grid{grid-template-columns:1fr;}
     .cta-group{flex-direction:column;align-items:center;}
     .btn-primary,.btn-secondary{width:100%;text-align:center;}
+    .signal-card,
+    .contribute-shell{padding:1.4rem;}
     section{padding:5.5rem 1.25rem;}
     .hero h1{font-size:2.7rem;}
     .hero-sub{margin:1.2rem 0 2rem;}
@@ -1784,14 +2109,14 @@
     .reveal{transition:none;}
   }
 
-  /* ── FADE IN ON SCROLL ── */
+  /* -- FADE IN ON SCROLL -- */
   .reveal{
     opacity:0;transform:translateY(28px);
     transition:opacity .75s cubic-bezier(.16,1,.3,1), transform .75s cubic-bezier(.16,1,.3,1);
   }
   .reveal.visible{opacity:1;transform:none;}
 
-  /* ── STAGGERED CARD GRIDS ── */
+  /* -- STAGGERED CARD GRIDS -- */
   .parts-grid .part-card:nth-child(1),
   .preview-cards .preview-card:nth-child(1),
   .reactions-grid article:nth-child(1),
@@ -2074,6 +2399,43 @@
     justify-content:flex-start !important;
     margin-left:0 !important;
   }
+  .decoder-spotlight-figure{
+    position:relative;
+    margin:0 auto 1.35rem 0;
+    max-width:340px;
+    border-radius:24px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.1);
+    background:rgba(255,255,255,.03);
+    box-shadow:0 20px 48px rgba(0,0,0,.22);
+  }
+  .decoder-spotlight-figure::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(180deg, rgba(8,16,13,.04) 0%, rgba(8,16,13,.12) 40%, rgba(8,16,13,.66) 100%),
+      radial-gradient(circle at top right, rgba(232,185,106,.18), transparent 28%);
+    pointer-events:none;
+  }
+  .decoder-spotlight-figure img{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+  .decoder-spotlight-figure figcaption{
+    position:absolute;
+    left:1rem;
+    right:1rem;
+    bottom:1rem;
+    z-index:1;
+    max-width:22ch;
+    font-family:'Playfair Display',Georgia,serif;
+    font-size:.92rem;
+    line-height:1.45;
+    color:var(--cream);
+    text-shadow:0 2px 18px rgba(0,0,0,.28);
+  }
   .cta-final{
     background:none;
     padding-top:4.5rem;
@@ -2167,14 +2529,144 @@
       margin-right:0;
     }
     .collage-band{
-      aspect-ratio:16 / 9;
+      max-width:none;
+      aspect-ratio:16 / 8;
     }
     .author-avatar,
     .author-feature{
-      width:min(100%, 220px);
+      width:min(100%, 180px);
     }
     .decoder-spotlight .reveal{
       padding-top:1rem !important;
+    }
+  }
+  @media(max-width:640px){
+    section{
+      padding:4.9rem 1rem;
+    }
+    .topbar{
+      top:.45rem;
+      width:calc(100% - .75rem);
+    }
+    .topbar-inner{
+      flex-wrap:wrap;
+      gap:.65rem;
+      padding:.78rem .8rem;
+      border-radius:16px;
+    }
+    .brand-lockup{
+      flex:1 1 auto;
+    }
+    .brand-title{
+      font-size:.92rem;
+    }
+    .brand-sub{
+      display:none;
+    }
+    .chapter-nav{
+      order:3;
+      width:100%;
+      justify-content:flex-start;
+      flex-wrap:nowrap;
+      overflow-x:auto;
+      padding-bottom:.2rem;
+      scrollbar-width:none;
+      -ms-overflow-style:none;
+    }
+    .chapter-nav::-webkit-scrollbar{
+      display:none;
+    }
+    .topbar-link{
+      white-space:nowrap;
+      font-size:.56rem;
+      padding:.48rem .72rem;
+    }
+    .topbar-cta{
+      order:2;
+      width:100%;
+      min-height:2.65rem;
+      padding:.78rem 1rem;
+    }
+    .hero{
+      padding:8.6rem 1rem 4.5rem;
+    }
+    .hero h1{
+      font-size:clamp(2.3rem, 12vw, 3.2rem);
+      max-width:11ch;
+    }
+    .hero-tags{
+      justify-content:flex-start;
+    }
+    .tag{
+      width:auto;
+      flex:0 0 auto;
+    }
+    .hero-panel,
+    .signal-card,
+    .contribute-shell{
+      border-radius:22px;
+    }
+    .collage-break{
+      padding:0 1rem .85rem;
+    }
+    .collage-band{
+      aspect-ratio:16 / 9;
+      min-height:180px;
+    }
+    .collage-band figcaption{
+      left:50%;
+      top:auto;
+      right:auto;
+      bottom:.8rem;
+      transform:translateX(-50%);
+      width:min(calc(100% - 1.6rem), 300px);
+      max-width:none;
+      padding:.62rem .75rem;
+      font-size:.88rem;
+      line-height:1.4;
+    }
+    .inside-atmosphere{
+      margin:1.6rem 0 2.2rem;
+    }
+    .community-figure,
+    .decoder-spotlight-figure{
+      max-width:100%;
+      width:100%;
+    }
+    .contribute-layout{
+      gap:1.4rem;
+    }
+    .contribute-copy h2{
+      max-width:12ch;
+    }
+    .contribute-note{
+      display:block;
+      width:100%;
+      line-height:1.6;
+    }
+    .field-input,
+    .field-textarea{
+      font-size:.96rem;
+      padding:.92rem 1rem;
+    }
+    .field-check{
+      padding:.9rem;
+    }
+    .sticky-cta{
+      width:calc(100% - .75rem);
+      bottom:.4rem;
+    }
+  }
+  @media(max-width:480px){
+    .contribute-context{
+      max-width:none;
+    }
+    .author-avatar,
+    .author-feature{
+      width:min(100%, 164px);
+    }
+    .sticky-title{
+      font-size:.6rem;
     }
   }
 </style>
@@ -2185,7 +2677,7 @@
   <div class="topbar-inner">
     <a class="brand-lockup" href="#top" aria-label="Back to the top of the homepage">
       <span class="brand-title">The Psychology of Jamaicans</span>
-      <span class="brand-sub">Cultural intelligence ebook</span>
+      <span class="brand-sub">Cultural intelligence guide</span>
     </a>
     <nav class="chapter-nav" aria-label="Primary">
       <a class="topbar-link" href="#what-it-shows" data-section-link="what-it-shows">What it shows</a>
@@ -2198,7 +2690,7 @@
 </header>
 <main id="top">
 
-<!-- ══ HERO ══════════════════════════════════════════════════════════════════ -->
+<!-- -- HERO ------------------------------------------------------------------ -->
 <section class="hero">
   <div class="hero-bg-circle c1"></div>
   <div class="hero-bg-circle c2"></div>
@@ -2207,27 +2699,27 @@
     <div class="hero-copy">
     <div class="gold-rule"></div>
     <p class="eyebrow">The Psychology of Jamaicans</p>
-    <h1>Know the rules <em>nobody writes down.</em></h1>
-    <p class="hero-sub">28 chapters on how Jamaicans really think, move, and make decisions.</p>
+    <h1>Understand Jamaicans <em>before they understand you.</em></h1>
+    <p class="hero-sub">Learn the unspoken rules that shape respect, tone, trust, pressure, safety, and how people really move in Jamaica.</p>
 
     <div class="hero-tags">
       <span class="tag">28 chapters</span>
-      <span class="tag">Locals</span>
-      <span class="tag">Diaspora</span>
-      <span class="tag">Visitors</span>
+      <span class="tag">Respect</span>
+      <span class="tag">Tone</span>
+      <span class="tag">Trust</span>
     </div>
 
     <div class="cta-group">
-      <a href="decode.html" class="btn-primary">Try the Decoder</a>
-      <a href="#inside" class="btn-secondary">See Inside</a>
+      <a href="https://payhip.com/b/5QwFv" target="_blank" rel="noopener noreferrer" class="btn-primary buy-link" data-buy-source="hero">Get Instant Access</a>
+      <a href="decode.html" class="btn-secondary">Try the Decoder</a>
     </div>
     <ul class="hero-outcomes">
       <li>Read people faster.</li>
-      <li>Avoid costly mistakes.</li>
-      <li>Move with confidence.</li>
+      <li>Avoid social mistakes.</li>
+      <li>Move with more awareness.</li>
     </ul>
     <div class="hero-meta">
-      <p>Read people faster. Avoid costly mistakes. Move with confidence.</p>
+      <p>28 chapters. Instant PDF. Secure Payhip checkout.</p>
       <div class="sale-timer" data-sale-countdown>
         <span>Sale ends in</span>
         <strong data-sale-countdown-value>14 days</strong>
@@ -2236,15 +2728,15 @@
     </div>
 
     <aside class="hero-panel" aria-label="Book highlights">
-      <p class="hero-panel-label">From the author</p>
-      <h2 class="hero-panel-title">Read the place before the place reads you.</h2>
+      <p class="hero-panel-label">What this is</p>
+      <h2 class="hero-panel-title">Not a tourist guide. A reading tool.</h2>
       <p class="hero-panel-copy">
-        Most people learn Jamaica's real rules the hard way. This book puts them in plain words so you don't have to.
+        This guide helps you catch what sits beneath the words so you can read a room, move with more sense, and avoid easy mistakes.
       </p>
       <div class="hero-proof-grid">
         <article class="proof-item">
-          <span class="proof-kicker">Structure</span>
-          <span class="proof-value">Four parts. Heart. Pressure. Streets. Business.</span>
+          <span class="proof-kicker">What it helps you read</span>
+          <span class="proof-value">Respect, behaviour, timing, silence, pressure, trust, status, and everyday meaning.</span>
         </article>
         <article class="proof-item">
           <span class="proof-kicker">Format</span>
@@ -2252,15 +2744,15 @@
         </article>
         <article class="proof-item">
           <span class="proof-kicker">Audience</span>
-          <span class="proof-value">For locals, diaspora, and visitors who want real insight.</span>
+          <span class="proof-value">For locals, diaspora, visitors, and anyone who needs a clearer read.</span>
         </article>
         <article class="proof-item">
           <span class="proof-kicker">Lens</span>
-          <span class="proof-value">Tone. Status. Trust. Respect. Visibility. Reputation.</span>
+          <span class="proof-value">Tone. Silence. Timing. Trust. Visibility. Reputation.</span>
         </article>
       </div>
-      <blockquote class="hero-panel-quote">"Awareness isn't fear. It's love with open eyes."</blockquote>
-      <p class="hero-signature">From the introduction</p>
+      <blockquote class="hero-panel-quote">"Read the room before the room reads you."</blockquote>
+      <p class="hero-signature">The core idea</p>
       <div class="hero-panel-footer">
         <span class="hero-panel-chip">Social insight</span>
         <span class="hero-panel-chip">Street awareness</span>
@@ -2277,7 +2769,7 @@
   </div>
 </section>
 
-<!-- ══ STRIP ═════════════════════════════════════════════════════════════════ -->
+<!-- -- STRIP ----------------------------------------------------------------- -->
 <section class="author">
   <div class="container">
     <div class="author-grid">
@@ -2294,14 +2786,14 @@
 
       <div class="author-copy reveal">
         <span class="section-label with-icon"><span class="section-mark icon-leaf" aria-hidden="true"></span>About the Author</span>
-        <h2>Written by Kyle Hector</h2>
+        <h2>Written from lived experience and close observation.</h2>
         <p>
           I grew up in Jamaica. Close enough to its warmth, humour, pressure, and contradictions to know the real rules are never written down.
         </p>
         <p>
-          This book comes from lived experience and close observation. It puts those patterns into plain words so you can understand Jamaica with more honesty and less guesswork.
+          This guide comes from paying attention. It puts those patterns into plain words so you can understand Jamaica with more honesty and less guesswork.
         </p>
-        <p class="author-signoff">Not a judgment. A map.</p>
+        <p class="author-signoff">Not judgement. Just clearer sight.</p>
       </div>
     </div>
   </div>
@@ -2346,21 +2838,49 @@
   </div>
 </div>
 
-<!-- ══ WHY THIS BOOK ══════════════════════════════════════════════════════════ -->
+<section class="signal-moment">
+  <div class="container">
+    <div class="signal-layout">
+      <div class="signal-copy reveal">
+        <span class="section-label">Signal of the moment</span>
+        <h2>One fresh read from the archive.</h2>
+        <p>Come back for one sharp cultural read at a time. Each day, the archive surfaces a different signal so you can keep sharpening how you read tone, timing, pressure, and meaning.</p>
+      </div>
+      <article class="signal-card reveal" aria-live="polite">
+        <div class="signal-meta">
+          <span class="signal-kicker" id="signal-of-moment-label">Timing</span>
+          <span class="signal-rotation" id="signal-of-moment-rotation">Changes daily</span>
+        </div>
+        <p class="signal-scene" id="signal-of-moment-title-card">What sounds simple is not always simple.</p>
+        <p class="signal-teaser" id="signal-of-moment-teaser">Come back for a different read tomorrow, or go deeper now through the decoder.</p>
+        <div class="signal-meaning">
+          <strong>The signal</strong>
+          <p id="signal-of-moment-meaning">The hidden meaning lives in tone, timing, and what most people brush past.</p>
+        </div>
+        <div class="signal-actions">
+          <a href="decode.html" class="btn-primary">Read today's signal</a>
+          <a href="#contribute" class="btn-secondary">Add your own</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- -- WHY THIS BOOK ---------------------------------------------------------- -->
 <section class="why" id="why-book" data-nav-section="why-book">
   <div class="container">
     <div class="why-grid">
       <div class="why-text reveal">
         <span class="section-label">Why this book</span>
-        <h2>The real rules are never the official ones.</h2>
+        <h2>The problem is rarely information. It is behaviour.</h2>
         <p>
-          Jamaica has visible rules. It also has invisible ones.
+          Jamaica has visible rules and invisible rules.
         </p>
         <p>
-          You feel them in tone, timing, and silence. Most people learn them through missed signals and costly mistakes.
+          Tone, silence, timing, and respect all carry meaning that most people read wrong because the real message is not always spoken plainly.
         </p>
         <p>
-          This book brings those patterns into the open so you can move with more sense.
+          This guide names those patterns so you can recognise them earlier and respond with more sense.
         </p>
       </div>
 
@@ -2368,9 +2888,9 @@
         <figure class="editorial-figure">
           <img src="assets/images/editorial-retro-tv.jpg" alt="Miniature people gathered around a retro television, suggesting how people watch, interpret and respond to one another." class="editorial-image" loading="lazy" width="1600" height="1067"/>
           <figcaption class="editorial-caption">
-            <span class="editorial-kicker">Signals. Pressure. Perception.</span>
-            <blockquote>Awareness isn't fear. It's love with open eyes.</blockquote>
-            <cite>From the Introduction</cite>
+            <span class="editorial-kicker">Reading the room</span>
+            <blockquote>What people say is only part of what they mean.</blockquote>
+            <cite>That is where most mistakes begin.</cite>
           </figcaption>
         </figure>
       </div>
@@ -2378,12 +2898,12 @@
   </div>
 </section>
 
-<!-- ══ WHAT'S INSIDE ══════════════════════════════════════════════════════════ -->
+<!-- -- WHAT'S INSIDE ---------------------------------------------------------- -->
 <section class="collage-break">
   <div class="container">
     <figure class="collage-band reveal">
-      <img src="assets/images/editorial-monochrome-collage.jpg" alt="A layered monochrome collage of torn fragments, echoing the overlapping social codes and pressures the book helps readers interpret." class="collage-image" loading="lazy" width="1600" height="1128"/>
-      <figcaption>Jamaica is layered. So are the rules.</figcaption>
+      <img src="assets/images/reading-room.jpg" alt="A warm interior with plants, wood furniture, and framed art, suggesting a quiet place to return to the guide and reflect." class="collage-image" loading="lazy" width="1152" height="768"/>
+      <figcaption>A guide you come back to when a moment still does not sit right.</figcaption>
     </figure>
   </div>
 </section>
@@ -2473,14 +2993,14 @@
   </div>
 </section>
 
-<!-- ══ PREVIEW ════════════════════════════════════════════════════════════════ -->
+<!-- -- PREVIEW ---------------------------------------------------------------- -->
 <section class="preview" id="preview" data-nav-section="preview">
   <div class="container">
     <div class="reveal">
       <span class="section-label">A taste</span>
-      <h2>Read it before you buy.</h2>
+      <h2>See how the hidden meaning works.</h2>
       <p style="color:rgba(253,246,236,.65);font-size:1.05rem;max-width:560px;line-height:1.8;margin-top:.5rem;">
-        Three real situations. Three real patterns.
+        Three real situations. Three different signals.
       </p>
     </div>
 
@@ -2525,20 +3045,20 @@
   </div>
 </section>
 
-<!-- ══ WHO IS THIS FOR ════════════════════════════════════════════════════════ -->
+<!-- -- WHO IS THIS FOR -------------------------------------------------------- -->
 <section class="forwho">
   <div class="container">
     <div class="reveal" style="text-align:center;margin-bottom:1rem;">
       <span class="section-label">Who it's for</span>
-      <h2>This book is for three kinds of people.</h2>
+      <h2>Useful if Jamaica already affects how you move.</h2>
     </div>
 
     <div class="community-lead reveal">
       <figure class="community-figure">
-        <img src="assets/images/editorial-community-faces.jpg" alt="A collage of many distinct faces representing locals, diaspora readers and newcomers approaching Jamaica from different angles." loading="lazy" width="1200" height="1200"/>
+        <img src="assets/images/community-waterfall.jpg" alt="Three smiling people standing together in bright water near a waterfall, bringing a more human sense of connection and shared experience." loading="lazy" width="1152" height="768"/>
       </figure>
       <div class="community-copy">
-        <p>You live in Jamaica. Or you miss it. Or you're trying to understand it. This book helps you see it more clearly.</p>
+        <p>You live in Jamaica. Or you miss it. Or you are trying to understand it properly. This guide helps you see what sits beneath the obvious.</p>
       </div>
     </div>
 
@@ -2546,25 +3066,25 @@
       <div class="audience-card reveal">
         <span class="audience-icon">Local View</span>
         <h3>Locals</h3>
-        <p>You already feel these patterns. Now you have words for them.</p>
+        <p>You already feel the patterns. This helps you name them and read them more clearly.</p>
       </div>
 
       <div class="audience-card reveal">
         <span class="audience-icon">Diaspora View</span>
         <h3>The Diaspora</h3>
-        <p>Distance changes what you notice. This bridges the gap.</p>
+        <p>Distance changes what you notice. This helps bridge what you remember and what you still need to read clearly.</p>
       </div>
 
       <div class="audience-card reveal">
         <span class="audience-icon">Visitor View</span>
         <h3>Visitors & Expats</h3>
-        <p>Go deeper than the resort. Understand the place, not just the surface.</p>
+        <p>Go deeper than surface friendliness. Understand the place, not just the obvious part of it.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ FINAL CTA ═══════════════════════════════════════════════════════════════ -->
+<!-- -- FINAL CTA --------------------------------------------------------------- -->
 <section class="simple-section section-divider" id="what-it-shows" data-nav-section="what-it-shows">
   <div class="container narrow-flow reveal">
     <span class="section-label">What this helps you see</span>
@@ -2606,24 +3126,80 @@
   <div class="container">
     <div class="reveal" style="border:1px solid rgba(255,255,255,.12);border-radius:32px;padding:clamp(2rem,4vw,3rem);background:radial-gradient(circle at top right, rgba(232,185,106,.12), transparent 26%), linear-gradient(135deg, rgba(10,34,26,.96) 0%, rgba(20,50,39,.98) 55%, rgba(9,24,18,.99) 100%);box-shadow:0 24px 56px rgba(0,0,0,.2);text-align:center;">
       <span class="section-label" style="color:#E8B96A;">Interactive Experience</span>
-      <h2 style="color:#FAF7F2;max-width:12ch;margin:0 auto 1rem;">Think You Really Get Jamaica?</h2>
+      <h2 style="color:#FAF7F2;max-width:12ch;margin:0 auto 1rem;">Read what Jamaica is really saying.</h2>
       <p style="max-width:620px;margin:0 auto 1rem;color:rgba(250,247,242,.76);font-size:1.05rem;line-height:1.85;">
-        The decoder is a short interactive quiz that tests how well you read Jamaican social signals, tone, phrases, and everyday situations.
+        Six real social situations. Make your read first, then unlock what was really happening underneath the words, tone, or timing.
       </p>
       <p style="max-width:620px;margin:0 auto 1.6rem;color:rgba(250,247,242,.62);font-size:.98rem;line-height:1.8;">
-        You get five quick culture checks, instant explanations after each answer, and a fast sample of the deeper insight the book gives you.
+        This is not about being graded. It is about seeing the signal most people miss and learning how to catch it earlier.
       </p>
+      <figure class="decoder-spotlight-figure">
+        <img src="assets/images/decoder-tech-graphic.jpg" alt="An abstract graphic of a person walking with a distorted head shape and distant figures, suggesting how social signals can be misread until the pattern comes into focus." loading="lazy" width="1365" height="768"/>
+        <figcaption>Some signals are obvious only after you know where to look.</figcaption>
+      </figure>
       <div style="display:flex;justify-content:center;gap:.7rem;flex-wrap:wrap;margin:0 auto 1.9rem;max-width:720px;">
-        <span style="display:inline-flex;align-items:center;padding:.48rem .82rem;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,247,242,.72);">5 interactive cards</span>
-        <span style="display:inline-flex;align-items:center;padding:.48rem .82rem;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,247,242,.72);">Instant feedback</span>
-        <span style="display:inline-flex;align-items:center;padding:.48rem .82rem;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,247,242,.72);">1 minute sample</span>
+        <span style="display:inline-flex;align-items:center;padding:.48rem .82rem;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,247,242,.72);">Six everyday reads</span>
+        <span style="display:inline-flex;align-items:center;padding:.48rem .82rem;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,247,242,.72);">Hidden meaning reveal</span>
+        <span style="display:inline-flex;align-items:center;padding:.48rem .82rem;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(250,247,242,.72);">Reader profile</span>
       </div>
       <p style="max-width:560px;margin:0 auto 1.75rem;color:rgba(250,247,242,.7);font-size:.93rem;line-height:1.75;">
-        It is not just a quiz. It is a quick way to see what you catch, what you miss, and why the unwritten meaning matters.
+        It is a quick way to see what you catch, what you miss, and why the unwritten meaning matters.
       </p>
       <a href="decode.html" class="btn-secondary" style="border-color:rgba(255,255,255,.2);background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));color:#FAF7F2;">
-        Try the Decoder
+        Enter the Decoder
       </a>
+    </div>
+  </div>
+</section>
+
+<section class="contribute-section" id="contribute" data-nav-section="contribute">
+  <div class="container">
+    <div class="contribute-shell reveal">
+      <div class="contribute-layout">
+        <div class="contribute-copy">
+          <span class="section-label">Build the archive</span>
+          <h2>Help shape the next signals.</h2>
+          <p>The sharpest cultural reads come from lived moments. If there is a phrase, warning, silence, or social pattern that belongs in here, add it.</p>
+          <div class="contribute-context">Selected submissions help shape future decoder drops, cultural signals, and Volume 2.</div>
+        </div>
+        <div class="contribute-form-wrap">
+          <form class="contribute-form" id="contrib-form" novalidate>
+            <div class="field-group">
+              <label class="field-label" for="contrib-situation">Situation or phrase <span class="req">*</span></label>
+              <input class="field-input" id="contrib-situation" name="situation" type="text" placeholder="Describe the situation or write the phrase" required autocomplete="off"/>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="contrib-meaning">What it really means <span class="req">*</span></label>
+              <textarea class="field-textarea" id="contrib-meaning" name="meaning" placeholder="What is actually being communicated here?" required></textarea>
+            </div>
+            <div class="contribute-row">
+              <div class="field-group">
+                <label class="field-label" for="contrib-why">Why it matters <span class="req" style="opacity:.5">optional</span></label>
+                <input class="field-input" id="contrib-why" name="why" type="text" placeholder="Why does this trip people up?" autocomplete="off"/>
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="contrib-from">Where you are from <span class="req" style="opacity:.5">optional</span></label>
+                <input class="field-input" id="contrib-from" name="from" type="text" placeholder="Parish, city, or abroad" autocomplete="off"/>
+              </div>
+            </div>
+            <label class="field-check">
+              <input type="checkbox" id="contrib-permission" name="permission"/>
+              <div class="field-check-text">
+                <strong>You can feature this</strong>
+                <span>I am happy for this contribution to appear in a future volume or on the site.</span>
+              </div>
+            </label>
+            <div class="contribute-footer">
+              <button type="submit" class="btn-primary">Add this signal</button>
+              <span class="contribute-note">No account needed. Takes 30 seconds.</span>
+            </div>
+          </form>
+          <div class="contribute-success" id="contrib-success" role="status" aria-live="polite">
+            <strong>Got it.</strong>
+            <p>This is exactly the kind of insight that builds the next volume. Thank you for taking the time.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -2634,7 +3210,7 @@
       <span class="section-label">Get the Book</span>
       <h2 style="color:var(--cream);">Get the full book while the launch price is still here.</h2>
       <p class="cta-intro">
-        A direct, readable guide for people who want clearer context, sharper judgement, and fewer avoidable mistakes in Jamaican social and business life.
+        A calm, useful guide for people who want a clearer read on respect, behaviour, safety, trust, and how everyday life really works beyond the obvious.
       </p>
       <div class="cta-summary-grid">
         <div class="cta-stat">
@@ -2699,7 +3275,7 @@
 
       <br/>
       <a href="https://payhip.com/b/5QwFv" target="_blank" rel="noopener noreferrer" id="buy-button" class="btn-primary buy-link" data-buy-source="final">
-        Download the Book Now
+        Buy through Payhip
       </a>
       <div class="trust-row">
         <span class="trust-badge">Secure checkout via Payhip</span>
@@ -2717,7 +3293,7 @@
   </div>
 </section>
 
-<!-- ══ FOOTER ═════════════════════════════════════════════════════════════════ -->
+<!-- -- FOOTER ----------------------------------------------------------------- -->
 </main>
 <div class="sticky-cta" id="sticky-cta" aria-hidden="true">
   <div class="sticky-cta-inner">
@@ -2735,7 +3311,7 @@
 
 <footer>
   <p class="footer-title">The Psychology of Jamaicans</p>
-  <p>The Unwritten Rules of How We Really Move</p>
+  <p>The unwritten rules of how people really move.</p>
   <p style="margin-top:1rem;">© 2025 · All rights reserved</p>
 </footer>
 </div>
@@ -2768,6 +3344,25 @@
 
   function trackClick(eventName, details = {}) {
     console.log(eventName, details);
+  }
+
+  function populateSignalOfTheMoment() {
+    if (!window.JAMAICAN_SIGNALS || typeof window.JAMAICAN_SIGNALS.getSignalOfTheDay !== "function") return;
+
+    const signal = window.JAMAICAN_SIGNALS.getSignalOfTheDay(new Date());
+    if (!signal) return;
+
+    const labelNode = document.getElementById("signal-of-moment-label");
+    const titleNode = document.getElementById("signal-of-moment-title-card");
+    const teaserNode = document.getElementById("signal-of-moment-teaser");
+    const meaningNode = document.getElementById("signal-of-moment-meaning");
+    const rotationNode = document.getElementById("signal-of-moment-rotation");
+
+    if (labelNode) labelNode.textContent = signal.label;
+    if (titleNode) titleNode.textContent = signal.title;
+    if (teaserNode) teaserNode.textContent = signal.scene;
+    if (meaningNode) meaningNode.textContent = signal.signal;
+    if (rotationNode) rotationNode.textContent = "Rotates daily from the decoder archive";
   }
 
   function formatSaleCountdown(targetDate) {
@@ -2865,6 +3460,7 @@
   }
 
   initialiseSaleCountdown();
+  populateSignalOfTheMoment();
   initialiseChapterTypewriter();
 
   const observer = new IntersectionObserver((entries) => {
@@ -2960,6 +3556,39 @@
   updateScrollProgress();
   window.addEventListener("scroll", updateScrollProgress, { passive: true });
 
+  const contribForm = document.getElementById("contrib-form");
+  const contribSuccess = document.getElementById("contrib-success");
+
+  if (contribForm && contribSuccess) {
+    contribForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const situation = contribForm.querySelector("#contrib-situation").value.trim();
+      const meaning = contribForm.querySelector("#contrib-meaning").value.trim();
+
+      if (!situation || !meaning) {
+        const firstEmpty = !situation
+          ? contribForm.querySelector("#contrib-situation")
+          : contribForm.querySelector("#contrib-meaning");
+
+        firstEmpty.focus();
+        firstEmpty.style.borderColor = "rgba(230,169,181,.6)";
+        firstEmpty.addEventListener("input", () => {
+          firstEmpty.style.borderColor = "";
+        }, { once: true });
+        return;
+      }
+
+      contribForm.style.display = "none";
+      contribSuccess.classList.add("is-visible");
+      contribSuccess.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+      trackClick("contribution_submitted", {
+        hasPermission: contribForm.querySelector("#contrib-permission").checked
+      });
+    });
+  }
+
   const buyLinks = document.querySelectorAll(".buy-link");
   const hasProductUrl = isConfigured(PAYHIP_PRODUCT_URL);
 
@@ -2992,3 +3621,5 @@
 </script>
 </body>
 </html>
+
+
