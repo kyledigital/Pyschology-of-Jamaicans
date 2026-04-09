@@ -323,8 +323,30 @@
     align-items:center;
     animation:fadeUp .9s .5s ease both;
   }
+  .hero .cta-group{
+    align-items:flex-start;
+  }
   .hero .cta-group a[href="decode.html"]{
     display:inline-flex;
+  }
+  .hero-buy-cta{
+    align-items:center;
+    width:min(100%, 300px);
+    animation:fadeUp .9s .55s ease both;
+  }
+  .hero-buy-cta .btn-primary{
+    width:100%;
+  }
+  .hero-buy-cta .payment-clarity{
+    width:100%;
+    max-width:300px;
+    text-align:center;
+  }
+  .hero-cta-spacer{
+    width:min(100%, 300px);
+    min-height:3.95rem;
+    visibility:hidden;
+    pointer-events:none;
   }
   .hero-outcomes{
     display:none;
@@ -543,6 +565,40 @@
   .btn-secondary:focus-visible{
     outline:3px solid rgba(232,185,106,.55);
     outline-offset:3px;
+  }
+  .buy-cta-stack{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    min-width:0;
+  }
+  .buy-cta-stack.is-centered{
+    align-items:center;
+  }
+  .buy-cta-stack.is-sticky{
+    align-items:center;
+    flex:0 0 auto;
+    width:fit-content;
+  }
+  .payment-clarity{
+    margin-top:.65rem;
+    max-width:34ch;
+    font-family:'Lora',Georgia,serif;
+    font-size:.78rem;
+    line-height:1.55;
+    color:rgba(253,246,236,.62);
+    text-wrap:pretty;
+  }
+  .payment-clarity.is-compact{
+    max-width:26ch;
+    font-size:.72rem;
+  }
+  .buy-cta-stack.is-centered .payment-clarity{
+    text-align:center;
+  }
+  .buy-cta-stack.is-sticky .payment-clarity{
+    width:100%;
+    text-align:center;
   }
 
   .scroll-hint{
@@ -1186,6 +1242,9 @@
   .preview-cta{
     margin-top:3rem;
     text-align:center;
+  }
+  .preview-cta .buy-cta-stack{
+    align-items:center;
   }
   .preview-note{
     margin-top:.9rem;
@@ -1961,6 +2020,10 @@
     min-height:3rem;
     white-space:nowrap;
   }
+  .sticky-cta .payment-clarity{
+    margin-top:.5rem;
+    color:rgba(253,246,236,.72);
+  }
 
   /* -- FOOTER -- */
   footer{
@@ -2142,6 +2205,17 @@
     .chapter-text{filter:none;}
     .price.is-animated{animation-duration:.88s;}
     .sticky-price{font-size:1rem;}
+    .buy-cta-stack.is-sticky{
+      width:100%;
+      align-items:center;
+    }
+    .buy-cta-stack.is-sticky .btn-primary{
+      width:100%;
+    }
+    .buy-cta-stack.is-sticky .payment-clarity{
+      max-width:30ch;
+      text-align:center;
+    }
     .topbar{top:.5rem;}
     .topbar-inner{
       gap:.75rem;
@@ -2261,7 +2335,8 @@
     justify-content:center;
     gap:.85rem;
   }
-  .hero .cta-group a{
+  .hero .cta-group a,
+  .hero .cta-group .buy-cta-stack .btn-primary{
     min-width:190px;
   }
   .hero-outcomes,
@@ -2539,9 +2614,13 @@
       max-width:12ch;
       font-size:clamp(2.6rem, 13vw, 4rem);
     }
-    .hero .cta-group a{
+    .hero .cta-group a,
+    .hero .cta-group .buy-cta-stack{
       width:100%;
       max-width:360px;
+    }
+    .hero .cta-group .buy-cta-stack .btn-primary{
+      width:100%;
     }
     .simple-section,
     .decoder-spotlight{
@@ -2919,6 +2998,13 @@
       padding:.64rem .8rem;
       font-size:.64rem;
     }
+    .payment-clarity{
+      font-size:.72rem;
+      line-height:1.5;
+    }
+    .payment-clarity.is-compact{
+      font-size:.68rem;
+    }
     .contribute-shell{
       padding:1.1rem;
     }
@@ -3035,8 +3121,14 @@
     </div>
 
     <div class="cta-group">
-      <a href="https://payhip.com/b/5QwFv" target="_blank" rel="noopener noreferrer" class="btn-primary buy-link" data-buy-source="hero">Get Instant Access</a>
-      <a href="decode.html" class="btn-secondary">Try the Decoder</a>
+      <div class="buy-cta-stack hero-buy-cta">
+        <a href="https://payhip.com/b/5QwFv" target="_blank" rel="noopener noreferrer" class="btn-primary buy-link" data-buy-source="hero">Get Instant Access</a>
+        <p class="payment-clarity">Select the PayPal option to make payments with your debit or credit card.</p>
+      </div>
+      <div class="buy-cta-stack hero-buy-cta">
+        <a href="decode.html" class="btn-secondary">Try the Decoder</a>
+        <div class="hero-cta-spacer" aria-hidden="true">.</div>
+      </div>
     </div>
     <ul class="hero-outcomes">
       <li>Read people faster.</li>
@@ -3364,7 +3456,10 @@
     </div>
 
     <div class="preview-cta reveal">
-      <a href="https://payhip.com/b/5QwFv" target="_blank" rel="noopener noreferrer" class="btn-secondary buy-link" data-buy-source="preview">Read the Full Book</a>
+      <div class="buy-cta-stack is-centered">
+        <a href="https://payhip.com/b/5QwFv" target="_blank" rel="noopener noreferrer" class="btn-secondary buy-link" data-buy-source="preview">Read the Full Book</a>
+        <p class="payment-clarity is-compact">Select PayPal to pay with your debit or credit card.</p>
+      </div>
       <p class="preview-note"><strong>Instant PDF</strong> after checkout.</p>
     </div>
   </div>
@@ -3535,9 +3630,12 @@
       </div>
 
       <br/>
-      <a href="https://payhip.com/b/5QwFv" target="_blank" rel="noopener noreferrer" id="buy-button" class="btn-primary buy-link" data-buy-source="final">
-        Buy through Payhip
-      </a>
+      <div class="buy-cta-stack is-centered">
+        <a href="https://payhip.com/b/5QwFv" target="_blank" rel="noopener noreferrer" id="buy-button" class="btn-primary buy-link" data-buy-source="final">
+          Buy through Payhip
+        </a>
+        <p class="payment-clarity">Select the PayPal option to make payments with your debit or credit card.</p>
+      </div>
       <div class="trust-row">
         <span class="trust-badge">Secure checkout via Payhip</span>
         <span class="trust-badge">Instant download</span>
@@ -3618,7 +3716,10 @@
       </div>
       <p class="sticky-price">Get the book for $9 USD</p>
     </div>
-    <a href="https://payhip.com/b/5QwFv" target="_blank" rel="noopener noreferrer" class="btn-primary buy-link" data-buy-source="sticky">Get Instant Access</a>
+    <div class="buy-cta-stack is-sticky">
+      <a href="https://payhip.com/b/5QwFv" target="_blank" rel="noopener noreferrer" class="btn-primary buy-link" data-buy-source="sticky">Get Instant Access</a>
+      <p class="payment-clarity is-compact">Select PayPal to pay with your debit or credit card.</p>
+    </div>
   </div>
 </div>
 
