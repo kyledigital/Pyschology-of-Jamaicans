@@ -2030,7 +2030,7 @@
       grid-template-columns:1fr;
     }
     .contribute-copy{
-      min-height:280px;
+      min-height:220px;
     }
     .contribute-form-wrap{
       border-left:none;
@@ -2847,43 +2847,60 @@
       max-width:12ch;
     }
     .contribute-layout{
-      gap:1.4rem;
+      gap:1rem;
     }
     .contribute-copy{
       min-height:auto;
-      padding:1.15rem 1.15rem 1rem;
+      padding:1rem 1rem .9rem;
     }
     .contribute-copy h2{
       max-width:12ch;
       font-size:clamp(2.1rem, 10vw, 2.7rem);
-      margin-bottom:.7rem;
+      margin-bottom:.55rem;
     }
     .contribute-copy p{
       font-size:.98rem;
-      line-height:1.7;
+      line-height:1.58;
       max-width:none;
     }
     .contribute-form-wrap{
-      padding:1.3rem;
+      padding:1rem;
+    }
+    .contribute-form{
+      gap:.9rem;
+    }
+    .contribute-row{
+      gap:.8rem;
+    }
+    .field-group{
+      gap:.35rem;
     }
     .contribute-context{
-      margin-top:1rem;
-      padding-top:.75rem;
+      margin-top:.8rem;
+      padding-top:.65rem;
       font-size:.6rem;
-      line-height:1.7;
+      line-height:1.55;
     }
     .contribute-note{
       display:block;
       width:100%;
-      line-height:1.6;
+      line-height:1.45;
     }
     .field-input,
     .field-textarea{
       font-size:.96rem;
-      padding:.92rem 1rem;
+      padding:.8rem .9rem;
+      line-height:1.5;
+    }
+    .field-textarea{
+      min-height:5.4rem;
     }
     .field-check{
-      padding:.9rem;
+      gap:.7rem;
+      padding:.75rem .8rem;
+    }
+    .field-check-text span{
+      line-height:1.45;
     }
     .sticky-cta{
       display:none;
@@ -2901,6 +2918,31 @@
       min-width:132px;
       padding:.64rem .8rem;
       font-size:.64rem;
+    }
+    .contribute-shell{
+      padding:1.1rem;
+    }
+    .contribute-copy h2{
+      max-width:none;
+      font-size:clamp(1.9rem, 9vw, 2.35rem);
+    }
+    .field-label{
+      font-size:.62rem;
+      letter-spacing:.12em;
+    }
+    .field-input,
+    .field-textarea{
+      border-radius:16px;
+      padding:.74rem .85rem;
+    }
+    .field-textarea{
+      min-height:4.9rem;
+    }
+    .field-check{
+      border-radius:16px;
+    }
+    .contribute-note{
+      font-size:.62rem;
     }
     .hero-tags{
       justify-content:center;
@@ -3329,7 +3371,7 @@
 </section>
 
 <!-- -- WHO IS THIS FOR -------------------------------------------------------- -->
-<section class="forwho">
+<section class="forwho" id="who-its-for" data-nav-section="who-its-for">
   <div class="container">
     <div class="reveal" style="text-align:center;margin-bottom:1rem;">
       <span class="section-label">Who it's for</span>
@@ -3370,25 +3412,13 @@
 <!-- -- FINAL CTA --------------------------------------------------------------- -->
 <section class="simple-section section-divider" id="what-it-shows" data-nav-section="what-it-shows">
   <div class="container narrow-flow reveal">
-    <span class="section-label">What this helps you see</span>
+    <span class="section-label">What it reveals</span>
     <h2>What this helps you see</h2>
     <ul class="simple-list">
       <li>Why people say less than they mean</li>
       <li>How respect is actually shown</li>
       <li>How decisions really get made</li>
       <li>What signals matter in public and private</li>
-    </ul>
-  </div>
-</section>
-
-<section class="simple-section section-divider" id="who-its-for" data-nav-section="who-its-for">
-  <div class="container narrow-flow reveal">
-    <span class="section-label">Who this is for</span>
-    <h2>Who this is for</h2>
-    <ul class="simple-list">
-      <li>Locals who want to move smarter</li>
-      <li>Diaspora reconnecting with home</li>
-      <li>Visitors who want to understand, not guess</li>
     </ul>
   </div>
 </section>
@@ -3431,58 +3461,6 @@
       <a href="decode.html" class="btn-secondary" style="border-color:rgba(255,255,255,.2);background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));color:#FAF7F2;">
         Enter the Decoder
       </a>
-    </div>
-  </div>
-</section>
-
-<section class="contribute-section" id="contribute" data-nav-section="contribute">
-  <div class="container">
-    <div class="contribute-shell reveal">
-      <div class="contribute-layout">
-        <div class="contribute-copy">
-          <span class="section-label">Build the archive</span>
-          <h2>Help shape the next signals.</h2>
-          <p>The sharpest cultural reads come from lived moments. If there is a phrase, warning, silence, or social pattern that belongs in here, add it.</p>
-          <div class="contribute-context">Selected submissions help shape future decoder drops, cultural signals, and Volume 2.</div>
-        </div>
-        <div class="contribute-form-wrap">
-          <form class="contribute-form" id="contrib-form" novalidate>
-            <div class="field-group">
-              <label class="field-label" for="contrib-situation">Situation or phrase <span class="req">*</span></label>
-              <input class="field-input" id="contrib-situation" name="situation" type="text" placeholder="Describe the situation or write the phrase" required autocomplete="off"/>
-            </div>
-            <div class="field-group">
-              <label class="field-label" for="contrib-meaning">What it really means <span class="req">*</span></label>
-              <textarea class="field-textarea" id="contrib-meaning" name="meaning" placeholder="What is actually being communicated here?" required></textarea>
-            </div>
-            <div class="contribute-row">
-              <div class="field-group">
-                <label class="field-label" for="contrib-why">Why it matters <span class="req" style="opacity:.5">optional</span></label>
-                <input class="field-input" id="contrib-why" name="why" type="text" placeholder="Why does this trip people up?" autocomplete="off"/>
-              </div>
-              <div class="field-group">
-                <label class="field-label" for="contrib-from">Where you are from <span class="req" style="opacity:.5">optional</span></label>
-                <input class="field-input" id="contrib-from" name="from" type="text" placeholder="Parish, city, or abroad" autocomplete="off"/>
-              </div>
-            </div>
-            <label class="field-check">
-              <input type="checkbox" id="contrib-permission" name="permission"/>
-              <div class="field-check-text">
-                <strong>You can feature this</strong>
-                <span>I am happy for this contribution to appear in a future volume or on the site.</span>
-              </div>
-            </label>
-            <div class="contribute-footer">
-              <button type="submit" class="btn-primary">Add this signal</button>
-              <span class="contribute-note">No account needed. Takes 30 seconds.</span>
-            </div>
-          </form>
-          <div class="contribute-success" id="contrib-success" role="status" aria-live="polite">
-            <strong>Got it.</strong>
-            <p>This is exactly the kind of insight that builds the next volume. Thank you for taking the time.</p>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -3572,6 +3550,58 @@
       <p class="guarantee">
         Useful insight from page one.
       </p>
+    </div>
+  </div>
+</section>
+
+<section class="contribute-section" id="contribute" data-nav-section="contribute">
+  <div class="container">
+    <div class="contribute-shell reveal">
+      <div class="contribute-layout">
+        <div class="contribute-copy">
+          <span class="section-label">Build the archive</span>
+          <h2>Help shape the next signals.</h2>
+          <p>The sharpest cultural reads come from lived moments. If there is a phrase, warning, silence, or social pattern that belongs in here, add it.</p>
+          <div class="contribute-context">Selected submissions help shape future decoder drops, cultural signals, and Volume 2.</div>
+        </div>
+        <div class="contribute-form-wrap">
+          <form class="contribute-form" id="contrib-form" novalidate>
+            <div class="field-group">
+              <label class="field-label" for="contrib-situation">Situation or phrase <span class="req">*</span></label>
+              <input class="field-input" id="contrib-situation" name="situation" type="text" placeholder="Describe the situation or write the phrase" required autocomplete="off"/>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="contrib-meaning">What it really means <span class="req">*</span></label>
+              <textarea class="field-textarea" id="contrib-meaning" name="meaning" placeholder="What is actually being communicated here?" required></textarea>
+            </div>
+            <div class="contribute-row">
+              <div class="field-group">
+                <label class="field-label" for="contrib-why">Why it matters <span class="req" style="opacity:.5">optional</span></label>
+                <input class="field-input" id="contrib-why" name="why" type="text" placeholder="Why does this trip people up?" autocomplete="off"/>
+              </div>
+              <div class="field-group">
+                <label class="field-label" for="contrib-from">Where you are from <span class="req" style="opacity:.5">optional</span></label>
+                <input class="field-input" id="contrib-from" name="from" type="text" placeholder="Parish, city, or abroad" autocomplete="off"/>
+              </div>
+            </div>
+            <label class="field-check">
+              <input type="checkbox" id="contrib-permission" name="permission"/>
+              <div class="field-check-text">
+                <strong>You can feature this</strong>
+                <span>I am happy for this contribution to appear in a future volume or on the site.</span>
+              </div>
+            </label>
+            <div class="contribute-footer">
+              <button type="submit" class="btn-primary">Add this signal</button>
+              <span class="contribute-note">No account needed. Takes 30 seconds.</span>
+            </div>
+          </form>
+          <div class="contribute-success" id="contrib-success" role="status" aria-live="polite">
+            <strong>Got it.</strong>
+            <p>This is exactly the kind of insight that builds the next volume. Thank you for taking the time.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
