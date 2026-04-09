@@ -2652,6 +2652,15 @@
     .hero h1{
       font-size:clamp(2.3rem, 12vw, 3.2rem);
       max-width:11ch;
+      overflow-wrap:normal;
+      word-break:keep-all;
+      hyphens:none;
+      text-wrap:balance;
+    }
+    .hero h1 em{
+      overflow-wrap:normal;
+      word-break:keep-all;
+      hyphens:none;
     }
     .hero-sub{
       text-align:center;
@@ -2661,14 +2670,10 @@
     .hero-tags{
       justify-content:center;
       gap:.5rem;
-      width:fit-content;
+      width:100%;
       max-width:100%;
       margin:0 auto 1.35rem;
-      padding:.38rem;
-      border:1px solid rgba(253,246,236,.08);
-      border-radius:999px;
-      background:rgba(255,255,255,.03);
-      box-shadow:0 12px 28px rgba(0,0,0,.12);
+      padding:0;
     }
     .hero-tags .tag:nth-child(3){
       display:inline-flex;
@@ -2817,7 +2822,11 @@
     .author-grid{
       gap:1.25rem;
     }
+    .author-copy{
+      order:1;
+    }
     .author-visual{
+      order:2;
       justify-items:center;
     }
     .author-visual-stack{
@@ -2895,10 +2904,9 @@
     }
     .hero-tags{
       justify-content:center;
-      width:auto;
+      width:100%;
       flex-wrap:wrap;
-      border-radius:18px;
-      padding:.32rem;
+      padding:0;
     }
     .hero-tags .tag:nth-child(3){
       display:none;
@@ -2978,10 +2986,10 @@
     <p class="hero-sub">Learn the unspoken rules that shape respect, tone, trust, pressure, safety, and how people really move in Jamaica.</p>
 
     <div class="hero-tags">
-      <span class="tag">28 chapters</span>
-      <span class="tag">Respect</span>
-      <span class="tag">Tone</span>
-      <span class="tag">Trust</span>
+      <span class="tag">Social signals</span>
+      <span class="tag">Tone & timing</span>
+      <span class="tag">Trust & pressure</span>
+      <span class="tag">Street awareness</span>
     </div>
 
     <div class="cta-group">
