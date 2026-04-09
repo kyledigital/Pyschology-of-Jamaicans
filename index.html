@@ -70,6 +70,8 @@
     --charcoal:#1A1A1A;
     --mid:#6B6B6B;
     --scroll-progress:0%;
+    --guide-safe-top:7rem;
+    --guide-safe-bottom:1rem;
     --texture-organic:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%231B4332' stroke-opacity='.06' stroke-width='1.1'%3E%3Cpath d='M18 122c18-16 37-19 57-10'/%3E%3Cpath d='M87 32c12 10 16 24 11 41'/%3E%3Cpath d='M115 112c12-9 24-11 37-5'/%3E%3C/g%3E%3Cg fill='%23C9963A' fill-opacity='.035'%3E%3Ccircle cx='28' cy='38' r='2.2'/%3E%3Ccircle cx='121' cy='61' r='1.8'/%3E%3Ccircle cx='73' cy='126' r='2.1'/%3E%3C/g%3E%3C/svg%3E");
     --texture-vines:url("data:image/svg+xml,%3Csvg viewBox='0 0 640 320' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%231B4332' stroke-opacity='.055' stroke-width='1.35' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M-20 214c73-47 149-57 228-31 51 17 103 18 156-6 41-19 87-48 155-40 55 7 92 31 141 67'/%3E%3Cpath d='M7 96c47 4 83 21 107 49 16 19 33 33 65 42 24 7 47 4 67-12 25-20 34-49 65-68 37-22 76-28 141-18 53 8 106 30 154 64'/%3E%3C/g%3E%3Cg fill='none' stroke='%23C9963A' stroke-opacity='.05' stroke-width='1.1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M116 153c14-9 25-23 31-41'/%3E%3Cpath d='M123 149c-6-16-5-31 3-45'/%3E%3Cpath d='M293 204c13-9 23-21 30-38'/%3E%3Cpath d='M301 200c-6-15-5-28 2-41'/%3E%3Cpath d='M470 135c14-8 24-20 29-36'/%3E%3Cpath d='M477 131c-5-13-4-26 3-39'/%3E%3Cpath d='M548 237c13-8 24-20 29-35'/%3E%3Cpath d='M555 233c-5-13-4-26 2-38'/%3E%3C/g%3E%3C/svg%3E");
   }
@@ -1387,8 +1389,8 @@
   .forwho h2{color:var(--green);}
   .community-lead{
     display:grid;
-    grid-template-columns:minmax(220px, 300px) minmax(0, 1fr);
-    gap:1.6rem;
+    grid-template-columns:minmax(220px, 300px) minmax(0, 1fr) minmax(210px, 290px);
+    gap:1.4rem;
     align-items:center;
     margin-top:2.6rem;
   }
@@ -1413,11 +1415,17 @@
   }
   .community-figure img{
     width:100%;
-    height:auto;
+    aspect-ratio:4 / 3;
+    height:100%;
+    object-fit:cover;
     display:block;
   }
+  .community-figure.is-secondary{
+    width:min(100%, 340px);
+    justify-self:end;
+  }
   .community-copy{
-    max-width:560px;
+    max-width:520px;
   }
   .community-copy p{
     font-size:1rem;
@@ -2024,6 +2032,562 @@
     margin-top:.5rem;
     color:rgba(253,246,236,.72);
   }
+  .preview,
+  .decoder-spotlight{
+    display:none;
+  }
+  .guide-assistant{
+    position:fixed;
+    left:1rem;
+    bottom:var(--guide-safe-bottom);
+    z-index:10003;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:.65rem;
+    width:min(304px, calc(100vw - 1.5rem));
+    pointer-events:none;
+    transition:bottom .3s cubic-bezier(.4,0,.2,1);
+    animation:guideFloat 13s ease-in-out infinite;
+  }
+  .guide-assistant.is-lifted{
+    bottom:var(--guide-safe-bottom);
+  }
+  .guide-assistant.is-open,
+  .guide-assistant.show-welcome{
+    animation:none;
+  }
+  .guide-assistant > *{
+    pointer-events:auto;
+  }
+  /* trigger row — keeps hint + button on one line */
+  .guide-trigger-wrap{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    gap:.55rem;
+    pointer-events:auto;
+  }
+  /* "Quick guide" micro-label pill */
+  .guide-hint{
+    display:inline-flex;
+    align-items:center;
+    gap:.38rem;
+    padding:.42rem .82rem;
+    border-radius:999px;
+    border:1px solid rgba(232,185,106,.2);
+    background:linear-gradient(180deg, rgba(18,42,32,.94), rgba(10,24,18,.94));
+    backdrop-filter:blur(12px);
+    box-shadow:0 8px 22px rgba(0,0,0,.22);
+    font-family:'Space Mono',monospace;
+    font-size:.58rem;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    color:rgba(253,246,236,.84);
+    white-space:nowrap;
+    cursor:pointer;
+    user-select:none;
+    opacity:1;
+    transform:none;
+    pointer-events:auto;
+    transition:opacity .38s ease, transform .38s ease, border-color .2s ease;
+  }
+  .guide-hint::before{
+    content:'';
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:var(--gold-light);
+    opacity:.72;
+    flex-shrink:0;
+  }
+  .guide-hint.is-visible{
+    opacity:1;
+    transform:translateX(0);
+    pointer-events:auto;
+  }
+  .guide-hint:hover{
+    border-color:rgba(232,185,106,.34);
+    color:rgba(253,246,236,.92);
+  }
+  .guide-assistant.is-open .guide-hint{
+    opacity:0;
+    transform:translateY(6px);
+    pointer-events:none;
+  }
+  .guide-trigger{
+    position:relative;
+    flex-shrink:0;
+    width:62px;
+    height:62px;
+    border:1px solid rgba(232,185,106,.26);
+    border-radius:999px;
+    display:grid;
+    place-items:center;
+    background:
+      radial-gradient(circle at 32% 28%, rgba(255,255,255,.07), transparent 22%),
+      linear-gradient(160deg, rgba(20,50,38,.99), rgba(10,24,18,.99));
+    color:#11231b;
+    box-shadow:0 16px 36px rgba(0,0,0,.3), 0 0 0 1px rgba(255,255,255,.05) inset;
+    cursor:pointer;
+    transition:transform .26s cubic-bezier(.22,.68,0,1.2), box-shadow .24s ease, filter .24s ease;
+  }
+  /* inner beacon ring */
+  .guide-trigger::before{
+    content:'';
+    position:absolute;
+    inset:-8px;
+    border-radius:999px;
+    border:1px solid rgba(232,185,106,.16);
+    animation:guideBeacon 6.5s ease-in-out infinite;
+    pointer-events:none;
+  }
+  /* outer beacon ring, offset phase */
+  .guide-trigger::after{
+    content:'';
+    position:absolute;
+    inset:-16px;
+    border-radius:999px;
+    border:1px solid rgba(232,185,106,.07);
+    animation:guideBeacon 6.5s ease-in-out infinite .9s;
+    pointer-events:none;
+  }
+  .guide-trigger:hover{
+    transform:translateY(-3px) scale(1.04);
+    box-shadow:0 22px 46px rgba(0,0,0,.32), 0 0 0 1px rgba(232,185,106,.14) inset;
+    filter:saturate(1.1);
+  }
+  .guide-trigger:focus-visible,
+  .guide-action:focus-visible,
+  .guide-dismiss:focus-visible,
+  .guide-panel-close:focus-visible{
+    outline:3px solid rgba(232,185,106,.52);
+    outline-offset:3px;
+  }
+  .guide-icon{
+    width:34px;
+    height:34px;
+    display:block;
+  }
+  .guide-welcome{
+    position:relative;
+    width:100%;
+    max-width:236px;
+    padding:.9rem 1rem 1rem;
+    border-radius:18px;
+    border:1px solid rgba(232,185,106,.18);
+    background:linear-gradient(180deg, rgba(18,41,31,.96), rgba(12,28,21,.96));
+    box-shadow:0 18px 42px rgba(0,0,0,.22);
+    color:rgba(253,246,236,.84);
+    font-size:.92rem;
+    line-height:1.6;
+    opacity:0;
+    transform:translateY(10px);
+    pointer-events:none;
+    transition:opacity .28s ease, transform .28s ease;
+  }
+  .guide-welcome::after{
+    content:'';
+    position:absolute;
+    left:1.1rem;
+    bottom:-8px;
+    width:16px;
+    height:16px;
+    background:linear-gradient(180deg, rgba(18,41,31,.96), rgba(12,28,21,.96));
+    border-right:1px solid rgba(232,185,106,.18);
+    border-bottom:1px solid rgba(232,185,106,.18);
+    transform:rotate(45deg);
+  }
+  .guide-assistant.show-welcome .guide-welcome{
+    opacity:1;
+    transform:translateY(0);
+    pointer-events:auto;
+  }
+  .guide-dismiss,
+  .guide-panel-close{
+    border:none;
+    background:none;
+    color:rgba(253,246,236,.58);
+    cursor:pointer;
+    font-family:'Space Mono',monospace;
+    font-size:.6rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    transition:color .18s ease;
+  }
+  .guide-dismiss:hover,
+  .guide-panel-close:hover{
+    color:rgba(253,246,236,.88);
+  }
+  .guide-dismiss{
+    position:absolute;
+    top:.65rem;
+    right:.75rem;
+  }
+  /* panel: flex column so header is fixed, body scrolls */
+  .guide-panel{
+    width:100%;
+    max-width:304px;
+    max-height:min(34rem, calc(100dvh - var(--guide-safe-top) - var(--guide-safe-bottom) - 1.5rem));
+    margin:0;
+    padding:0;
+    border-radius:24px;
+    border:1px solid rgba(232,185,106,.18);
+    background:
+      radial-gradient(circle at top right, rgba(232,185,106,.09), transparent 26%),
+      linear-gradient(180deg, rgba(18,41,31,.98), rgba(10,24,18,.98));
+    box-shadow:0 24px 58px rgba(0,0,0,.3);
+    backdrop-filter:blur(18px);
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    opacity:0;
+    transform:translateY(14px) scale(.97);
+    transform-origin:bottom left;
+    pointer-events:none;
+    transition:opacity .32s cubic-bezier(.22,.68,0,1.15), transform .32s cubic-bezier(.22,.68,0,1.15);
+  }
+  .guide-assistant.is-open .guide-panel{
+    opacity:1;
+    transform:translateY(0) scale(1);
+    pointer-events:auto;
+  }
+  /* fixed header inside panel */
+  .guide-panel-top{
+    flex-shrink:0;
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:.8rem;
+    padding:.95rem 1rem .78rem;
+    border-bottom:1px solid rgba(253,246,236,.05);
+  }
+  .guide-panel-top > div{
+    min-width:0;
+  }
+  /* scrollable body */
+  .guide-panel-body{
+    flex:1 1 auto;
+    min-height:0;
+    overflow-y:auto;
+    overflow-x:hidden;
+    overscroll-behavior:contain;
+    padding:.82rem 1rem 1rem;
+    scroll-behavior:smooth;
+  }
+  .guide-panel-body::-webkit-scrollbar{ width:3px; }
+  .guide-panel-body::-webkit-scrollbar-track{ background:transparent; }
+  .guide-panel-body::-webkit-scrollbar-thumb{
+    background:rgba(232,185,106,.22);
+    border-radius:999px;
+  }
+  .guide-kicker{
+    display:inline-flex;
+    align-items:center;
+    gap:.42rem;
+    font-family:'Space Mono',monospace;
+    font-size:.57rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:rgba(232,185,106,.84);
+    margin-bottom:.32rem;
+  }
+  .guide-kicker::before{
+    content:'';
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--gold-light);
+    opacity:.8;
+  }
+  .guide-panel-title{
+    font-family:'Playfair Display',Georgia,serif;
+    font-size:1.25rem;
+    line-height:1.06;
+    color:var(--cream);
+  }
+  .guide-panel-copy{
+    margin-top:.28rem;
+    color:rgba(253,246,236,.9);
+    font-size:.88rem;
+    line-height:1.58;
+  }
+  .guide-views{
+    position:relative;
+  }
+  .guide-view{
+    display:none;
+    gap:.72rem;
+    align-content:start;
+  }
+  .guide-view.is-active{
+    display:grid;
+  }
+  .guide-bubble{
+    max-width:100%;
+    padding:.82rem .9rem;
+    border-radius:16px;
+    font-size:.92rem;
+    line-height:1.62;
+  }
+  .guide-bubble.is-guide{
+    border:1px solid rgba(232,185,106,.16);
+    background:linear-gradient(180deg, rgba(253,246,236,.07), rgba(253,246,236,.03));
+    color:#f8f1e4;
+    border-top-left-radius:5px;
+  }
+  .guide-glance{
+    display:grid;
+    gap:.58rem;
+    padding:.82rem .9rem;
+    border-radius:16px;
+    border:1px solid rgba(232,185,106,.14);
+    background:rgba(253,246,236,.045);
+  }
+  .guide-glance-kicker,
+  .guide-feature-kicker,
+  .guide-detail-kicker{
+    display:block;
+    font-family:'Space Mono',monospace;
+    font-size:.58rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:rgba(232,185,106,.88);
+  }
+  .guide-glance strong{
+    color:var(--cream);
+    font-size:.94rem;
+    line-height:1.35;
+  }
+  .guide-glance p,
+  .guide-feature p,
+  .guide-detail-copy{
+    color:rgba(253,246,236,.86);
+    font-size:.86rem;
+    line-height:1.58;
+  }
+  .guide-menu{
+    display:grid;
+    gap:.52rem;
+  }
+  .guide-action{
+    width:100%;
+    border:1px solid rgba(253,246,236,.14);
+    border-radius:15px;
+    padding:.86rem .95rem;
+    background:linear-gradient(180deg, rgba(253,246,236,.065), rgba(253,246,236,.035));
+    color:var(--cream);
+    text-align:left;
+    cursor:pointer;
+    transition:transform .2s cubic-bezier(.22,.68,0,1.2), border-color .18s ease, background .18s ease;
+    font:inherit;
+  }
+  .guide-action strong{
+    display:block;
+    font-family:'Playfair Display',Georgia,serif;
+    font-size:1rem;
+    font-weight:700;
+    line-height:1.18;
+    color:var(--cream);
+  }
+  .guide-action span{
+    display:block;
+    margin-top:.24rem;
+    color:rgba(253,246,236,.84);
+    font-size:.84rem;
+    line-height:1.5;
+  }
+  .guide-action:hover{
+    transform:translateY(-2px);
+    border-color:rgba(232,185,106,.34);
+    background:rgba(253,246,236,.08);
+  }
+  .guide-detail-card{
+    display:grid;
+    gap:.72rem;
+    padding:.88rem .95rem;
+    border-radius:16px;
+    border:1px solid rgba(232,185,106,.14);
+    background:rgba(253,246,236,.045);
+  }
+  .guide-detail-head{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:.8rem;
+  }
+  .guide-detail-title{
+    font-family:'Playfair Display',Georgia,serif;
+    font-size:1.06rem;
+    line-height:1.15;
+    color:var(--cream);
+    margin-top:.22rem;
+  }
+  .guide-back{
+    flex-shrink:0;
+    padding:.3rem .55rem;
+    border-radius:999px;
+    border:1px solid rgba(232,185,106,.18);
+    background:rgba(253,246,236,.04);
+    color:rgba(253,246,236,.8);
+    font-family:'Space Mono',monospace;
+    font-size:.55rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    cursor:pointer;
+  }
+  .guide-back:hover{
+    border-color:rgba(232,185,106,.34);
+    color:rgba(253,246,236,.94);
+  }
+  .guide-feature-list,
+  .guide-detail-list{
+    list-style:none;
+    display:grid;
+    gap:.42rem;
+  }
+  .guide-feature-list li,
+  .guide-detail-list li{
+    position:relative;
+    padding-left:.95rem;
+    color:rgba(253,246,236,.88);
+    font-size:.83rem;
+    line-height:1.48;
+  }
+  .guide-feature-list li::before,
+  .guide-detail-list li::before{
+    content:'';
+    position:absolute;
+    left:0;
+    top:.48rem;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:var(--gold-light);
+  }
+  .guide-feature-link{
+    margin-top:.7rem;
+  }
+  .guide-detail-list strong{
+    color:var(--cream);
+  }
+  .guide-feature-link .btn-secondary{
+    width:100%;
+    min-height:2.9rem;
+    font-size:.7rem;
+  }
+  @keyframes guideFloat{
+    0%,100%{transform:translate3d(0,0,0);}
+    30%{transform:translate3d(4px,-6px,0);}
+    65%{transform:translate3d(-2px,-4px,0);}
+  }
+  @keyframes guideBeacon{
+    0%,100%{transform:scale(1);opacity:.38;}
+    50%{transform:scale(1.1);opacity:.08;}
+  }
+  @media(max-width:900px){
+    .guide-assistant{
+      width:min(300px, calc(100vw - 1rem));
+      left:auto;
+      right:.5rem;
+      bottom:var(--guide-safe-bottom);
+      align-items:flex-end;
+    }
+    /* on right side, hint slides in from right; row reverses so it sits left of trigger */
+    .guide-trigger-wrap{
+      flex-direction:row-reverse;
+    }
+    .guide-hint{
+      transform:none;
+    }
+    .guide-hint.is-visible{
+      transform:translateX(0);
+    }
+    .guide-panel{
+      transform-origin:bottom right;
+    }
+    .guide-welcome::after{
+      left:auto;
+      right:1.1rem;
+    }
+  }
+  @media(max-width:640px){
+    .guide-assistant{
+      width:auto;
+      left:.5rem;
+      right:.5rem;
+      bottom:var(--guide-safe-bottom);
+      align-items:flex-end;
+    }
+    .guide-panel{
+      position:fixed;
+      left:.75rem;
+      right:.75rem;
+      top:calc(var(--guide-safe-top) + .35rem);
+      bottom:calc(var(--guide-safe-bottom) + .35rem);
+      width:auto;
+      max-width:none;
+      max-height:none;
+      border-radius:22px;
+      transform-origin:bottom center;
+    }
+    .guide-panel-top{
+      padding:.88rem .92rem .72rem;
+    }
+    .guide-panel-body{
+      padding:.65rem .88rem .88rem;
+    }
+    .guide-panel-title{
+      font-size:1.18rem;
+    }
+    .guide-panel-copy{
+      font-size:.84rem;
+      line-height:1.5;
+    }
+    .guide-bubble,
+    .guide-glance{
+      display:none;
+    }
+    .guide-menu{
+      gap:.6rem;
+    }
+    .guide-welcome{
+      display:none;
+    }
+    .guide-trigger{
+      width:58px;
+      height:58px;
+    }
+    .guide-hint{
+      padding:.4rem .72rem;
+      font-size:.55rem;
+      letter-spacing:.11em;
+    }
+    .guide-action{
+      padding:.78rem .84rem;
+    }
+    .guide-action strong{
+      font-size:.96rem;
+    }
+    .guide-action span{
+      font-size:.8rem;
+      line-height:1.42;
+    }
+    .guide-detail-head{
+      gap:.55rem;
+    }
+  }
+  @media(prefers-reduced-motion:reduce){
+    .guide-trigger,
+    .guide-trigger::before,
+    .guide-trigger::after,
+    .guide-hint,
+    .guide-welcome,
+    .guide-panel{
+      animation:none !important;
+      transition:none !important;
+    }
+  }
 
   /* -- FOOTER -- */
   footer{
@@ -2119,6 +2683,9 @@
     .sticky-cta-inner{padding:.95rem 1rem;}
     .editorial-figure{min-height:360px;}
     .community-lead{margin-top:2.2rem;}
+    .community-figure.is-secondary{
+      justify-self:start;
+    }
     .topbar{
       top:.7rem;
       width:min(1160px, calc(100% - 1rem));
@@ -3480,6 +4047,9 @@
       <div class="community-copy">
         <p>You live in Jamaica. Or you miss it. Or you are trying to understand it properly. This guide helps you see what sits beneath the obvious.</p>
       </div>
+      <figure class="community-figure is-secondary">
+        <img src="assets/images/community-night-friends.jpg" alt="Three young friends sharing drinks together at night, reflecting the social mix of locals, diaspora, and visitors moving through the same space." loading="lazy" width="1152" height="768"/>
+      </figure>
     </div>
 
     <div class="audience-grid">
@@ -3723,6 +4293,125 @@
   </div>
 </div>
 
+<div class="guide-assistant" id="guide-assistant">
+  <div class="guide-welcome" id="guide-welcome">
+    <button class="guide-dismiss" id="guide-welcome-dismiss" type="button" aria-label="Dismiss guide welcome">Close</button>
+    Start with today's signal if you want a quick way in.
+  </div>
+  <div class="guide-panel" id="guide-panel" aria-label="Guided cultural companion" aria-hidden="true" role="dialog">
+    <div class="guide-panel-top">
+      <div>
+        <span class="guide-kicker">Field guide</span>
+        <h3 class="guide-panel-title">A quicker way through.</h3>
+        <p class="guide-panel-copy">Short routes. Sharper entry points. No long read required.</p>
+      </div>
+      <button class="guide-panel-close" id="guide-panel-close" type="button" aria-label="Minimise cultural companion">Close</button>
+    </div>
+    <div class="guide-panel-body">
+      <div class="guide-views">
+        <div class="guide-view is-active" data-guide-view="home">
+          <div class="guide-bubble is-guide">Want the quick read? Start with today's signal, or open one of the sections we pulled out of the homepage.</div>
+          <div class="guide-glance">
+            <span class="guide-glance-kicker">Quick read</span>
+            <strong>Three fast truths from the book.</strong>
+            <p>Warmth is real. Not every smile is safe. If it matters, write it down.</p>
+          </div>
+          <div class="guide-menu">
+            <button class="guide-action" type="button" data-guide-mode="scroll" data-guide-target=".signal-moment">
+              <strong>Read today's signal</strong>
+              <span>One fresh read from the archive.</span>
+            </button>
+            <button class="guide-action" type="button" data-guide-mode="view" data-guide-view-target="inside">
+              <strong>See what's inside the book</strong>
+              <span>Open the chapter structure without leaving this panel.</span>
+            </button>
+            <button class="guide-action" type="button" data-guide-mode="view" data-guide-view-target="decoder">
+              <strong>Open the decoder guide</strong>
+              <span>See the decoder page summary first, then enter it.</span>
+            </button>
+            <button class="guide-action" type="button" data-guide-mode="scroll" data-guide-target="#contribute">
+              <strong>Add your own signal</strong>
+              <span>Jump straight to the contribution form.</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="guide-view" data-guide-view="inside">
+          <article class="guide-detail-card">
+            <div class="guide-detail-head">
+              <div>
+                <span class="guide-detail-kicker">What's inside</span>
+                <h4 class="guide-detail-title">28 chapters. Four ways of reading the culture.</h4>
+              </div>
+              <button class="guide-back" type="button" data-guide-back="home">Back</button>
+            </div>
+            <p class="guide-detail-copy">The homepage no longer needs the full breakdown. Here is the short version.</p>
+            <ul class="guide-detail-list">
+              <li><strong>The Heart:</strong> warmth, pride, faith, humour, resilience.</li>
+              <li><strong>The Pressure:</strong> envy, class, gossip, appearance, emotional masking.</li>
+              <li><strong>The Streets:</strong> areas, bus parks, nightlife, visibility, safety.</li>
+              <li><strong>Systems & Business:</strong> receipts, trust, shortcuts, delays, real networks.</li>
+            </ul>
+            <div class="guide-feature-link">
+              <a href="https://payhip.com/b/5QwFv" target="_blank" rel="noopener noreferrer" class="btn-secondary buy-link" data-buy-source="guide-inside">Get the Book</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="guide-view" data-guide-view="decoder">
+          <article class="guide-detail-card">
+            <div class="guide-detail-head">
+              <div>
+                <span class="guide-detail-kicker">Decoder</span>
+                <h4 class="guide-detail-title">Read what Jamaica is really saying.</h4>
+              </div>
+              <button class="guide-back" type="button" data-guide-back="home">Back</button>
+            </div>
+            <p class="guide-detail-copy">Six real situations. Make your read first, then uncover the tone, timing, silence, or warning underneath it.</p>
+            <ul class="guide-detail-list">
+              <li>Quick scenarios instead of long theory.</li>
+              <li>Built to sharpen instinct, not just explain culture.</li>
+              <li>Useful before you buy if you want a live sample.</li>
+            </ul>
+            <div class="guide-feature-link">
+              <a href="decode.html" class="btn-secondary">Enter the Decoder</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="guide-trigger-wrap">
+    <span class="guide-hint" id="guide-hint" role="button" tabindex="0" aria-label="Open field guide">Tap for guide</span>
+    <button class="guide-trigger" id="guide-trigger" type="button" aria-controls="guide-panel" aria-expanded="false" aria-label="Open guided cultural companion">
+      <svg class="guide-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="doctorWing" x1="22" y1="10" x2="44" y2="32" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#7BF0EE"/>
+            <stop offset="1" stop-color="#26AEB5"/>
+          </linearGradient>
+          <linearGradient id="doctorBody" x1="16" y1="22" x2="40" y2="46" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#42D1C7"/>
+            <stop offset=".55" stop-color="#1E9A89"/>
+            <stop offset="1" stop-color="#21573F"/>
+          </linearGradient>
+          <linearGradient id="doctorTail" x1="27" y1="36" x2="35" y2="56" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#77E368"/>
+            <stop offset="1" stop-color="#2E8650"/>
+          </linearGradient>
+        </defs>
+        <path d="M31 27.6c2.9-9 8.6-15.3 17.7-19.4-2.2 5.3-2.8 10.2-1.7 14.6 3 .7 6.2 2.4 9.5 5-5.8-.2-11.5.6-17 2.6-3.1-1-5.8-1.9-8.5-2.8Z" fill="url(#doctorWing)"/>
+        <path d="M32.1 28.6c-3.7.2-7.6 1.3-11.8 3.2 1.4 1.3 3 2.4 4.8 3.1-.5 3.8-2.2 7.8-5 12 3.8-1.8 6.9-3.8 9.2-6.1 1.8.3 3.7.5 5.7.5-1.8-3.8-2.7-8.1-2.9-12.7Z" fill="url(#doctorTail)"/>
+        <path d="M15.2 31.4c8.3-1.3 14.7-4.2 19.2-8.8 4.3-4.5 9.4-7.2 15.2-8-4.6 3.8-7.1 8.1-7.5 12.8 4.4.1 8.3 1.1 11.8 3.2-6.8.3-12.8 1.6-18 4-2.4 1.1-5 2.8-7.8 5.1 1-3.1 1-5.9.1-8.5-2.8.9-7.1 1.1-12.9.2Z" fill="url(#doctorBody)"/>
+        <path d="M14.8 31.4 3.8 29.9l10.8-.2" stroke="#7BF0EE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M30.8 40.4c-.6 5.3-.2 10.1 1.1 14.4 1.1-4.7 1.6-9.5 1.2-14.3" stroke="#A8F19D" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M28.6 40.1c-1.4 4.4-3.6 8.5-6.5 12.1 3.6-2 6.4-4.5 8.6-7.4" stroke="#58C76E" stroke-width="1.3" stroke-linecap="round"/>
+        <circle cx="38.8" cy="22.9" r="1.35" fill="#102017"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
 <footer>
   <p class="footer-title">The Psychology of Jamaicans</p>
   <p>The unwritten rules of how people really move.</p>
@@ -3894,6 +4583,14 @@
   const stickyCta = document.getElementById("sticky-cta");
   const heroSection = document.querySelector(".hero");
   const priceElement = document.querySelector(".price");
+  const guideAssistant = document.getElementById("guide-assistant");
+  const guidePanel = document.getElementById("guide-panel");
+  const guideTrigger = document.getElementById("guide-trigger");
+  const guidePanelClose = document.getElementById("guide-panel-close");
+  const guideWelcomeDismiss = document.getElementById("guide-welcome-dismiss");
+  const guideActions = Array.from(document.querySelectorAll(".guide-action"));
+  const guideViews = Array.from(document.querySelectorAll("[data-guide-view]"));
+  const guideBackButtons = Array.from(document.querySelectorAll("[data-guide-back]"));
 
   if (stickyCta && heroSection) {
     const stickyObserver = new IntersectionObserver((entries) => {
@@ -3901,6 +4598,12 @@
         const shouldShowSticky = !entry.isIntersecting;
         stickyCta.classList.toggle("is-visible", shouldShowSticky);
         stickyCta.setAttribute("aria-hidden", shouldShowSticky ? "false" : "true");
+        if (guideAssistant) {
+          guideAssistant.classList.toggle("is-lifted", shouldShowSticky);
+        }
+        document.documentElement.style.setProperty("--guide-safe-bottom", shouldShowSticky
+          ? `${Math.ceil(stickyCta.getBoundingClientRect().height + 24)}px`
+          : "16px");
       });
     }, { threshold: .2 });
 
@@ -3970,6 +4673,157 @@
   updateScrollProgress();
   window.addEventListener("scroll", updateScrollProgress, { passive: true });
 
+  if (guideAssistant && guidePanel && guideTrigger && guideActions.length) {
+    const GUIDE_WELCOME_KEY = "jamaican_guide_welcome_seen";
+    const guideHint = document.getElementById("guide-hint");
+    const topbar = document.querySelector(".topbar");
+    let hintAutoTimer = null;
+    let activeGuideView = "home";
+
+    function syncGuideSafeArea() {
+      const topSafe = topbar
+        ? Math.ceil(topbar.getBoundingClientRect().bottom + 16)
+        : 96;
+      const stickyVisible = stickyCta && stickyCta.classList.contains("is-visible");
+      const bottomSafe = stickyVisible
+        ? Math.ceil(stickyCta.getBoundingClientRect().height + 24)
+        : 16;
+
+      document.documentElement.style.setProperty("--guide-safe-top", `${topSafe}px`);
+      document.documentElement.style.setProperty("--guide-safe-bottom", `${bottomSafe}px`);
+    }
+
+    function dismissGuideHint() {
+      if (!guideHint) return;
+      guideHint.classList.remove("is-visible");
+      if (hintAutoTimer) { window.clearTimeout(hintAutoTimer); hintAutoTimer = null; }
+    }
+
+    function setGuideView(viewName) {
+      activeGuideView = viewName || "home";
+      guideViews.forEach((view) => {
+        view.classList.toggle("is-active", view.dataset.guideView === activeGuideView);
+      });
+
+      const panelBody = guidePanel.querySelector(".guide-panel-body");
+      if (panelBody) panelBody.scrollTop = 0;
+    }
+
+    function setGuideOpen(isOpen) {
+      guideAssistant.classList.toggle("is-open", isOpen);
+      guideTrigger.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      guidePanel.setAttribute("aria-hidden", isOpen ? "false" : "true");
+      if (isOpen) {
+        dismissGuideWelcome();
+        dismissGuideHint();
+        setGuideView(activeGuideView);
+      } else {
+        setGuideView("home");
+      }
+      syncGuideSafeArea();
+    }
+
+    function dismissGuideWelcome() {
+      guideAssistant.classList.remove("show-welcome");
+      try {
+        window.localStorage.setItem(GUIDE_WELCOME_KEY, "true");
+      } catch (error) {
+        console.log("guide_welcome_storage_unavailable");
+      }
+    }
+
+    function handleGuideAction(button) {
+      const target = button.dataset.guideTarget;
+      const mode = button.dataset.guideMode || "scroll";
+      const nextView = button.dataset.guideViewTarget;
+
+      if (mode === "view" && nextView) {
+        setGuideView(nextView);
+        return;
+      }
+
+      setGuideOpen(false);
+
+      window.setTimeout(() => {
+        if (!target) return;
+
+        if (mode === "link") {
+          window.location.href = target;
+          return;
+        }
+
+        const nextTarget = document.querySelector(target);
+        if (nextTarget) {
+          nextTarget.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 220);
+    }
+
+    let hasSeenGuideWelcome = false;
+    try {
+      hasSeenGuideWelcome = window.localStorage.getItem(GUIDE_WELCOME_KEY) === "true";
+    } catch (error) {
+      console.log("guide_welcome_read_unavailable");
+    }
+
+    if (!hasSeenGuideWelcome) {
+      window.setTimeout(() => {
+        guideAssistant.classList.add("show-welcome");
+      }, 900);
+    }
+
+    syncGuideSafeArea();
+    setGuideView("home");
+    window.addEventListener("resize", syncGuideSafeArea);
+    window.addEventListener("scroll", syncGuideSafeArea, { passive: true });
+
+    if (guideHint) {
+      guideHint.classList.add("is-visible");
+
+      guideHint.addEventListener("click", () => {
+        dismissGuideHint();
+        setGuideOpen(true);
+      });
+
+      guideHint.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          dismissGuideHint();
+          setGuideOpen(true);
+        }
+      });
+    }
+
+    guideTrigger.addEventListener("click", (event) => {
+      event.stopPropagation();
+      setGuideOpen(!guideAssistant.classList.contains("is-open"));
+    });
+
+    if (guidePanelClose) {
+      guidePanelClose.addEventListener("click", () => setGuideOpen(false));
+    }
+
+    if (guideWelcomeDismiss) {
+      guideWelcomeDismiss.addEventListener("click", dismissGuideWelcome);
+    }
+
+    guideActions.forEach((button) => {
+      button.addEventListener("click", () => handleGuideAction(button));
+    });
+
+    guideBackButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        setGuideView(button.dataset.guideBack || "home");
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!guideAssistant.contains(event.target)) {
+        setGuideOpen(false);
+      }
+    });
+  }
+
   const contribForm = document.getElementById("contrib-form");
   const contribSuccess = document.getElementById("contrib-success");
 
@@ -4035,5 +4889,3 @@
 </script>
 </body>
 </html>
-
-
