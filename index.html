@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>The Psychology of Jamaicans | Cultural Intelligence Guide</title>
-<meta name="description" content="A premium cultural intelligence guide on the unwritten rules behind respect, tone, trust, pressure, safety, and how people really move in Jamaica."/>
+<title>Jamaica Pulse | Live Cultural Signal Platform</title>
+<meta name="description" content="A live cultural signal platform tracking how Jamaica feels right now, with a deeper guide to the patterns behind the pulse."/>
 <meta name="theme-color" content="#143227"/>
 <link rel="canonical" href="https://jamaicanpsychology.kylehector.com/"/>
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="The Psychology of Jamaicans"/>
-<meta property="og:title" content="The Psychology of Jamaicans | Cultural Intelligence Guide"/>
-<meta property="og:description" content="A premium cultural intelligence guide on the unwritten rules behind respect, tone, trust, pressure, safety, and how people really move in Jamaica."/>
+<meta property="og:title" content="Jamaica Pulse | Live Cultural Signal Platform"/>
+<meta property="og:description" content="A live cultural signal platform tracking how Jamaica feels right now, with a deeper guide to the patterns behind the pulse."/>
 <meta property="og:url" content="https://jamaicanpsychology.kylehector.com/"/>
 <meta property="og:image" content="https://jamaicanpsychology.kylehector.com/assets/images/kyle-hector-author.png"/>
 <meta property="og:image:alt" content="Portrait of Kyle Hector, author of The Psychology of Jamaicans"/>
 <meta property="og:locale" content="en_GB"/>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="The Psychology of Jamaicans | Cultural Intelligence Guide"/>
-<meta name="twitter:description" content="Clear, practical insight into the unwritten rules shaping how Jamaica really moves."/>
+<meta name="twitter:title" content="Jamaica Pulse | Live Cultural Signal Platform"/>
+<meta name="twitter:description" content="A live cultural read of how Jamaica feels right now, with a deeper guide behind the pulse."/>
 <meta name="twitter:image" content="https://jamaicanpsychology.kylehector.com/assets/images/kyle-hector-author.png"/>
 <script src="assets/js/cultural-signals.js"></script>
 <script>
@@ -256,7 +256,7 @@
   }
   .hero-copy{
     text-align:left;
-    max-width:640px;
+    max-width:700px;
     animation:fadeUp .9s ease both;
   }
 
@@ -269,18 +269,18 @@
     font-family:'Space Mono',monospace;
     font-size:.7rem;letter-spacing:.25em;
     color:var(--gold);text-transform:uppercase;
-    margin-bottom:1.5rem;
+    margin-bottom:1rem;
     animation:fadeUp .9s .1s ease both;
   }
 
   .hero h1{
     font-family:'Playfair Display',Georgia,serif;
-    font-size:clamp(3rem,7.2vw,5.8rem);
+    font-size:clamp(3.4rem,7vw,6.2rem);
     font-weight:900;line-height:.96;
     color:var(--cream);
-    margin-bottom:.5rem;
+    margin-bottom:.75rem;
     animation:fadeUp .9s .2s ease both;
-    max-width:7.5ch;
+    max-width:8.5ch;
   }
 
   .hero h1 em{
@@ -297,8 +297,8 @@
     font-weight:600;
     line-height:1.7;
     color:rgba(253,246,236,.76);
-    max-width:36ch;
-    margin:1.15rem 0 1.8rem;
+    max-width:39ch;
+    margin:0 0 1.55rem;
     animation:fadeUp .9s .3s ease both;
   }
 
@@ -370,6 +370,346 @@
   .hero-meta p + p{
     display:none;
   }
+  .hero-pulse-strip{
+    --pulse-score:64;
+    --pulse-score-display:0;
+    position:relative;
+    margin-top:1.45rem;
+    padding:.35rem 0 .25rem;
+    animation:fadeUp .9s .68s ease both;
+  }
+  .hero-pulse-strip::before{
+    content:'';
+    position:absolute;
+    inset:auto 8% 0 8%;
+    height:72%;
+    background:
+      radial-gradient(circle at 18% 48%, rgba(232,185,106,.06), transparent 24%),
+      radial-gradient(circle at 82% 48%, rgba(73,138,104,.08), transparent 24%);
+    pointer-events:none;
+    opacity:.78;
+    filter:blur(2px);
+  }
+  .hero-pulse-strip > *{
+    position:relative;
+    z-index:1;
+  }
+  .hero-pulse-main{
+    display:grid;
+    grid-template-columns:minmax(0, 1fr);
+    gap:.9rem;
+    align-items:start;
+  }
+  .hero-pulse-intro{
+    display:grid;
+    gap:.35rem;
+  }
+  .hero-pulse-lockup{
+    display:inline-flex;
+    align-items:center;
+    gap:.8rem;
+    flex-wrap:wrap;
+  }
+  .watchful-lockup{
+    --watch-x:50%;
+    --watch-y:50%;
+    --watch-shift-x:0px;
+    --watch-shift-y:0px;
+    --watch-look-x:0px;
+    --watch-look-y:0px;
+    --watch-tilt:0deg;
+    position:relative;
+    isolation:isolate;
+    touch-action:pan-y;
+  }
+  .watchful-lockup::before{
+    content:'';
+    position:absolute;
+    inset:-.55rem -.8rem;
+    border-radius:999px;
+    background:
+      radial-gradient(circle at var(--watch-x) var(--watch-y), rgba(232,185,106,.18), transparent 34%),
+      linear-gradient(90deg, rgba(255,255,255,.04), rgba(255,255,255,0));
+    opacity:0;
+    transform:scale(.96);
+    transition:opacity .32s ease, transform .32s ease;
+    pointer-events:none;
+    z-index:-1;
+  }
+  .watchful-lockup::after{
+    content:'';
+    position:absolute;
+    left:-.18rem;
+    top:50%;
+    width:2.4rem;
+    height:2.4rem;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(232,185,106,.2), transparent 68%);
+    opacity:0;
+    transform:translateY(-50%) scale(.76);
+    transition:opacity .32s ease, transform .32s ease;
+    pointer-events:none;
+  }
+  .watchful-lockup.is-watchful:hover::before,
+  .watchful-lockup.is-watchful:focus-within::before{
+    opacity:1;
+    transform:scale(1);
+  }
+  .watchful-lockup.is-watchful:hover::after,
+  .watchful-lockup.is-watchful:focus-within::after{
+    opacity:.72;
+    transform:translateY(-50%) scale(1);
+  }
+  .hero-pulse-mood{
+    display:inline-flex;
+    align-items:center;
+    gap:.45rem;
+    font-family:'Playfair Display',Georgia,serif;
+    font-size:clamp(2rem, 3vw, 2.9rem);
+    line-height:.94;
+    color:var(--cream);
+    transform:translate3d(var(--watch-shift-x), var(--watch-shift-y), 0);
+    transition:transform .24s ease, text-shadow .28s ease, color .28s ease;
+  }
+  .hero-pulse-mood strong{
+    font-size:1em;
+    color:var(--cream);
+    transition:color .28s ease, text-shadow .28s ease, letter-spacing .28s ease;
+  }
+  .hero-pulse-emoji{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-size:.92em;
+    line-height:1;
+    transform:translate3d(calc(var(--watch-shift-x) * .32 + var(--watch-look-x)), calc(var(--watch-shift-y) * .24 + var(--watch-look-y)), 0) rotate(var(--watch-tilt));
+    transform-origin:center;
+    filter:drop-shadow(0 6px 12px rgba(0,0,0,.18));
+    transition:transform .22s ease, filter .3s ease;
+    animation:watchfulFloat 4.8s ease-in-out infinite;
+  }
+  .hero-pulse-emoji::before,
+  .pulse-mood-emoji::before{
+    content:'';
+    position:absolute;
+    inset:-.22em;
+    border-radius:999px;
+    background:radial-gradient(circle, rgba(253,246,236,.28), rgba(232,185,106,.14) 42%, transparent 72%);
+    opacity:.34;
+    transform:scale(.8);
+    animation:watchfulHalo 3.4s ease-in-out infinite;
+    pointer-events:none;
+  }
+  .watchful-lockup.is-watchful:hover .hero-pulse-mood,
+  .watchful-lockup.is-watchful:hover .pulse-mood-line,
+  .watchful-lockup.is-watchful:focus-within .hero-pulse-mood,
+  .watchful-lockup.is-watchful:focus-within .pulse-mood-line{
+    text-shadow:0 10px 24px rgba(0,0,0,.16);
+  }
+  .watchful-lockup.is-watchful:hover .hero-pulse-mood strong,
+  .watchful-lockup.is-watchful:hover .pulse-mood,
+  .watchful-lockup.is-watchful:focus-within .hero-pulse-mood strong,
+  .watchful-lockup.is-watchful:focus-within .pulse-mood{
+    color:#fff5e8;
+    text-shadow:0 0 18px rgba(232,185,106,.12);
+    letter-spacing:.01em;
+  }
+  .watchful-lockup.is-watchful:hover .hero-pulse-emoji,
+  .watchful-lockup.is-watchful:hover .pulse-mood-emoji,
+  .watchful-lockup.is-watchful:focus-within .hero-pulse-emoji,
+  .watchful-lockup.is-watchful:focus-within .pulse-mood-emoji{
+    filter:drop-shadow(0 10px 18px rgba(232,185,106,.18));
+    animation-play-state:paused;
+  }
+  .hero-pulse-score{
+    font-family:'Space Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:rgba(253,246,236,.62);
+    white-space:nowrap;
+    transform:translateY(.12rem);
+  }
+  .hero-pulse-score strong{
+    color:var(--cream);
+    font-size:1.05rem;
+  }
+  .hero-pulse-meter-shell{
+    position:relative;
+    overflow:hidden;
+    display:grid;
+    grid-template-columns:minmax(0, 1.08fr) minmax(260px, .92fr);
+    gap:1.25rem;
+    align-items:end;
+    padding:.95rem 1rem .82rem;
+    border-radius:24px;
+    border:1px solid rgba(253,246,236,.08);
+    background:
+      radial-gradient(circle at top right, rgba(232,185,106,.1), transparent 28%),
+      linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.04), 0 18px 40px rgba(0,0,0,.14);
+  }
+  .hero-pulse-meter-shell::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:1rem;
+    right:1rem;
+    height:1px;
+    background:linear-gradient(90deg, rgba(232,185,106,.48), rgba(232,185,106,.06), transparent);
+    opacity:.7;
+    pointer-events:none;
+  }
+  .hero-pulse-meter-shell::after{
+    content:'';
+    position:absolute;
+    inset:auto auto -32% -2%;
+    width:10rem;
+    height:10rem;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(73,138,104,.12), transparent 72%);
+    filter:blur(6px);
+    pointer-events:none;
+  }
+  .hero-pulse-meter-copy{
+    display:grid;
+    gap:.38rem;
+    align-self:stretch;
+    padding-right:.15rem;
+  }
+  .hero-pulse-meter{
+    display:grid;
+    gap:.4rem;
+    align-self:end;
+    padding:.3rem 0 .1rem;
+  }
+  .hero-pulse-meter-track{
+    position:relative;
+    height:3px;
+    border-radius:999px;
+    background:
+      linear-gradient(90deg,
+        rgba(73,138,104,.55) 0%,
+        rgba(108,160,110,.5) 22%,
+        rgba(163,154,95,.45) 45%,
+        rgba(181,133,70,.46) 68%,
+        rgba(122,60,42,.5) 100%);
+    overflow:visible;
+    box-shadow:0 0 18px rgba(232,185,106,.08);
+  }
+  .hero-pulse-meter-track::after{
+    content:'';
+    position:absolute;
+    top:50%;
+    left:-16%;
+    width:24%;
+    height:13px;
+    background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,244,214,.3), rgba(255,255,255,0));
+    filter:blur(4px);
+    transform:translateY(-50%);
+    animation:heroPulseSweep 4.8s ease-in-out infinite;
+    pointer-events:none;
+  }
+  .hero-pulse-meter-fill{
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width:calc(var(--pulse-score-display, 0) * 1%);
+    background:linear-gradient(90deg, rgba(253,246,236,.22), rgba(253,246,236,.05));
+    box-shadow:0 0 14px rgba(232,185,106,.12);
+    animation:heroPulseFillGlow 3.4s ease-in-out infinite;
+    transition:width 1.18s cubic-bezier(.19,.9,.22,1);
+  }
+  .hero-pulse-meter-marker{
+    position:absolute;
+    top:50%;
+    left:calc(var(--pulse-score-display, 0) * 1%);
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:linear-gradient(180deg, #f6d08b 0%, var(--gold) 100%);
+    border:1.5px solid rgba(10,24,18,.92);
+    box-shadow:0 0 0 4px rgba(232,185,106,.08), 0 8px 16px rgba(0,0,0,.28);
+    transform:translate(-50%, -50%);
+    animation:heroPulseMarkerDrift 2.8s ease-in-out infinite;
+    transition:left 1.18s cubic-bezier(.19,.9,.22,1), box-shadow .34s ease;
+  }
+  .hero-pulse-states{
+    display:grid;
+    grid-template-columns:repeat(5, minmax(0, 1fr));
+    gap:.3rem;
+  }
+  .hero-pulse-state{
+    font-family:'Space Mono',monospace;
+    font-size:.48rem;
+    letter-spacing:.11em;
+    text-transform:uppercase;
+    color:rgba(253,246,236,.4);
+    text-align:center;
+    transition:color .18s ease, transform .18s ease;
+  }
+  .hero-pulse-state.is-active{
+    color:var(--gold-light);
+    transform:translateY(-1px);
+  }
+  .hero-pulse-copy{
+    color:rgba(253,246,236,.8);
+    font-size:.98rem;
+    line-height:1.55;
+    max-width:38ch;
+    margin:0;
+  }
+  .hero-pulse-drivers{
+    color:rgba(253,246,236,.62);
+    font-size:.78rem;
+    line-height:1.5;
+    margin:0;
+  }
+  .hero-pulse-drivers strong{
+    color:rgba(253,246,236,.82);
+    font-weight:600;
+  }
+  .hero-copy > .cta-group{
+    margin-top:1.35rem;
+  }
+  @keyframes heroPulseSweep{
+    0%, 16%{
+      left:-18%;
+      opacity:0;
+    }
+    38%{
+      opacity:.85;
+    }
+    64%{
+      opacity:.28;
+    }
+    100%{
+      left:96%;
+      opacity:0;
+    }
+  }
+  @keyframes heroPulseFillGlow{
+    0%,100%{
+      opacity:.9;
+      box-shadow:0 0 14px rgba(232,185,106,.1);
+    }
+    50%{
+      opacity:1;
+      box-shadow:0 0 22px rgba(232,185,106,.18);
+    }
+  }
+  @keyframes heroPulseMarkerDrift{
+    0%,100%{
+      transform:translate(-50%, -50%) scale(1);
+      box-shadow:0 0 0 4px rgba(232,185,106,.08), 0 8px 16px rgba(0,0,0,.28);
+    }
+    50%{
+      transform:translate(-50%, -50%) scale(1.08);
+      box-shadow:0 0 0 7px rgba(232,185,106,.12), 0 12px 24px rgba(0,0,0,.3);
+    }
+  }
   .hero-panel{
     position:relative;
     padding:clamp(1.35rem, 2.4vw, 1.8rem);
@@ -409,7 +749,7 @@
     line-height:1.12;
     color:var(--cream);
     margin-bottom:.85rem;
-    max-width:14ch;
+    max-width:16ch;
   }
   .hero-panel-copy{
     font-size:.94rem;
@@ -455,6 +795,40 @@
     letter-spacing:.13em;
     text-transform:uppercase;
     color:rgba(253,246,236,.68);
+  }
+  .pulse-context{
+    position:relative;
+    padding:2.6rem 2rem 3rem;
+    background:linear-gradient(180deg, rgba(8,20,16,.98), rgba(12,28,22,.96));
+  }
+  .pulse-context::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:10%;
+    right:10%;
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(232,185,106,.32), transparent);
+    opacity:.7;
+  }
+  .pulse-context .container{
+    position:relative;
+    z-index:1;
+  }
+  .pulse-context-copy{
+    max-width:700px;
+    display:grid;
+    gap:.55rem;
+  }
+  .pulse-context-copy h2{
+    max-width:18ch;
+    margin:0;
+  }
+  .pulse-context-copy p{
+    color:rgba(253,246,236,.76);
+    font-size:1rem;
+    line-height:1.7;
+    margin:0;
   }
   .sale-timer{
     display:inline-flex;
@@ -754,6 +1128,1026 @@
   .signal-actions .btn-secondary{
     min-width:190px;
     text-align:center;
+  }
+
+  .pulse{
+    --pulse-score-display:0;
+    position:relative;
+    isolation:isolate;
+    padding:3.7rem 2rem 3.9rem;
+    background:
+      radial-gradient(circle at top left, rgba(232,185,106,.12), transparent 24%),
+      radial-gradient(circle at 85% 18%, rgba(85,151,118,.16), transparent 20%),
+      linear-gradient(180deg, rgba(7,19,15,.99), rgba(11,29,23,.985));
+    color:var(--cream);
+  }
+  .pulse::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:9%;
+    right:9%;
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(201,150,58,.5), rgba(15,47,37,.88), transparent);
+    opacity:.78;
+    pointer-events:none;
+  }
+  .pulse::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background-image:var(--texture-organic), var(--texture-vines);
+    background-size:180px 180px, 620px 320px;
+    background-position:center, center;
+    background-repeat:repeat, no-repeat;
+    opacity:.2;
+    pointer-events:none;
+  }
+  .pulse > .container{
+    position:relative;
+    z-index:1;
+  }
+  .pulse-shell{
+    display:grid;
+    gap:1rem;
+  }
+  .pulse-heading{
+    display:grid;
+    gap:.35rem;
+  }
+  .pulse-heading h2{
+    color:var(--cream);
+    max-width:12ch;
+    margin:0;
+  }
+  .pulse-card{
+    padding:1.2rem;
+    border-radius:30px;
+    border:1px solid rgba(253,246,236,.1);
+    background:
+      radial-gradient(circle at top right, rgba(232,185,106,.14), transparent 24%),
+      radial-gradient(circle at 18% 18%, rgba(73,138,104,.16), transparent 20%),
+      linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.02));
+    box-shadow:0 24px 56px rgba(0,0,0,.24);
+    display:grid;
+    gap:1rem;
+  }
+  .pulse-summary{
+    display:grid;
+    gap:.9rem;
+  }
+  .pulse-summary-top{
+    display:grid;
+    grid-template-columns:minmax(0, 1fr) auto;
+    gap:.8rem;
+    align-items:start;
+  }
+  .pulse-mood-lockup{
+    display:grid;
+    gap:.16rem;
+  }
+  .pulse-mood-line{
+    display:inline-flex;
+    align-items:center;
+    gap:.54rem;
+    flex-wrap:wrap;
+    transform:translate3d(var(--watch-shift-x), var(--watch-shift-y), 0);
+    transition:transform .24s ease, text-shadow .28s ease;
+  }
+  .pulse-mood-emoji{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-size:clamp(2.35rem, 3.2vw, 2.95rem);
+    line-height:1;
+    transform:translate3d(calc(var(--watch-shift-x) * .26 + var(--watch-look-x)), calc(var(--watch-shift-y) * .22 + var(--watch-look-y)), 0) rotate(var(--watch-tilt));
+    transform-origin:center;
+    filter:drop-shadow(0 8px 16px rgba(0,0,0,.18));
+    transition:transform .22s ease, filter .3s ease;
+    animation:watchfulFloat 5.2s ease-in-out infinite .2s;
+  }
+  .pulse-mood{
+    font-family:'Playfair Display',Georgia,serif;
+    font-size:clamp(2.8rem, 3.9vw, 3.45rem);
+    line-height:.92;
+    color:var(--cream);
+    transition:color .28s ease, text-shadow .28s ease, letter-spacing .28s ease;
+  }
+  .pulse-score-line{
+    display:inline-flex;
+    align-items:baseline;
+    gap:.3rem;
+    font-family:'Space Mono',monospace;
+    font-size:.6rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:rgba(253,246,236,.56);
+  }
+  .pulse-score-line strong{
+    font-family:'Space Mono',monospace;
+    font-size:1.02rem;
+    line-height:1;
+    letter-spacing:.04em;
+    color:var(--cream);
+  }
+  .pulse-shape{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:.38rem .78rem;
+    border-radius:999px;
+    border:1px solid rgba(232,185,106,.24);
+    background:rgba(232,185,106,.08);
+    font-family:'Space Mono',monospace;
+    font-size:.52rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold-light);
+    white-space:nowrap;
+  }
+  .pulse-meter-shell{
+    position:relative;
+    overflow:hidden;
+    display:grid;
+    grid-template-columns:minmax(0, 1.08fr) minmax(280px, .92fr);
+    gap:1.35rem;
+    align-items:end;
+    padding:1rem 1.05rem .9rem;
+    border-radius:24px;
+    border:1px solid rgba(253,246,236,.08);
+    background:
+      radial-gradient(circle at top right, rgba(232,185,106,.1), transparent 28%),
+      linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.04), 0 18px 40px rgba(0,0,0,.14);
+  }
+  .pulse-meter-shell::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:1rem;
+    right:1rem;
+    height:1px;
+    background:linear-gradient(90deg, rgba(232,185,106,.48), rgba(232,185,106,.06), transparent);
+    opacity:.7;
+    pointer-events:none;
+  }
+  .pulse-meter-shell::after{
+    content:'';
+    position:absolute;
+    inset:auto auto -32% -2%;
+    width:10rem;
+    height:10rem;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(73,138,104,.12), transparent 72%);
+    filter:blur(6px);
+    pointer-events:none;
+  }
+  .pulse-meter-copy{
+    display:grid;
+    gap:.8rem;
+    align-self:stretch;
+    padding-right:.15rem;
+  }
+  .pulse-meter{
+    display:grid;
+    gap:.42rem;
+    align-self:end;
+    padding:.35rem 0 .12rem;
+  }
+  .pulse-meter-track{
+    position:relative;
+    height:4px;
+    border-radius:999px;
+    background:
+      linear-gradient(90deg,
+        rgba(73,138,104,.55) 0%,
+        rgba(108,160,110,.5) 22%,
+        rgba(163,154,95,.45) 45%,
+        rgba(181,133,70,.46) 68%,
+        rgba(122,60,42,.5) 100%);
+    overflow:visible;
+    box-shadow:0 0 18px rgba(232,185,106,.08);
+  }
+  .pulse-meter-track::after{
+    content:'';
+    position:absolute;
+    top:50%;
+    left:-16%;
+    width:24%;
+    height:13px;
+    background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,244,214,.3), rgba(255,255,255,0));
+    filter:blur(4px);
+    transform:translateY(-50%);
+    animation:heroPulseSweep 4.8s ease-in-out infinite .18s;
+    pointer-events:none;
+  }
+  .pulse-meter-fill{
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    width:calc(var(--pulse-score-display, 0) * 1%);
+    background:linear-gradient(90deg, rgba(253,246,236,.22), rgba(253,246,236,.05));
+    box-shadow:0 0 14px rgba(232,185,106,.12);
+    animation:heroPulseFillGlow 3.4s ease-in-out infinite .12s;
+    transition:width 1.24s cubic-bezier(.19,.9,.22,1);
+  }
+  .pulse-meter-marker{
+    position:absolute;
+    top:50%;
+    left:calc(var(--pulse-score-display, 0) * 1%);
+    width:14px;
+    height:14px;
+    border-radius:50%;
+    background:linear-gradient(180deg, #f6d08b 0%, var(--gold) 100%);
+    border:2px solid rgba(10,24,18,.92);
+    box-shadow:0 0 0 4px rgba(232,185,106,.08), 0 8px 18px rgba(0,0,0,.28);
+    transform:translate(-50%, -50%);
+    animation:heroPulseMarkerDrift 2.8s ease-in-out infinite .08s;
+    transition:left 1.24s cubic-bezier(.19,.9,.22,1), box-shadow .34s ease;
+  }
+  .pulse-meter-states{
+    display:grid;
+    grid-template-columns:repeat(5, minmax(0, 1fr));
+    gap:.35rem;
+  }
+  .pulse-meter-state{
+    font-family:'Space Mono',monospace;
+    font-size:.54rem;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    color:rgba(253,246,236,.42);
+    text-align:center;
+    transition:color .18s ease, transform .18s ease;
+  }
+  .pulse-meter-state.is-active{
+    color:var(--gold-light);
+    transform:translateY(-1px);
+  }
+  .pulse-reading{
+    display:grid;
+    gap:.42rem;
+    max-width:30ch;
+  }
+  .pulse-reading-label,
+  .pulse-drivers-label{
+    display:inline-flex;
+    align-items:center;
+    gap:.45rem;
+    font-family:'Space Mono',monospace;
+    font-size:.52rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:rgba(232,185,106,.72);
+  }
+  .pulse-reading-label::before,
+  .pulse-drivers-label::before{
+    content:'';
+    width:18px;
+    height:1px;
+    background:linear-gradient(90deg, rgba(232,185,106,.7), transparent);
+    opacity:.75;
+  }
+  .pulse-interpretation{
+    display:grid;
+    gap:.22rem;
+    margin:0;
+  }
+  .pulse-signal-line{
+    display:block;
+    color:rgba(253,246,236,.86);
+    font-size:1rem;
+    line-height:1.34;
+    text-wrap:balance;
+  }
+  .pulse-signal-line:first-child{
+    color:var(--cream);
+  }
+  .pulse-drivers-block{
+    display:grid;
+    gap:.52rem;
+  }
+  .pulse-drivers{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.52rem .58rem;
+    max-width:34rem;
+    margin:0;
+  }
+  .pulse-driver-chip{
+    display:inline-flex;
+    align-items:center;
+    gap:.42rem;
+    padding:.34rem .58rem;
+    border-radius:999px;
+    border:1px solid rgba(253,246,236,.1);
+    background:rgba(253,246,236,.035);
+    color:rgba(253,246,236,.74);
+    font-size:.74rem;
+    line-height:1.2;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.03);
+  }
+  .pulse-driver-chip::before{
+    content:'';
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:rgba(232,185,106,.82);
+    box-shadow:0 0 10px rgba(232,185,106,.2);
+  }
+  .pulse-toggle{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:.55rem;
+    align-self:start;
+    padding:.82rem 1.15rem;
+    border-radius:999px;
+    border:1px solid rgba(253,246,236,.14);
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.018)),
+      linear-gradient(90deg, rgba(232,185,106,.05), rgba(73,138,104,.04));
+    color:var(--cream);
+    font-family:'Space Mono',monospace;
+    font-size:.6rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    cursor:pointer;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 10px 24px rgba(0,0,0,.14);
+    transition:border-color .24s ease, background .24s ease, transform .24s ease, box-shadow .24s ease;
+  }
+  .pulse-toggle:hover{
+    border-color:rgba(232,185,106,.34);
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.026)),
+      linear-gradient(90deg, rgba(232,185,106,.08), rgba(73,138,104,.05));
+    transform:translateY(-1px);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 14px 28px rgba(0,0,0,.16), 0 0 0 1px rgba(232,185,106,.06);
+  }
+  .pulse-toggle::after{
+    content:'\2193';
+    font-size:.82rem;
+    line-height:1;
+    transition:transform .24s ease;
+  }
+  .pulse-toggle[aria-expanded="true"]::after{
+    transform:rotate(180deg);
+  }
+  .pulse-detail{
+    display:grid;
+    grid-template-rows:0fr;
+    opacity:0;
+    transform:translateY(-10px);
+    border-top:1px solid transparent;
+    transition:grid-template-rows .45s ease, opacity .3s ease, transform .3s ease, border-color .3s ease, padding-top .3s ease;
+    pointer-events:none;
+  }
+  .pulse-detail.is-open{
+    grid-template-rows:1fr;
+    opacity:1;
+    transform:none;
+    border-top-color:rgba(253,246,236,.08);
+    padding-top:1rem;
+    pointer-events:auto;
+  }
+  .pulse-detail-inner{
+    overflow:hidden;
+    min-height:0;
+    display:grid;
+    gap:1rem;
+  }
+  .pulse-detail-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:.8rem;
+    flex-wrap:wrap;
+  }
+  .pulse-detail-columns{
+    display:grid;
+    grid-template-columns:minmax(0, .78fr) minmax(0, 1.22fr);
+    gap:1.15rem;
+    align-items:start;
+  }
+  .pulse-detail-block{
+    position:relative;
+    overflow:hidden;
+    display:grid;
+    gap:.95rem;
+    padding:1.05rem;
+    border-radius:26px;
+    border:1px solid rgba(253,246,236,.1);
+    background:
+      radial-gradient(circle at top right, rgba(232,185,106,.1), transparent 28%),
+      linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.04), 0 18px 44px rgba(0,0,0,.16);
+  }
+  .pulse-detail-block::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:1.1rem;
+    right:1.1rem;
+    height:1px;
+    background:linear-gradient(90deg, rgba(232,185,106,.65), rgba(232,185,106,.08), transparent);
+    opacity:.8;
+  }
+  .pulse-detail-block::after{
+    content:'';
+    position:absolute;
+    inset:auto -10% -24% auto;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(232,185,106,.08), transparent 72%);
+    pointer-events:none;
+    filter:blur(6px);
+  }
+  .pulse-detail-block[data-surface="signals"]{
+    background:
+      radial-gradient(circle at top right, rgba(73,138,104,.12), transparent 32%),
+      linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.018));
+  }
+  .pulse-detail-block[data-surface="signals"]::before{
+    background:linear-gradient(90deg, rgba(73,138,104,.72), rgba(73,138,104,.12), transparent);
+  }
+  .pulse-detail-block[data-surface="signals"]::after{
+    background:radial-gradient(circle, rgba(73,138,104,.1), transparent 72%);
+  }
+  .pulse-detail-section-head{
+    display:grid;
+    gap:.38rem;
+  }
+  .pulse-detail-section-head strong{
+    font-family:'Space Mono',monospace;
+    font-size:.54rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--gold-light);
+  }
+  .pulse-detail-section-head p{
+    color:rgba(253,246,236,.7);
+    font-size:.86rem;
+    line-height:1.6;
+    margin:0;
+    max-width:34ch;
+  }
+  .pulse-detail-kicker,
+  .pulse-updated{
+    display:inline-flex;
+    align-items:center;
+    padding:.38rem .72rem;
+    border-radius:999px;
+    font-family:'Space Mono',monospace;
+    font-size:.55rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+  }
+  .pulse-detail-kicker{
+    color:rgba(232,185,106,.82);
+    border:1px solid rgba(232,185,106,.18);
+    background:rgba(232,185,106,.06);
+  }
+  .pulse-updated{
+    color:rgba(253,246,236,.58);
+    border:1px solid rgba(253,246,236,.08);
+    background:rgba(253,246,236,.03);
+  }
+  .pulse-metrics{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:.8rem;
+  }
+  .pulse-metric{
+    position:relative;
+    overflow:hidden;
+    padding:1.05rem 1rem;
+    border-radius:22px;
+    border:1px solid rgba(253,246,236,.1);
+    background:
+      linear-gradient(180deg, rgba(253,246,236,.055), rgba(253,246,236,.02)),
+      radial-gradient(circle at top right, rgba(232,185,106,.08), transparent 30%);
+    box-shadow:0 12px 28px rgba(0,0,0,.12);
+    min-height:100%;
+    transition:transform .24s ease, border-color .24s ease, box-shadow .24s ease, opacity .3s ease, filter .3s ease;
+  }
+  .pulse-metric::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:1px;
+    background:linear-gradient(90deg, rgba(232,185,106,.5), transparent 70%);
+    opacity:.7;
+  }
+  .pulse-metric:nth-child(1){
+    grid-column:1 / -1;
+    padding:1.2rem 1.15rem 1.1rem;
+    background:
+      radial-gradient(circle at top right, rgba(232,185,106,.14), transparent 34%),
+      linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.022));
+  }
+  .pulse-metric:nth-child(1) .pulse-metric-label{
+    color:var(--gold-light);
+  }
+  .pulse-metric-label{
+    display:block;
+    font-family:'Space Mono',monospace;
+    font-size:.55rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:rgba(232,185,106,.78);
+  }
+  .pulse-metric-value{
+    display:block;
+    margin-top:.55rem;
+    font-family:'Playfair Display',Georgia,serif;
+    font-size:1.3rem;
+    line-height:1.15;
+    color:var(--cream);
+    will-change:transform, opacity;
+  }
+  .pulse-metric:nth-child(1) .pulse-metric-value{
+    font-size:2rem;
+  }
+  .pulse-metric-value.is-counting,
+  #pulse-score-value.is-counting,
+  #hero-pulse-score-value.is-counting{
+    animation:numberSettle .58s cubic-bezier(.2,.9,.2,1);
+  }
+  .pulse-metric-note{
+    display:block;
+    margin-top:.42rem;
+    color:rgba(253,246,236,.62);
+    font-size:.78rem;
+    line-height:1.5;
+  }
+  .pulse-metric:hover{
+    transform:translateY(-2px);
+    border-color:rgba(232,185,106,.18);
+    box-shadow:0 18px 36px rgba(0,0,0,.16);
+  }
+  .pulse-signals{
+    display:grid;
+    grid-template-columns:repeat(12, minmax(0, 1fr));
+    gap:.9rem;
+  }
+  .pulse-signal-card{
+    position:relative;
+    overflow:hidden;
+    grid-column:span 6;
+    padding:1.1rem 1rem 1rem;
+    border-radius:24px;
+    border:1px solid rgba(253,246,236,.1);
+    background:linear-gradient(180deg, rgba(253,246,236,.05), rgba(253,246,236,.025));
+    box-shadow:0 18px 34px rgba(0,0,0,.16);
+    display:grid;
+    gap:.82rem;
+    min-height:100%;
+    transition:transform .26s ease, border-color .26s ease, box-shadow .26s ease, opacity .3s ease, filter .3s ease;
+  }
+  .pulse-signal-card.is-collapsible{
+    cursor:pointer;
+  }
+  .pulse-signal-card::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:1px;
+    background:linear-gradient(90deg, rgba(255,255,255,.16), transparent 76%);
+    opacity:.65;
+  }
+  .pulse-signal-card::after{
+    content:'';
+    position:absolute;
+    inset:auto auto 0 0;
+    width:5px;
+    height:44%;
+    border-radius:0 999px 999px 0;
+    background:linear-gradient(180deg, rgba(232,185,106,.9), rgba(232,185,106,.1));
+    opacity:.8;
+  }
+  .pulse-signal-card:nth-child(1){
+    grid-column:1 / -1;
+    padding:1.2rem 1.15rem 1.1rem;
+  }
+  .pulse-signal-toggle{
+    position:relative;
+    z-index:1;
+    width:100%;
+    display:grid;
+    gap:.78rem;
+    padding:0;
+    border:0;
+    background:none;
+    color:inherit;
+    text-align:left;
+    font:inherit;
+    cursor:pointer;
+  }
+  .pulse-signal-toggle:focus-visible{
+    outline:none;
+  }
+  .pulse-signal-toggle:focus-visible .pulse-signal-title{
+    text-shadow:0 0 16px rgba(232,185,106,.12);
+  }
+  .pulse-signal-heading{
+    display:grid;
+    gap:.72rem;
+  }
+  .pulse-signal-card[data-tone="pressure"]{
+    background:
+      radial-gradient(circle at top right, rgba(167,76,52,.18), transparent 32%),
+      linear-gradient(180deg, rgba(108,38,28,.24), rgba(253,246,236,.022));
+  }
+  .pulse-signal-card[data-tone="lift"]{
+    background:
+      radial-gradient(circle at top right, rgba(78,155,101,.16), transparent 32%),
+      linear-gradient(180deg, rgba(26,84,56,.24), rgba(253,246,236,.022));
+  }
+  .pulse-signal-card[data-tone="energy"]{
+    background:
+      radial-gradient(circle at top right, rgba(77,131,169,.18), transparent 32%),
+      linear-gradient(180deg, rgba(36,72,92,.24), rgba(253,246,236,.022));
+  }
+  .pulse-signal-card[data-tone="watch"]{
+    background:
+      radial-gradient(circle at top right, rgba(162,135,63,.18), transparent 32%),
+      linear-gradient(180deg, rgba(71,59,26,.24), rgba(253,246,236,.022));
+  }
+  .pulse-signal-meta{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:.7rem;
+  }
+  .pulse-signal-toggle .pulse-signal-meta{
+    align-items:flex-start;
+  }
+  .pulse-signal-type,
+  .pulse-signal-weight{
+    display:inline-flex;
+    align-items:center;
+    padding:.36rem .66rem;
+    border-radius:999px;
+    font-family:'Space Mono',monospace;
+    font-size:.52rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+  }
+  .pulse-signal-type{
+    border:1px solid rgba(232,185,106,.2);
+    background:rgba(232,185,106,.1);
+    color:var(--gold-light);
+  }
+  .pulse-signal-weight{
+    border:1px solid rgba(253,246,236,.08);
+    background:rgba(0,0,0,.14);
+    color:rgba(253,246,236,.62);
+  }
+  .pulse-signal-toggle .pulse-signal-weight{
+    gap:.45rem;
+  }
+  .pulse-signal-caret{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:18px;
+    height:18px;
+    border-radius:999px;
+    border:1px solid rgba(253,246,236,.12);
+    background:rgba(253,246,236,.04);
+    color:rgba(253,246,236,.7);
+    flex:0 0 auto;
+    transition:transform .26s ease, border-color .24s ease, background .24s ease, color .24s ease;
+  }
+  .pulse-signal-caret::before,
+  .pulse-signal-caret::after{
+    content:'';
+    position:absolute;
+    width:8px;
+    height:1.5px;
+    border-radius:999px;
+    background:currentColor;
+  }
+  .pulse-signal-caret::after{
+    transform:rotate(90deg);
+    transition:opacity .24s ease;
+  }
+  .pulse-signal-title{
+    font-family:'Playfair Display',Georgia,serif;
+    font-size:1.12rem;
+    line-height:1.12;
+    color:var(--cream);
+    max-width:22ch;
+  }
+  .pulse-signal-card:nth-child(1) .pulse-signal-title{
+    font-size:1.42rem;
+    max-width:20ch;
+  }
+  .pulse-signal-card.is-collapsible .pulse-signal-title{
+    max-width:18ch;
+  }
+  .pulse-signal-panel{
+    display:grid;
+    grid-template-rows:0fr;
+    transition:grid-template-rows .32s ease, opacity .26s ease, margin-top .26s ease;
+    opacity:0;
+    margin-top:-.12rem;
+  }
+  .pulse-signal-panel-inner{
+    min-height:0;
+    overflow:hidden;
+  }
+  .pulse-signal-copy{
+    margin:0;
+    color:rgba(253,246,236,.74);
+    font-size:.85rem;
+    line-height:1.68;
+    max-width:44ch;
+  }
+  .pulse-signal-card.is-open .pulse-signal-panel{
+    grid-template-rows:1fr;
+    opacity:1;
+    margin-top:0;
+  }
+  .pulse-signal-card.is-open .pulse-signal-caret{
+    transform:rotate(180deg);
+    border-color:rgba(232,185,106,.22);
+    background:rgba(232,185,106,.08);
+    color:var(--gold-light);
+  }
+  .pulse-signal-card.is-open .pulse-signal-caret::after{
+    opacity:0;
+  }
+  .pulse-signal-card:hover{
+    transform:translateY(-3px);
+    border-color:rgba(232,185,106,.18);
+    box-shadow:0 22px 40px rgba(0,0,0,.2);
+  }
+  .pulse-signal-card.is-collapsible:hover .pulse-signal-caret,
+  .pulse-signal-card.is-collapsible:focus-within .pulse-signal-caret{
+    border-color:rgba(232,185,106,.18);
+    background:rgba(232,185,106,.07);
+    color:var(--gold-light);
+  }
+  .pulse-detail .pulse-metric,
+  .pulse-detail .pulse-signal-card{
+    opacity:0;
+    transform:translateY(16px);
+    filter:blur(2px);
+  }
+  .pulse-detail.is-open .pulse-metric,
+  .pulse-detail.is-open .pulse-signal-card{
+    opacity:1;
+    transform:none;
+    filter:none;
+  }
+  .pulse-detail.is-open .pulse-metric:nth-child(1),
+  .pulse-detail.is-open .pulse-signal-card:nth-child(1){transition-delay:.05s;}
+  .pulse-detail.is-open .pulse-metric:nth-child(2),
+  .pulse-detail.is-open .pulse-signal-card:nth-child(2){transition-delay:.1s;}
+  .pulse-detail.is-open .pulse-metric:nth-child(3),
+  .pulse-detail.is-open .pulse-signal-card:nth-child(3){transition-delay:.15s;}
+  .pulse-detail.is-open .pulse-metric:nth-child(4),
+  .pulse-detail.is-open .pulse-signal-card:nth-child(4){transition-delay:.2s;}
+  .pulse-detail.is-open .pulse-metric:nth-child(5){transition-delay:.25s;}
+
+  @keyframes watchfulFloat{
+    0%,100%{transform:translate3d(calc(var(--watch-shift-x) * .26 + var(--watch-look-x)), calc(var(--watch-shift-y) * .22 + var(--watch-look-y)), 0) rotate(calc(var(--watch-tilt) - 1.5deg));}
+    50%{transform:translate3d(calc(var(--watch-shift-x) * .26 + var(--watch-look-x)), calc(var(--watch-shift-y) * .22 + var(--watch-look-y) - 2px), 0) rotate(calc(var(--watch-tilt) + 1.5deg));}
+  }
+  @keyframes numberSettle{
+    0%{transform:translateY(8px) scale(.94);opacity:.35;}
+    60%{transform:translateY(-2px) scale(1.02);opacity:1;}
+    100%{transform:translateY(0) scale(1);opacity:1;}
+  }
+  @keyframes watchfulHalo{
+    0%,100%{opacity:.24;transform:scale(.82);}
+    50%{opacity:.48;transform:scale(1);}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .hero-pulse-emoji,
+    .pulse-mood-emoji{
+      animation:none;
+    }
+    .watchful-lockup,
+    .hero-pulse-mood,
+    .pulse-mood-line,
+    .hero-pulse-emoji,
+    .pulse-mood-emoji,
+    .hero-pulse-meter-fill,
+    .hero-pulse-meter-marker,
+    .pulse-meter-fill,
+    .pulse-meter-marker{
+      transition:none;
+    }
+  }
+  @media(max-width:980px){
+    .hero-pulse-main{
+      grid-template-columns:1fr;
+      gap:1.1rem;
+      align-items:start;
+    }
+    .hero-pulse-meter-shell{
+      grid-template-columns:1fr;
+      gap:.8rem;
+      align-items:start;
+      padding:.92rem .95rem .78rem;
+    }
+    .hero-pulse-header{
+      align-items:flex-start;
+    }
+    .pulse-summary-top{
+      grid-template-columns:1fr;
+    }
+    .pulse-meter-shell{
+      grid-template-columns:1fr;
+      gap:.82rem;
+      align-items:start;
+      padding:.94rem .98rem .82rem;
+    }
+    .pulse-reading{
+      max-width:34ch;
+    }
+    .pulse-detail-columns{
+      grid-template-columns:1fr;
+    }
+    .pulse-metrics{
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+    }
+    .pulse-signals{
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+    }
+    .pulse-signal-card{
+      grid-column:auto;
+    }
+    .pulse-signal-card:nth-child(1){
+      grid-column:1 / -1;
+    }
+  }
+  @media(max-width:640px){
+    .hero-pulse-strip{
+      margin-top:1.1rem;
+      padding:.2rem 0 .15rem;
+    }
+    .hero-pulse-meter-shell{
+      padding:.82rem .84rem .72rem;
+      border-radius:22px;
+      gap:.72rem;
+    }
+    .pulse-meter-shell{
+      padding:.84rem .86rem .74rem;
+      border-radius:22px;
+      gap:.72rem;
+    }
+    .pulse-meter-copy{
+      gap:.66rem;
+      padding-right:0;
+    }
+    .pulse-reading{
+      max-width:16.5rem;
+      gap:.36rem;
+    }
+    .pulse-reading-label,
+    .pulse-drivers-label{
+      font-size:.48rem;
+      letter-spacing:.13em;
+    }
+    .pulse-mood{
+      font-size:2.35rem;
+    }
+    .pulse-mood-emoji{
+      font-size:2.05rem;
+    }
+    .pulse-score-line{
+      font-size:.56rem;
+    }
+    .pulse-score-line strong{
+      font-size:.9rem;
+    }
+    .hero-pulse-lockup{
+      gap:.45rem .55rem;
+    }
+    .hero-pulse-mood{
+      font-size:1.85rem;
+    }
+    .hero-pulse-score{
+      font-size:.62rem;
+      letter-spacing:.1em;
+      transform:none;
+    }
+    .hero-pulse-state{
+      font-size:.42rem;
+      letter-spacing:.08em;
+    }
+    .hero-pulse-copy{
+      font-size:.88rem;
+      max-width:none;
+      line-height:1.48;
+    }
+    .hero-pulse-drivers{
+      font-size:.72rem;
+    }
+    .pulse-interpretation{
+      max-width:none;
+      gap:.18rem;
+    }
+    .pulse-signal-line{
+      font-size:.9rem;
+      line-height:1.38;
+    }
+    .pulse-drivers{
+      gap:.42rem .45rem;
+      max-width:none;
+    }
+    .pulse-driver-chip{
+      font-size:.68rem;
+      padding:.32rem .52rem;
+    }
+    .pulse-signal-card.is-collapsible .pulse-signal-title{
+      max-width:none;
+    }
+    .pulse-meter-states{
+      gap:.18rem;
+    }
+    .pulse-meter-state{
+      font-size:.47rem;
+      letter-spacing:.08em;
+    }
+    .hero-copy > .cta-group{
+      margin-top:1.1rem;
+    }
+    .pulse-context{
+      padding:2.2rem 1rem 2.6rem;
+    }
+    .pulse{
+      padding:3rem 1rem 3.1rem;
+    }
+    .pulse-card{
+      padding:1.15rem;
+      border-radius:24px;
+    }
+    .pulse-mood{
+      font-size:1.8rem;
+    }
+    .pulse-score-line strong{
+      font-size:1.7rem;
+    }
+    .pulse-metrics,
+    .pulse-signals{
+      grid-template-columns:1fr;
+    }
+    .pulse-metric:nth-child(1),
+    .pulse-signal-card:nth-child(1),
+    .pulse-signal-card{
+      grid-column:auto;
+    }
+    .pulse-meter-states{
+      gap:.18rem;
+    }
+    .pulse-meter-state{
+      font-size:.47rem;
+      letter-spacing:.08em;
+    }
+  }
+  @media(max-width:480px){
+    .pulse-summary-top{
+      gap:.58rem;
+    }
+    .pulse-mood-line{
+      gap:.38rem;
+      align-items:flex-end;
+    }
+    .pulse-mood{
+      font-size:2.05rem;
+    }
+    .pulse-mood-emoji{
+      font-size:1.82rem;
+    }
+    .pulse-score-line{
+      font-size:.52rem;
+    }
+    .pulse-score-line strong{
+      font-size:.84rem;
+    }
+    .pulse-meter-shell{
+      padding:.8rem .78rem .7rem;
+    }
+    .pulse-reading{
+      max-width:15rem;
+    }
+    .pulse-signal-line{
+      font-size:.86rem;
+    }
+    .pulse-driver-chip{
+      font-size:.64rem;
+    }
   }
 
   /* -- SECTIONS -- */
@@ -3655,15 +5049,14 @@
   <div class="topbar-inner">
     <a class="brand-lockup" href="#top" aria-label="Back to the top of the homepage">
       <span class="brand-title">The Psychology of Jamaicans</span>
-      <span class="brand-sub">Cultural intelligence guide</span>
+      <span class="brand-sub">Live cultural signal platform</span>
     </a>
     <nav class="chapter-nav" aria-label="Primary">
-      <a class="topbar-link" href="#what-it-shows" data-section-link="what-it-shows">What it shows</a>
-      <a class="topbar-link" href="#who-its-for" data-section-link="who-its-for">Who it's for</a>
-      <a class="topbar-link" href="#inside" data-section-link="inside">What you get</a>
-      <a class="topbar-link" href="#buy" data-section-link="buy">Buy</a>
+      <a class="topbar-link" href="#jamaica-pulse" data-section-link="jamaica-pulse">Pulse</a>
+      <a class="topbar-link" href="#buy" data-section-link="buy">Go deeper</a>
+      <a class="topbar-link" href="#contribute" data-section-link="contribute">Contribute</a>
     </nav>
-    <a href="https://payhip.com/b/5QwFv" target="_blank" rel="noopener noreferrer" class="btn-primary buy-link topbar-cta" data-buy-source="topbar">Get the Book</a>
+    <a href="https://payhip.com/b/5QwFv" target="_blank" rel="noopener noreferrer" class="btn-primary buy-link topbar-cta" data-buy-source="topbar">Get the Full Guide</a>
   </div>
 </header>
 <main id="top">
@@ -3680,42 +5073,67 @@
     <h1>Understand Jamaicans <em>before they understand you.</em></h1>
     <p class="hero-sub">Learn the unspoken rules that shape respect, tone, trust, pressure, safety, and how people really move in Jamaica.</p>
 
-    <div class="hero-tags">
+    <div class="hero-tags" hidden>
       <span class="tag">Social signals</span>
       <span class="tag">Tone & timing</span>
       <span class="tag">Trust & pressure</span>
       <span class="tag">Street awareness</span>
-    </div>
-
-    <div class="cta-group">
-      <div class="buy-cta-stack hero-buy-cta">
-        <a href="https://payhip.com/b/5QwFv" target="_blank" rel="noopener noreferrer" class="btn-primary buy-link" data-buy-source="hero">Get Instant Access</a>
-        <p class="payment-clarity">Select the PayPal option to make payments with your debit or credit card.</p>
-      </div>
-      <div class="buy-cta-stack hero-buy-cta">
-        <a href="decode.html" class="btn-secondary">Try the Decoder</a>
-        <div class="hero-cta-spacer" aria-hidden="true">.</div>
-      </div>
     </div>
     <ul class="hero-outcomes">
       <li>Read people faster.</li>
       <li>Avoid social mistakes.</li>
       <li>Move with more awareness.</li>
     </ul>
-    <div class="hero-meta">
+    <div class="hero-meta" hidden>
       <p>28 chapters. Instant PDF. Secure Payhip checkout.</p>
       <div class="sale-timer" data-sale-countdown>
         <span>Sale ends in</span>
         <strong data-sale-countdown-value>14 days</strong>
       </div>
     </div>
+
+    <div class="hero-pulse-strip" id="hero-pulse-strip" aria-label="Jamaica Pulse preview">
+      <div class="hero-pulse-main">
+        <div class="hero-pulse-intro">
+          <div class="hero-pulse-lockup watchful-lockup" id="hero-watchful-lockup">
+            <span class="hero-pulse-mood"><span class="hero-pulse-emoji" id="hero-pulse-emoji" aria-hidden="true">👀</span><strong id="hero-pulse-label">Watchful</strong></span>
+            <span class="hero-pulse-score"><strong id="hero-pulse-score-value">64</strong> / 100</span>
+          </div>
+        </div>
+
+        <div class="hero-pulse-meter-shell">
+          <div class="hero-pulse-meter-copy">
+            <p class="hero-pulse-copy" id="hero-pulse-interpretation">Jamaica feels alert and socially aware right now.</p>
+            <p class="hero-pulse-drivers"><strong>Shaped by:</strong> <span id="hero-pulse-drivers">cost pressure, guarded trust, active cultural energy</span></p>
+          </div>
+          <div class="hero-pulse-meter" aria-label="Jamaica pulse spectrum">
+            <div class="hero-pulse-meter-track">
+              <span class="hero-pulse-meter-fill" aria-hidden="true"></span>
+              <span class="hero-pulse-meter-marker" aria-hidden="true"></span>
+            </div>
+            <div class="hero-pulse-states">
+              <span class="hero-pulse-state" data-pulse-state="calm">Calm</span>
+              <span class="hero-pulse-state" data-pulse-state="open">Open</span>
+              <span class="hero-pulse-state" data-pulse-state="mixed">Mixed</span>
+              <span class="hero-pulse-state" data-pulse-state="watchful">Watchful</span>
+              <span class="hero-pulse-state" data-pulse-state="tense">Tense</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-group">
+      <a href="#jamaica-pulse" class="btn-primary" id="hero-pulse-cta" data-open-pulse="true">Explore the pulse</a>
+      <a href="https://payhip.com/b/5QwFv" target="_blank" rel="noopener noreferrer" class="btn-secondary buy-link" data-buy-source="hero">Get the full guide</a>
+    </div>
     </div>
 
     <aside class="hero-panel" aria-label="Book highlights">
-      <p class="hero-panel-label">What this is</p>
-      <h2 class="hero-panel-title">Not a tourist guide. A reading tool.</h2>
+      <p class="hero-panel-label">How to read it</p>
+      <h2 class="hero-panel-title">Not just what is happening. How people are reacting.</h2>
       <p class="hero-panel-copy">
-        This guide helps you catch what sits beneath the words so you can read a room, move with more sense, and avoid easy mistakes.
+        Jamaica Pulse turns mood, pressure, trust, and movement into one clearer signal you can read quickly.
       </p>
       <div class="hero-proof-grid">
         <article class="proof-item">
@@ -3735,12 +5153,12 @@
           <span class="proof-value">Tone. Silence. Timing. Trust. Visibility. Reputation.</span>
         </article>
       </div>
-      <blockquote class="hero-panel-quote">"Read the room before the room reads you."</blockquote>
-      <p class="hero-signature">The core idea</p>
+      <blockquote class="hero-panel-quote">"Culture shifts in tone before it shows up in headlines."</blockquote>
+      <p class="hero-signature">What the pulse watches</p>
       <div class="hero-panel-footer">
-        <span class="hero-panel-chip">Social insight</span>
-        <span class="hero-panel-chip">Street awareness</span>
-        <span class="hero-panel-chip">Trust & business</span>
+        <span class="hero-panel-chip">Mood</span>
+        <span class="hero-panel-chip">Trust</span>
+        <span class="hero-panel-chip">Pressure</span>
       </div>
     </aside>
   </div>
@@ -3754,7 +5172,7 @@
 </section>
 
 <!-- -- STRIP ----------------------------------------------------------------- -->
-<section class="author">
+<section class="author" hidden data-home-disabled="true">
   <div class="container">
     <div class="author-grid">
       <div class="author-visual reveal">
@@ -3783,7 +5201,7 @@
   </div>
 </section>
 
-<section class="reactions">
+<section class="reactions" hidden data-home-disabled="true">
   <div class="container">
     <div class="reveal" style="text-align:center;">
       <span class="section-label with-icon"><span class="section-mark icon-root" aria-hidden="true"></span>Early Reactions</span>
@@ -3812,7 +5230,7 @@
   </div>
 </section>
 
-<div class="strip">
+<div class="strip" hidden data-home-disabled="true">
   <div class="strip-inner">
     <span>Social signals</span>
     <span class="strip-divider">/</span>
@@ -3822,7 +5240,7 @@
   </div>
 </div>
 
-<section class="signal-moment">
+<section class="signal-moment" hidden data-home-disabled="true">
   <div class="container">
     <div class="signal-layout">
       <div class="signal-copy reveal">
@@ -3850,8 +5268,107 @@
   </div>
 </section>
 
+<section class="pulse" id="jamaica-pulse" aria-labelledby="pulse-title">
+  <div class="container">
+    <div class="pulse-shell">
+      <div class="pulse-heading reveal">
+        <span class="section-label">Jamaica Pulse</span>
+        <h2 id="pulse-title">How Jamaica feels right now</h2>
+      </div>
+
+      <article class="pulse-card reveal" aria-live="polite">
+        <div class="pulse-summary">
+          <div class="pulse-summary-top">
+            <div class="pulse-mood-lockup watchful-lockup" id="pulse-watchful-lockup">
+              <div class="pulse-mood-line">
+                <span class="pulse-mood-emoji" id="pulse-mood-emoji" aria-hidden="true">👀</span>
+                <h3 class="pulse-mood" id="pulse-mood-label">Watchful</h3>
+              </div>
+              <div class="pulse-score-line"><strong id="pulse-score-value">64</strong><span>/ 100</span></div>
+            </div>
+            <span class="pulse-shape" id="pulse-shape">Live pulse</span>
+          </div>
+
+          <div class="pulse-meter-shell">
+            <div class="pulse-meter-copy">
+              <div class="pulse-reading">
+                <span class="pulse-reading-label">Signal reading</span>
+                <div class="pulse-interpretation" id="pulse-interpretation">
+                  <span class="pulse-signal-line">Jamaica feels alert and socially aware.</span>
+                  <span class="pulse-signal-line">There is still humour and movement.</span>
+                  <span class="pulse-signal-line">People are moving more carefully as pressure builds.</span>
+                </div>
+              </div>
+              <div class="pulse-drivers-block">
+                <span class="pulse-drivers-label">Shaped by</span>
+                <div class="pulse-drivers" id="pulse-drivers">
+                  <span class="pulse-driver-chip">Cost pressure</span>
+                  <span class="pulse-driver-chip">Global fuel tension</span>
+                  <span class="pulse-driver-chip">Guarded trust</span>
+                  <span class="pulse-driver-chip">Active cultural energy</span>
+                </div>
+              </div>
+            </div>
+            <div class="pulse-meter" aria-label="Jamaica pulse meter">
+              <div class="pulse-meter-track">
+                <span class="pulse-meter-fill" aria-hidden="true"></span>
+                <span class="pulse-meter-marker" aria-hidden="true"></span>
+              </div>
+              <div class="pulse-meter-states">
+                <span class="pulse-meter-state" data-pulse-state="calm">Calm</span>
+                <span class="pulse-meter-state" data-pulse-state="open">Open</span>
+                <span class="pulse-meter-state" data-pulse-state="mixed">Mixed</span>
+                <span class="pulse-meter-state" data-pulse-state="watchful">Watchful</span>
+                <span class="pulse-meter-state" data-pulse-state="tense">Tense</span>
+              </div>
+            </div>
+          </div>
+          <button class="pulse-toggle" id="pulse-toggle" type="button" aria-expanded="false" aria-controls="pulse-detail">Explore full pulse</button>
+        </div>
+
+        <div class="pulse-detail" id="pulse-detail" aria-hidden="true">
+          <div class="pulse-detail-inner">
+            <div class="pulse-detail-top">
+              <span class="pulse-detail-kicker">Full pulse</span>
+              <span class="pulse-updated" id="pulse-updated">Last updated just now</span>
+            </div>
+
+            <div class="pulse-detail-columns">
+              <section class="pulse-detail-block" data-surface="metrics">
+                <div class="pulse-detail-section-head">
+                  <strong>Readings</strong>
+                  <p>Fast indicators behind the current mood.</p>
+                </div>
+                <div class="pulse-metrics" id="pulse-metrics"></div>
+              </section>
+
+              <section class="pulse-detail-block" data-surface="signals">
+                <div class="pulse-detail-section-head">
+                  <strong>Signal Board</strong>
+                  <p>The deeper currents shaping the pulse right now.</p>
+                </div>
+                <div class="pulse-signals" id="pulse-signals"></div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="pulse-context" id="about-pulse" data-nav-section="about-pulse" hidden data-home-disabled="true">
+  <div class="container">
+    <div class="pulse-context-copy reveal">
+      <span class="section-label">What this is</span>
+      <h2>This is a live cultural read of Jamaica.</h2>
+      <p>Not just what is happening, but how people are reacting to it.</p>
+    </div>
+  </div>
+</section>
+
 <!-- -- WHY THIS BOOK ---------------------------------------------------------- -->
-<section class="why" id="why-book" data-nav-section="why-book">
+<section class="why" id="why-book" data-nav-section="why-book" hidden data-home-disabled="true">
   <div class="container">
     <div class="why-grid">
       <div class="why-text reveal">
@@ -3883,7 +5400,7 @@
 </section>
 
 <!-- -- WHAT'S INSIDE ---------------------------------------------------------- -->
-<section class="collage-break">
+<section class="collage-break" hidden data-home-disabled="true">
   <div class="container">
     <figure class="collage-band reveal">
       <img src="assets/images/reading-room.jpg" alt="A warm interior with plants, wood furniture, and framed art, suggesting a quiet place to return to the guide and reflect." class="collage-image" loading="lazy" width="1152" height="768"/>
@@ -3892,7 +5409,7 @@
   </div>
 </section>
 
-<section class="inside" id="inside" data-nav-section="inside">
+<section class="inside" id="inside" data-nav-section="inside" hidden data-home-disabled="true">
   <div class="container">
     <div class="reveal">
       <span class="section-label with-icon"><span class="section-mark icon-branch" aria-hidden="true"></span>What's inside</span>
@@ -3978,7 +5495,7 @@
 </section>
 
 <!-- -- PREVIEW ---------------------------------------------------------------- -->
-<section class="preview" id="preview" data-nav-section="preview">
+<section class="preview" id="preview" data-nav-section="preview" hidden data-home-disabled="true">
   <div class="container">
     <div class="reveal">
       <span class="section-label">A taste</span>
@@ -4033,7 +5550,7 @@
 </section>
 
 <!-- -- WHO IS THIS FOR -------------------------------------------------------- -->
-<section class="forwho" id="who-its-for" data-nav-section="who-its-for">
+<section class="forwho" id="who-its-for" data-nav-section="who-its-for" hidden data-home-disabled="true">
   <div class="container">
     <div class="reveal" style="text-align:center;margin-bottom:1rem;">
       <span class="section-label">Who it's for</span>
@@ -4075,7 +5592,7 @@
 </section>
 
 <!-- -- FINAL CTA --------------------------------------------------------------- -->
-<section class="simple-section section-divider" id="what-it-shows" data-nav-section="what-it-shows">
+<section class="simple-section section-divider" id="what-it-shows" data-nav-section="what-it-shows" hidden data-home-disabled="true">
   <div class="container narrow-flow reveal">
     <span class="section-label">What it reveals</span>
     <h2>What this helps you see</h2>
@@ -4088,7 +5605,7 @@
   </div>
 </section>
 
-<section class="simple-section section-divider" id="what-you-get" data-nav-section="what-you-get">
+<section class="simple-section section-divider" id="what-you-get" data-nav-section="what-you-get" hidden data-home-disabled="true">
   <div class="container narrow-flow reveal">
     <span class="section-label">What You Get</span>
     <h2>What you get</h2>
@@ -4100,7 +5617,7 @@
   </div>
 </section>
 
-<section class="decoder-spotlight" style="padding:2rem 2rem 0;background:linear-gradient(180deg, rgba(10,34,26,.96) 0%, rgba(15,47,37,.98) 100%);">
+<section class="decoder-spotlight" style="padding:2rem 2rem 0;background:linear-gradient(180deg, rgba(10,34,26,.96) 0%, rgba(15,47,37,.98) 100%);" hidden data-home-disabled="true">
   <div class="container">
     <div class="reveal" style="border:1px solid rgba(255,255,255,.12);border-radius:32px;padding:clamp(2rem,4vw,3rem);background:radial-gradient(circle at top right, rgba(232,185,106,.12), transparent 26%), linear-gradient(135deg, rgba(10,34,26,.96) 0%, rgba(20,50,39,.98) 55%, rgba(9,24,18,.99) 100%);box-shadow:0 24px 56px rgba(0,0,0,.2);text-align:center;">
       <span class="section-label" style="color:#E8B96A;">Interactive Experience</span>
@@ -4133,10 +5650,10 @@
 <section class="cta-final" id="buy" data-nav-section="buy">
   <div class="container container-narrow" style="text-align:center;">
     <div class="reveal">
-      <span class="section-label">Get the Book</span>
-      <h2 style="color:var(--cream);">Get the full book while the launch price is still here.</h2>
+      <span class="section-label">Go deeper</span>
+      <h2 style="color:var(--cream);">The full guide expands the patterns behind the pulse.</h2>
       <p class="cta-intro">
-        A calm, useful guide for people who want a clearer read on respect, behaviour, safety, trust, and how everyday life really works beyond the obvious.
+        The book turns the live read into deeper context, giving you the language behind respect, timing, trust, pressure, safety, and how Jamaica really moves.
       </p>
       <div class="cta-summary-grid">
         <div class="cta-stat">
@@ -4193,7 +5710,7 @@
         <div class="price-note">Instant digital download · PDF · 28 chapters</div>
       </div>
       <p class="price-warning">Launch price is live for a limited time.</p>
-      <p class="price-value">For $9, you get a guide that can save you confusion, time and avoidable mistakes.</p>
+      <p class="price-value">For $9, you get the deeper context behind the pulse, in one practical guide you can return to anytime.</p>
       <div class="sale-timer is-inline" data-sale-countdown>
         <span>Sale ends in</span>
         <strong data-sale-countdown-value>14 days</strong>
@@ -4202,7 +5719,7 @@
       <br/>
       <div class="buy-cta-stack is-centered">
         <a href="https://payhip.com/b/5QwFv" target="_blank" rel="noopener noreferrer" id="buy-button" class="btn-primary buy-link" data-buy-source="final">
-          Buy through Payhip
+          Get the full guide
         </a>
         <p class="payment-clarity">Select the PayPal option to make payments with your debit or credit card.</p>
       </div>
@@ -4293,7 +5810,7 @@
   </div>
 </div>
 
-<div class="guide-assistant" id="guide-assistant">
+<div class="guide-assistant" id="guide-assistant" hidden data-home-disabled="true">
   <div class="guide-welcome" id="guide-welcome">
     <button class="guide-dismiss" id="guide-welcome-dismiss" type="button" aria-label="Dismiss guide welcome">Close</button>
     Start with today's signal if you want a quick way in.
@@ -4468,6 +5985,512 @@
     if (rotationNode) rotationNode.textContent = "Rotates daily from the decoder archive";
   }
 
+  // Phase 1 fallback dataset for the Jamaica Pulse section.
+  // Replace this with external JSON or API-fed data in Phase 2 without changing the render layer.
+  const JAMAICA_PULSE_FALLBACK = {
+    updatedAt: "2026-04-09T10:20:00-05:00",
+    moodScore: 64,
+    interpretation: "Jamaica feels alert and socially aware right now. There is still humour and movement, but cost pressure, global fuel tension, and careful reading are shaping the mood.",
+    signalLines: [
+      "Jamaica feels alert and socially aware.",
+      "There is still humour and movement.",
+      "People are moving more carefully as pressure builds."
+    ],
+    drivers: [
+      "cost pressure",
+      "global fuel tension",
+      "offshore oil watch",
+      "guarded trust",
+      "active cultural energy"
+    ],
+    headlines: [
+      {
+        type: "Cost pressure",
+        tone: "pressure",
+        weight: "Pressure up",
+        title: "Everyday spending is still shaping patience and decision-making.",
+        summary: "Food, transport, and bills remain part of the emotional weather, so people are stretching, comparing, and planning harder."
+      },
+      {
+        type: "Offshore watch",
+        tone: "watch",
+        weight: "Expectation rising",
+        title: "Possible offshore oil movement is adding curiosity, caution, and conversation.",
+        summary: "People are reading what it could mean for prices, power, and future opportunity, but with the usual wait-and-see instinct still in place."
+      },
+      {
+        type: "Cultural energy",
+        tone: "energy",
+        weight: "Energy high",
+        title: "The social current still feels quick, funny, and sharply observant.",
+        summary: "People are still making meaning in real time through jokes, side comments, style, and what gets noticed first."
+      },
+      {
+        type: "Public trust",
+        tone: "watch",
+        weight: "Trust guarded",
+        title: "Hope is present, but trust is still being given carefully.",
+        summary: "Movement is happening, but more people want proof, consistency, and clearer signals before they relax into belief."
+      },
+      {
+        type: "Positive movement",
+        tone: "lift",
+        weight: "Lift rising",
+        title: "Creative ambition and outward-facing energy are still part of the mood.",
+        summary: "People are still building, exporting, performing, and looking for momentum even while the pressure stays real."
+      }
+    ],
+    metrics: [
+      { label: "Happiness read", value: "66/100", note: "Warmth still carries real weight" },
+      { label: "Cost pressure", value: "Elevated", note: "Food and transport still affect mood" },
+      { label: "Energy watch", value: "Tight", note: "Global gas tension keeps fuel sensitivity high" },
+      { label: "FX watch", value: "JMD watchful", note: "People stay sensitive to price drift" },
+      { label: "Island tempo", value: "Active", note: "Tourism, culture, and hustle stay in motion" }
+    ]
+  };
+
+  function getJamaicaPulseData() {
+    return window.JAMAICA_PULSE_LIVE_DATA || JAMAICA_PULSE_FALLBACK;
+  }
+
+  function getMoodLabel(score, headlines = []) {
+    const positiveCount = headlines.filter((item) => item.tone === "lift" || item.tone === "energy").length;
+    const pressureCount = headlines.filter((item) => item.tone === "pressure" || item.tone === "watch").length;
+
+    if (score >= 80) return positiveCount >= pressureCount ? "Energetic" : "Mixed";
+    if (score >= 68) return pressureCount > positiveCount ? "Watchful" : "Open";
+    if (score >= 58) return pressureCount >= positiveCount ? "Watchful" : "Mixed";
+    if (score >= 46) return pressureCount > positiveCount ? "Tense" : "Mixed";
+    return "Heavy";
+  }
+
+  function getMoodEmoji(label) {
+    const moodMap = {
+      calm: "😌",
+      open: "🙂",
+      mixed: "😐",
+      watchful: "👀",
+      tense: "⚠️",
+      heavy: "😔",
+      energetic: "⚡"
+    };
+
+    return moodMap[String(label || "").trim().toLowerCase()] || "😐";
+  }
+
+  function getPulseSpectrumState(score) {
+    if (score < 20) return "calm";
+    if (score < 40) return "open";
+    if (score < 60) return "mixed";
+    if (score < 80) return "watchful";
+    return "tense";
+  }
+
+  function formatPulseTimestamp(value) {
+    const nextDate = new Date(value);
+    if (Number.isNaN(nextDate.getTime())) return "Last updated recently";
+
+    return `Last updated ${new Intl.DateTimeFormat("en-JM", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+      hour: "numeric",
+      minute: "2-digit"
+    }).format(nextDate)}`;
+  }
+
+  function getPulsePreviewInterpretation(value) {
+    const text = String(value || "").trim();
+    if (!text) return "Jamaica feels alert and socially aware right now.";
+
+    const firstSentenceMatch = text.match(/^.*?[.!?](?:\s|$)/);
+    const firstSentence = (firstSentenceMatch ? firstSentenceMatch[0] : text).trim();
+
+    if (firstSentence.length <= 96) return firstSentence;
+    return `${firstSentence.slice(0, 93).trimEnd()}...`;
+  }
+
+  function escapeHtml(value) {
+    return String(value || "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll("\"", "&quot;")
+      .replaceAll("'", "&#39;");
+  }
+
+  function formatPulseDriverLabel(value) {
+    return String(value || "")
+      .trim()
+      .replace(/\b([a-z])/g, (match) => match.toUpperCase());
+  }
+
+  function getPulseSignalLines(pulse, interpretation) {
+    if (Array.isArray(pulse.signalLines) && pulse.signalLines.length) {
+      return pulse.signalLines
+        .map((line) => String(line || "").trim())
+        .filter(Boolean)
+        .slice(0, 3);
+    }
+
+    const sentences = String(interpretation || "")
+      .match(/[^.!?]+[.!?]?/g) || [];
+
+    return sentences
+      .map((sentence) => sentence.trim())
+      .filter(Boolean)
+      .slice(0, 3);
+  }
+
+  function initialiseWatchfulLockup(lockup) {
+    if (!lockup || lockup.dataset.watchBound === "true") return;
+
+    lockup.dataset.watchBound = "true";
+
+    const resetLockup = () => {
+      lockup.style.setProperty("--watch-x", "50%");
+      lockup.style.setProperty("--watch-y", "50%");
+      lockup.style.setProperty("--watch-shift-x", "0px");
+      lockup.style.setProperty("--watch-shift-y", "0px");
+      lockup.style.setProperty("--watch-look-x", "0px");
+      lockup.style.setProperty("--watch-look-y", "0px");
+      lockup.style.setProperty("--watch-tilt", "0deg");
+    };
+
+    const updateLockupFromPoint = (clientX, clientY, intensity = 1) => {
+      const bounds = lockup.getBoundingClientRect();
+      const x = clientX - bounds.left;
+      const y = clientY - bounds.top;
+      const offsetX = (x / bounds.width - 0.5);
+      const offsetY = (y / bounds.height - 0.5);
+      const moveX = offsetX * 12 * intensity;
+      const moveY = offsetY * 9 * intensity;
+      const lookX = offsetX * 18 * intensity;
+      const lookY = offsetY * 12 * intensity;
+
+      lockup.style.setProperty("--watch-x", `${(x / bounds.width) * 100}%`);
+      lockup.style.setProperty("--watch-y", `${(y / bounds.height) * 100}%`);
+      lockup.style.setProperty("--watch-shift-x", `${moveX}px`);
+      lockup.style.setProperty("--watch-shift-y", `${moveY}px`);
+      lockup.style.setProperty("--watch-look-x", `${lookX}px`);
+      lockup.style.setProperty("--watch-look-y", `${lookY}px`);
+      lockup.style.setProperty("--watch-tilt", `${moveX * 0.3}deg`);
+    };
+
+    resetLockup();
+
+    lockup.addEventListener("pointermove", (event) => {
+      if (!lockup.classList.contains("is-watchful")) return;
+      const intensity = event.pointerType === "touch" ? 0.72 : 1.15;
+      updateLockupFromPoint(event.clientX, event.clientY, intensity);
+    });
+
+    lockup.addEventListener("pointerdown", (event) => {
+      if (!lockup.classList.contains("is-watchful")) return;
+      const intensity = event.pointerType === "touch" ? 0.82 : 1.15;
+      updateLockupFromPoint(event.clientX, event.clientY, intensity);
+
+      if (event.pointerType === "touch") {
+        window.clearTimeout(lockup.watchResetTimer);
+        lockup.watchResetTimer = window.setTimeout(resetLockup, 900);
+      }
+    });
+
+    lockup.addEventListener("pointerleave", resetLockup);
+    lockup.addEventListener("pointercancel", resetLockup);
+    lockup.addEventListener("blur", resetLockup, true);
+  }
+
+  function syncWatchfulLockup(lockup, moodLabel) {
+    if (!lockup) return;
+    lockup.classList.toggle("is-watchful", String(moodLabel || "").toLowerCase() === "watchful");
+  }
+
+  function animatePulseMeter(root, score) {
+    if (!root) return;
+
+    const nextScore = String(score);
+    const hasAnimated = root.dataset.meterAnimated === "true";
+
+    root.style.setProperty("--pulse-score", nextScore);
+
+    if (hasAnimated) {
+      root.style.setProperty("--pulse-score-display", nextScore);
+      return;
+    }
+
+    root.style.setProperty("--pulse-score-display", "0");
+    root.dataset.meterAnimated = "true";
+
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        root.style.setProperty("--pulse-score-display", nextScore);
+      });
+    });
+  }
+
+  function getAnimatedValueSpec(value) {
+    const text = String(value || "").trim();
+    if (!text) return null;
+
+    const fractionMatch = text.match(/^(\d+)\s*\/\s*(\d+)$/);
+    if (fractionMatch) {
+      return {
+        type: "fraction",
+        left: Number(fractionMatch[1]),
+        right: Number(fractionMatch[2])
+      };
+    }
+
+    const numberMatch = text.match(/^\d+(?:\.\d+)?$/);
+    if (numberMatch) {
+      return {
+        type: "number",
+        value: Number(numberMatch[0]),
+        decimals: numberMatch[0].includes(".") ? numberMatch[0].split(".")[1].length : 0
+      };
+    }
+
+    return null;
+  }
+
+  function formatAnimatedValue(spec, progress) {
+    if (!spec) return "";
+
+    if (spec.type === "fraction") {
+      const left = Math.round(spec.left * progress);
+      const right = Math.round(spec.right * progress);
+      return `${left}/${right}`;
+    }
+
+    if (spec.type === "number") {
+      const nextValue = spec.value * progress;
+      if (spec.decimals > 0) return nextValue.toFixed(spec.decimals);
+      return String(Math.round(nextValue));
+    }
+
+    return "";
+  }
+
+  function animateValueNode(node, finalText, duration = 900) {
+    if (!node) return;
+
+    const spec = getAnimatedValueSpec(finalText);
+    if (!spec) {
+      node.textContent = finalText;
+      return;
+    }
+
+    const startTime = performance.now();
+    node.classList.remove("is-counting");
+    void node.offsetWidth;
+    node.classList.add("is-counting");
+
+    const tick = (now) => {
+      const progress = Math.min(1, (now - startTime) / duration);
+      const eased = 1 - Math.pow(1 - progress, 3);
+
+      node.textContent = formatAnimatedValue(spec, eased);
+
+      if (progress < 1) {
+        window.requestAnimationFrame(tick);
+        return;
+      }
+
+      node.textContent = finalText;
+      window.setTimeout(() => {
+        node.classList.remove("is-counting");
+      }, 620);
+    };
+
+    window.requestAnimationFrame(tick);
+  }
+
+  function animateMetricValues(metricsRoot) {
+    if (!metricsRoot) return;
+
+    metricsRoot.querySelectorAll(".pulse-metric-value").forEach((node, index) => {
+      const finalText = node.dataset.finalValue || node.textContent.trim();
+      animateValueNode(node, finalText, 760 + index * 120);
+    });
+  }
+
+  function renderJamaicaPulse() {
+    const pulseSection = document.getElementById("jamaica-pulse");
+    const heroPulseStrip = document.getElementById("hero-pulse-strip");
+    const heroWatchfulLockup = document.getElementById("hero-watchful-lockup");
+    const heroMoodLabelNode = document.getElementById("hero-pulse-label");
+    const heroMoodEmojiNode = document.getElementById("hero-pulse-emoji");
+    const heroScoreNode = document.getElementById("hero-pulse-score-value");
+    const heroInterpretationNode = document.getElementById("hero-pulse-interpretation");
+    const heroDriversNode = document.getElementById("hero-pulse-drivers");
+    const heroShapeNode = document.getElementById("hero-pulse-shape");
+    const pulseOpenTriggers = Array.from(document.querySelectorAll("[data-open-pulse]"));
+    const metricsRoot = document.getElementById("pulse-metrics");
+    const signalsRoot = document.getElementById("pulse-signals");
+    const pulseWatchfulLockup = document.getElementById("pulse-watchful-lockup");
+    const moodLabelNode = document.getElementById("pulse-mood-label");
+    const moodEmojiNode = document.getElementById("pulse-mood-emoji");
+    const scoreNode = document.getElementById("pulse-score-value");
+    const interpretationNode = document.getElementById("pulse-interpretation");
+    const driversNode = document.getElementById("pulse-drivers");
+    const shapeNode = document.getElementById("pulse-shape");
+    const updatedNode = document.getElementById("pulse-updated");
+    const meterStateNodes = Array.from(document.querySelectorAll("[data-pulse-state]"));
+    const toggleButton = document.getElementById("pulse-toggle");
+    const detailPanel = document.getElementById("pulse-detail");
+
+    if (!pulseSection || !metricsRoot || !signalsRoot) return;
+
+    const pulse = getJamaicaPulseData();
+    const score = Math.max(0, Math.min(100, Number(pulse.moodScore) || 0));
+    const moodLabel = pulse.moodLabel || getMoodLabel(score, pulse.headlines || []);
+    const moodEmoji = getMoodEmoji(moodLabel);
+    const spectrumState = getPulseSpectrumState(score);
+    const interpretation = pulse.interpretation || "The emotional weather is mixed, active, and still changing.";
+    const signalLines = getPulseSignalLines(pulse, interpretation);
+    const drivers = Array.isArray(pulse.drivers) && pulse.drivers.length
+      ? pulse.drivers
+      : (pulse.headlines || []).slice(0, 3).map((item) => item.type.toLowerCase());
+
+    if (moodLabelNode) moodLabelNode.textContent = moodLabel;
+    if (moodEmojiNode) moodEmojiNode.textContent = moodEmoji;
+    if (interpretationNode) {
+      interpretationNode.innerHTML = signalLines.map((line) => `
+        <span class="pulse-signal-line">${escapeHtml(line)}</span>
+      `).join("");
+    }
+    if (heroMoodLabelNode) heroMoodLabelNode.textContent = moodLabel;
+    if (heroMoodEmojiNode) heroMoodEmojiNode.textContent = moodEmoji;
+    if (heroInterpretationNode) heroInterpretationNode.textContent = getPulsePreviewInterpretation(interpretation);
+    if (heroDriversNode) heroDriversNode.textContent = drivers.join(", ");
+    if (heroShapeNode) heroShapeNode.textContent = `${moodLabel} right now`;
+    if (driversNode) {
+      driversNode.innerHTML = drivers.map((driver) => `
+        <span class="pulse-driver-chip">${escapeHtml(formatPulseDriverLabel(driver))}</span>
+      `).join("");
+    }
+    if (shapeNode) shapeNode.textContent = `${moodLabel} right now`;
+    if (updatedNode) updatedNode.textContent = formatPulseTimestamp(pulse.updatedAt);
+
+    initialiseWatchfulLockup(heroWatchfulLockup);
+    initialiseWatchfulLockup(pulseWatchfulLockup);
+    syncWatchfulLockup(heroWatchfulLockup, moodLabel);
+    syncWatchfulLockup(pulseWatchfulLockup, moodLabel);
+
+    animatePulseMeter(pulseSection, score);
+    if (heroPulseStrip) animatePulseMeter(heroPulseStrip, score);
+    if (scoreNode) animateValueNode(scoreNode, String(score), 960);
+    if (heroScoreNode) animateValueNode(heroScoreNode, String(score), 960);
+    meterStateNodes.forEach((node) => {
+      node.classList.toggle("is-active", node.dataset.pulseState === spectrumState);
+    });
+
+    metricsRoot.innerHTML = (pulse.metrics || []).map((metric) => `
+      <article class="pulse-metric">
+        <span class="pulse-metric-label">${metric.label}</span>
+        <strong class="pulse-metric-value">${metric.value}</strong>
+        <span class="pulse-metric-note">${metric.note}</span>
+      </article>
+    `).join("");
+
+    metricsRoot.querySelectorAll(".pulse-metric-value").forEach((node) => {
+      node.dataset.finalValue = node.textContent.trim();
+    });
+
+    signalsRoot.innerHTML = (pulse.headlines || []).map((item, index) => {
+      const cardId = `pulse-signal-panel-${index}`;
+      const tone = escapeHtml(item.tone || "watch");
+      const type = escapeHtml(item.type || "Signal");
+      const weight = escapeHtml(item.weight || "Read");
+      const title = escapeHtml(item.title || "");
+      const summary = escapeHtml(item.summary || "");
+
+      if (index === 0) {
+        return `
+          <article class="pulse-signal-card is-open" data-tone="${tone}">
+            <div class="pulse-signal-meta">
+              <span class="pulse-signal-type">${type}</span>
+              <span class="pulse-signal-weight">${weight}</span>
+            </div>
+            <h3 class="pulse-signal-title">${title}</h3>
+            <p class="pulse-signal-copy">${summary}</p>
+          </article>
+        `;
+      }
+
+      return `
+        <article class="pulse-signal-card is-collapsible" data-tone="${tone}">
+          <button class="pulse-signal-toggle" type="button" aria-expanded="false" aria-controls="${cardId}" data-signal-toggle>
+            <div class="pulse-signal-heading">
+              <div class="pulse-signal-meta">
+                <span class="pulse-signal-type">${type}</span>
+                <span class="pulse-signal-weight">${weight}<span class="pulse-signal-caret" aria-hidden="true"></span></span>
+              </div>
+              <h3 class="pulse-signal-title">${title}</h3>
+            </div>
+          </button>
+          <div class="pulse-signal-panel" id="${cardId}" aria-hidden="true">
+            <div class="pulse-signal-panel-inner">
+              <p class="pulse-signal-copy">${summary}</p>
+            </div>
+          </div>
+        </article>
+      `;
+    }).join("");
+
+    if (!signalsRoot.dataset.bound) {
+      signalsRoot.dataset.bound = "true";
+      signalsRoot.addEventListener("click", (event) => {
+        const trigger = event.target.closest("[data-signal-toggle]");
+        if (!trigger) return;
+
+        const card = trigger.closest(".pulse-signal-card.is-collapsible");
+        if (!card) return;
+
+        const willOpen = !card.classList.contains("is-open");
+
+        signalsRoot.querySelectorAll(".pulse-signal-card.is-collapsible").forEach((node) => {
+          const button = node.querySelector("[data-signal-toggle]");
+          const panel = node.querySelector(".pulse-signal-panel");
+          const isTarget = node === card && willOpen;
+
+          node.classList.toggle("is-open", isTarget);
+          if (button) button.setAttribute("aria-expanded", isTarget ? "true" : "false");
+          if (panel) panel.setAttribute("aria-hidden", isTarget ? "false" : "true");
+        });
+      });
+    }
+
+    if (toggleButton && detailPanel && !toggleButton.dataset.bound) {
+      toggleButton.dataset.bound = "true";
+      toggleButton.addEventListener("click", () => {
+        const willOpen = toggleButton.getAttribute("aria-expanded") !== "true";
+        toggleButton.setAttribute("aria-expanded", willOpen ? "true" : "false");
+        toggleButton.textContent = willOpen ? "Hide full pulse" : "Explore full pulse";
+        detailPanel.classList.toggle("is-open", willOpen);
+        detailPanel.setAttribute("aria-hidden", willOpen ? "false" : "true");
+        if (willOpen) animateMetricValues(metricsRoot);
+      });
+    }
+
+    if (pulseSection && detailPanel && toggleButton) {
+      pulseOpenTriggers.forEach((trigger) => {
+        if (trigger.dataset.bound) return;
+        trigger.dataset.bound = "true";
+        trigger.addEventListener("click", (event) => {
+          event.preventDefault();
+          toggleButton.setAttribute("aria-expanded", "true");
+          toggleButton.textContent = "Hide full pulse";
+          detailPanel.classList.add("is-open");
+          detailPanel.setAttribute("aria-hidden", "false");
+          animateMetricValues(metricsRoot);
+          pulseSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+    }
+  }
+
   function formatSaleCountdown(targetDate) {
     const remainingMs = targetDate.getTime() - Date.now();
 
@@ -4564,6 +6587,7 @@
 
   initialiseSaleCountdown();
   populateSignalOfTheMoment();
+  renderJamaicaPulse();
   initialiseChapterTypewriter();
 
   const observer = new IntersectionObserver((entries) => {
