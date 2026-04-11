@@ -875,7 +875,38 @@
     background:rgba(253,246,236,.18);
   }
   .hero-copy > .cta-group{
-    margin-top:1.35rem;
+    margin-top:2.4rem;
+  }
+  .hero-signal-preview{
+    display:inline-flex;
+    align-items:center;
+    gap:.6rem;
+    margin-top:1.6rem;
+    font-family:'Space Mono',monospace;
+    font-size:.72rem;
+    letter-spacing:.06em;
+    color:rgba(253,246,236,.56);
+    animation:fadeUp .9s .55s ease both;
+  }
+  .hero-signal-preview strong{
+    color:var(--cream);
+    font-family:'Space Mono',monospace;
+    font-size:.84rem;
+    letter-spacing:.04em;
+  }
+  .hero-signal-live{
+    display:inline-block;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--gold);
+    flex-shrink:0;
+    box-shadow:0 0 8px rgba(232,185,106,.55);
+    animation:signalPulse 2.4s ease-in-out infinite;
+  }
+  @keyframes signalPulse{
+    0%,100%{opacity:1;box-shadow:0 0 8px rgba(232,185,106,.5);}
+    50%{opacity:.65;box-shadow:0 0 16px rgba(232,185,106,.85);}
   }
   @keyframes heroMoodReelSettle{
     0%{
@@ -4868,6 +4899,11 @@
     color:rgba(232,185,106,.76);
     background:rgba(253,246,236,.02);
   }
+  .hero-signal-preview{
+    justify-content:center;
+    width:100%;
+    margin-top:1.5rem;
+  }
   .cta-group{
     justify-content:center;
     gap:.85rem;
@@ -5668,54 +5704,10 @@
       </div>
     </div>
 
-    <div class="hero-pulse-strip" id="hero-pulse-strip" aria-label="Jamaica Pulse preview">
-      <div class="hero-pulse-bar">
-        <div class="hero-pulse-selector watchful-lockup" id="hero-watchful-lockup" aria-hidden="true">
-          <p class="hero-pulse-kicker">Live mood</p>
-          <div class="hero-mood-reel">
-            <div class="hero-mood-reel-track">
-              <span class="hero-mood-reel-item"><span class="hero-mood-reel-emoji">🙂</span></span>
-              <span class="hero-mood-reel-item"><span class="hero-mood-reel-emoji">😌</span></span>
-              <span class="hero-mood-reel-item"><span class="hero-mood-reel-emoji">😐</span></span>
-              <span class="hero-mood-reel-item is-active"><span class="hero-mood-reel-emoji" id="hero-pulse-emoji">👀</span></span>
-              <span class="hero-mood-reel-item"><span class="hero-mood-reel-emoji">😬</span></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-pulse-summary">
-          <div class="hero-pulse-summary-head">
-            <span class="hero-pulse-reading-label">Current read</span>
-            <div class="hero-pulse-heading-row">
-              <strong class="hero-pulse-label" id="hero-pulse-label">Watchful</strong>
-              <span class="hero-pulse-score">Mood score <strong id="hero-pulse-score-value">0</strong> / 100</span>
-            </div>
-          </div>
-          <p class="hero-pulse-copy" id="hero-pulse-interpretation">Jamaica feels alert, socially aware, and slightly guarded right now.</p>
-        </div>
-
-        <div class="hero-pulse-meter-zone">
-          <div class="hero-pulse-meter" aria-label="Jamaica pulse spectrum">
-            <div class="hero-pulse-meter-track">
-              <span class="hero-pulse-meter-fill" aria-hidden="true"></span>
-              <span class="hero-pulse-meter-marker" aria-hidden="true"></span>
-            </div>
-            <div class="hero-pulse-states">
-              <span class="hero-pulse-state" data-pulse-state="calm">Calm</span>
-              <span class="hero-pulse-state" data-pulse-state="open">Open</span>
-              <span class="hero-pulse-state" data-pulse-state="mixed">Mixed</span>
-              <span class="hero-pulse-state" data-pulse-state="watchful">Watchful</span>
-              <span class="hero-pulse-state" data-pulse-state="tense">Tense</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <p class="hero-pulse-support">
-        <span class="hero-pulse-support-item"><strong>Shaped by:</strong> <span id="hero-pulse-drivers">cost pressure, guarded trust, active cultural energy</span></span>
-        <span class="hero-pulse-divider" aria-hidden="true"></span>
-        <span class="hero-pulse-support-item"><strong>Updated:</strong> <span id="hero-pulse-updated">April 9</span></span>
-      </p>
-    </div>
+    <p class="hero-signal-preview" aria-live="polite">
+      <span class="hero-signal-live" aria-hidden="true"></span>
+      Live signal &mdash; <strong id="hero-pulse-label">Watchful</strong> &middot; <strong id="hero-pulse-score-value">64</strong>&thinsp;/&thinsp;100
+    </p>
 
     <div class="cta-group">
       <a href="#jamaica-pulse" class="btn-primary" id="hero-pulse-cta" data-open-pulse="true">Explore the Pulse</a>
@@ -5766,7 +5758,7 @@
 </section>
 
 <!-- -- STRIP ----------------------------------------------------------------- -->
-<section class="author" hidden data-home-disabled="true">
+<section class="author">
   <div class="container">
     <div class="author-grid">
       <div class="author-visual reveal">
