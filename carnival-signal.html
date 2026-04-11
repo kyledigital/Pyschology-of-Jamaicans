@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carnival Signal | Jamaica Pulse Experimental</title>
+  <meta name="description" content="Carnival Signal is a vibrant Jamaica Pulse experimental page that reads the mood, movement, pressure, and awareness around Jamaica Carnival right now.">
+  <meta name="theme-color" content="#143227">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@400;500;700&family=Syne:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="carnival-signal.css">
+  <script src="carnival-signal.js" defer></script>
+</head>
+<body data-theme="pulse">
+  <div class="page-shell">
+    <div class="ambient ambient-one" aria-hidden="true"></div>
+    <div class="ambient ambient-two" aria-hidden="true"></div>
+    <div class="ambient ambient-three" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand-lockup" href="index.html#jamaica-pulse" aria-label="Back to Jamaica Pulse">
+        <span class="brand-kicker">Jamaica Pulse</span>
+        <span class="brand-title">Carnival Signal</span>
+      </a>
+      <div class="topbar-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="true">
+          <span class="theme-toggle-kicker">Theme</span>
+          <span class="theme-toggle-label">Pulse green</span>
+        </button>
+        <a class="home-link" href="index.html#jamaica-pulse">Back to Jamaica Pulse</a>
+      </div>
+    </header>
+
+    <section class="energy-ribbon reveal is-visible" aria-label="Live carnival indicators">
+      <div class="ribbon-track">
+        <span class="ribbon-chip">Live signal <strong>78 / 100</strong></span>
+        <span class="ribbon-chip">Mood <strong>Charged</strong></span>
+        <span class="ribbon-chip">Crowd <strong>Rising</strong></span>
+        <span class="ribbon-chip">Sound <strong>Heavy soca + dancehall</strong></span>
+        <span class="ribbon-chip">Visibility <strong>High</strong></span>
+        <span class="ribbon-chip">Heat <strong>Bold and social</strong></span>
+        <span class="ribbon-chip">Live signal <strong>78 / 100</strong></span>
+        <span class="ribbon-chip">Mood <strong>Charged</strong></span>
+        <span class="ribbon-chip">Crowd <strong>Rising</strong></span>
+        <span class="ribbon-chip">Sound <strong>Heavy soca + dancehall</strong></span>
+        <span class="ribbon-chip">Visibility <strong>High</strong></span>
+        <span class="ribbon-chip">Heat <strong>Bold and social</strong></span>
+      </div>
+    </section>
+
+    <main class="page-content">
+      <section class="hero section-panel reveal is-visible" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Live carnival dashboard</p>
+          <h1 id="page-title">A brighter read on Carnival energy.</h1>
+          <p class="hero-subheadline">Colour, pressure, movement, and mood in one fast-moving page.</p>
+          <p class="hero-support">This experimental view turns Jamaica Carnival into a modern signal board so you can catch the feeling quickly, not just read about it slowly.</p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#featured-signal">Open the live signal</a>
+            <a class="button button-secondary" href="index.html#buy">Get the full guide</a>
+          </div>
+
+          <div class="hero-stat-row" aria-label="Quick carnival stats">
+            <article class="hero-stat">
+              <span>Visibility</span>
+              <strong>High</strong>
+            </article>
+            <article class="hero-stat">
+              <span>Pressure</span>
+              <strong>Climbing</strong>
+            </article>
+            <article class="hero-stat">
+              <span>Feel</span>
+              <strong>Magnetic</strong>
+            </article>
+          </div>
+
+          <p class="hero-footnote">Bright. Magnetic. A little unpredictable.</p>
+        </div>
+
+        <aside class="hero-note" aria-label="Live signal note">
+          <span class="mini-tag">Live board</span>
+          <p class="hero-quote">Colour first. Pressure second. Awareness always.</p>
+
+          <div class="hero-beacon" aria-label="Signal intensity">
+            <span class="beacon-label">Signal intensity</span>
+            <strong>78 / 100</strong>
+            <p>Climbing toward peak road energy tonight.</p>
+          </div>
+
+          <div class="aspect-list" aria-label="Signal dimensions">
+            <span class="aspect-chip">Mood</span>
+            <span class="aspect-chip">Energy</span>
+            <span class="aspect-chip">Behaviour</span>
+            <span class="aspect-chip">Pressure</span>
+            <span class="aspect-chip">Awareness</span>
+          </div>
+          <p class="hero-note-copy">The road feels louder, more photogenic, and more performative right now. Fun is winning, but people are still reading the room while they move through it.</p>
+        </aside>
+      </section>
+
+      <section class="featured-section section-panel reveal" id="featured-signal" aria-labelledby="featured-title">
+        <div class="section-copy">
+          <span class="section-tag">Live road signal</span>
+          <h2 id="featured-title">Tonight is loud, social, and highly visible.</h2>
+          <p>This is less a prediction than a pulse check. The page reads the atmosphere so you can feel how Carnival is moving before you step into it.</p>
+        </div>
+
+        <div class="signal-card">
+          <div class="signal-top">
+            <div>
+              <span class="signal-label">Mood</span>
+              <div class="signal-lockup">
+                <span class="signal-emoji" aria-hidden="true">&#9889;</span>
+                <strong>Charged</strong>
+              </div>
+            </div>
+
+            <div class="signal-score-block">
+              <span class="signal-label">Score</span>
+              <strong class="signal-score">78</strong>
+            </div>
+          </div>
+
+          <div class="signal-meter" data-meter="78" aria-label="Carnival signal meter">
+            <div class="meter-track" role="img" aria-label="Signal level 78 out of 100">
+              <span class="meter-fill" aria-hidden="true"></span>
+              <span class="meter-marker" aria-hidden="true"></span>
+            </div>
+            <div class="meter-labels" aria-hidden="true">
+              <span>Muted</span>
+              <span>Balanced</span>
+              <span>Charged</span>
+              <span>Peak</span>
+            </div>
+          </div>
+
+          <div class="signal-layout">
+            <div class="signal-story">
+              <ul class="interpretation-list" aria-label="Signal interpretation">
+                <li>The island feels louder, bolder, and more visible.</li>
+                <li>People are moving for release, attention, and experience.</li>
+                <li>Excitement is high, but awareness is part of the movement.</li>
+              </ul>
+              <p class="credibility">Observed across road, fetes, and social media.</p>
+            </div>
+
+            <aside class="signal-meta">
+              <div>
+                <span class="signal-label">Shaped by</span>
+                <ul class="chip-list" aria-label="Signal drivers">
+                  <li>High turnout and visibility</li>
+                  <li>Social media pressure</li>
+                  <li>Cost pressure</li>
+                  <li>Night movement</li>
+                  <li>Music intensity</li>
+                </ul>
+              </div>
+
+              <div class="updated-row">
+                <span>Updated</span>
+                <strong>Tonight</strong>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="vibe-section section-panel reveal" aria-labelledby="vibe-title">
+        <div class="vibe-layout">
+          <div class="vibe-copy">
+            <span class="section-tag">Public vibe test</span>
+            <h2 id="vibe-title">Which word feels closest to the road right now?</h2>
+            <p>Pick your instinct first. Then the page shows where the crowd energy is clustering.</p>
+
+            <div class="option-grid" role="group" aria-label="Public vibe options">
+              <button class="vibe-option" type="button" data-option="Exciting" aria-pressed="false">Exciting</button>
+              <button class="vibe-option" type="button" data-option="Chaotic" aria-pressed="false">Chaotic</button>
+              <button class="vibe-option" type="button" data-option="Sexy" aria-pressed="false">Sexy</button>
+              <button class="vibe-option" type="button" data-option="Watchful" aria-pressed="false">Watchful</button>
+              <button class="vibe-option" type="button" data-option="Overhyped" aria-pressed="false">Overhyped</button>
+            </div>
+          </div>
+
+          <div class="results-panel" id="vibe-results" hidden aria-live="polite">
+            <div class="results-head">
+              <div>
+                <span class="mini-tag">Crowd read</span>
+                <p class="selected-read">Your pick: <strong id="selected-vibe">Exciting</strong></p>
+              </div>
+              <div class="heat-pill">
+                <span>Heat level</span>
+                <strong id="vibe-heat">Hot</strong>
+              </div>
+            </div>
+
+            <div class="result-list" aria-label="Public vibe results">
+              <div class="result-row">
+                <div class="result-meta">
+                  <span>Exciting</span>
+                  <strong class="result-value">34%</strong>
+                </div>
+                <div class="result-bar">
+                  <span class="result-bar-fill" data-value="34" aria-hidden="true"></span>
+                </div>
+              </div>
+
+              <div class="result-row">
+                <div class="result-meta">
+                  <span>Chaotic</span>
+                  <strong class="result-value">18%</strong>
+                </div>
+                <div class="result-bar">
+                  <span class="result-bar-fill" data-value="18" aria-hidden="true"></span>
+                </div>
+              </div>
+
+              <div class="result-row">
+                <div class="result-meta">
+                  <span>Sexy</span>
+                  <strong class="result-value">22%</strong>
+                </div>
+                <div class="result-bar">
+                  <span class="result-bar-fill" data-value="22" aria-hidden="true"></span>
+                </div>
+              </div>
+
+              <div class="result-row">
+                <div class="result-meta">
+                  <span>Watchful</span>
+                  <strong class="result-value">17%</strong>
+                </div>
+                <div class="result-bar">
+                  <span class="result-bar-fill" data-value="17" aria-hidden="true"></span>
+                </div>
+              </div>
+
+              <div class="result-row">
+                <div class="result-meta">
+                  <span>Overhyped</span>
+                  <strong class="result-value">9%</strong>
+                </div>
+                <div class="result-bar">
+                  <span class="result-bar-fill" data-value="9" aria-hidden="true"></span>
+                </div>
+              </div>
+            </div>
+
+            <p class="results-insight" id="vibe-insight">The crowd is leaning toward energy over calm.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="sound-section section-panel reveal" aria-labelledby="sound-title">
+        <div class="section-copy">
+          <span class="section-tag">Sound pressure</span>
+          <h2 id="sound-title">What the road is moving to right now</h2>
+          <p>Carnival energy is being pushed by soca and dancehall. This is not about playlist depth. It is about which songs are driving movement, memory, visibility, and crowd reaction.</p>
+          <p class="sound-note">Not a playlist. A cultural signal.</p>
+        </div>
+
+        <div class="sound-grid">
+          <article class="sound-card">
+            <div class="sound-card-head">
+              <span class="sound-index">01</span>
+              <a class="sound-link" href="https://open.spotify.com/search/Different%20Machel%20Montano" target="_blank" rel="noopener noreferrer">Open in Spotify</a>
+            </div>
+            <h3>Different</h3>
+            <p class="sound-artist">Machel Montano</p>
+            <p class="sound-insight">High energy anthem driving movement and crowd release</p>
+          </article>
+
+          <article class="sound-card">
+            <div class="sound-card-head">
+              <span class="sound-index">02</span>
+              <a class="sound-link" href="https://open.spotify.com/search/Famalay" target="_blank" rel="noopener noreferrer">Open in Spotify</a>
+            </div>
+            <h3>Famalay</h3>
+            <p class="sound-artist">Skinny Fabulous, Machel Montano, Bunji Garlin</p>
+            <p class="sound-insight">Strong recall and crowd reaction across fetes and road</p>
+          </article>
+
+          <article class="sound-card">
+            <div class="sound-card-head">
+              <span class="sound-index">03</span>
+              <a class="sound-link" href="https://open.spotify.com/search/Shake%20It%20To%20The%20Max" target="_blank" rel="noopener noreferrer">Open in Spotify</a>
+            </div>
+            <h3>Shake It to the Max</h3>
+            <p class="sound-artist">Moliy</p>
+            <p class="sound-insight">Blends global and Caribbean energy, very shareable</p>
+          </article>
+
+          <article class="sound-card">
+            <div class="sound-card-head">
+              <span class="sound-index">04</span>
+              <a class="sound-link" href="https://open.spotify.com/search/Party%20Nice%20Kes" target="_blank" rel="noopener noreferrer">Open in Spotify</a>
+            </div>
+            <h3>Party Nice</h3>
+            <p class="sound-artist">Kes</p>
+            <p class="sound-insight">Smooth but high energy, keeps the vibe lifted</p>
+          </article>
+
+          <article class="sound-card sound-card-wide">
+            <div class="sound-card-head">
+              <span class="sound-index">05</span>
+              <a class="sound-link" href="https://open.spotify.com/search/Talibans%20II" target="_blank" rel="noopener noreferrer">Open in Spotify</a>
+            </div>
+            <h3>Talibans II</h3>
+            <p class="sound-artist">Byron Messia</p>
+            <p class="sound-insight">Dancehall adds local identity to Carnival energy</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="street-section reveal" aria-labelledby="street-title">
+        <div class="section-copy section-copy-inline">
+          <span class="section-tag">Street notes</span>
+          <h2 id="street-title">What the road is quietly broadcasting.</h2>
+        </div>
+
+        <div class="notes-grid">
+          <article class="note-card">
+            <span class="note-index">01</span>
+            <h3>Dress energy</h3>
+            <p>Visibility is part of the experience. What people wear is expression and social positioning.</p>
+            <span class="note-pill">High visibility</span>
+          </article>
+
+          <article class="note-card">
+            <span class="note-index">02</span>
+            <h3>Crowd pressure</h3>
+            <p>As energy rises, movement tightens and space becomes less predictable.</p>
+            <span class="note-pill">Dense</span>
+          </article>
+
+          <article class="note-card">
+            <span class="note-index">03</span>
+            <h3>Safety awareness</h3>
+            <p>The vibe stays exciting but demands awareness of timing, transport, and surroundings.</p>
+            <span class="note-pill">Stay alert</span>
+          </article>
+
+          <article class="note-card">
+            <span class="note-index">04</span>
+            <h3>Social vibe</h3>
+            <p>Carnival is also about being seen, posted, and remembered.</p>
+            <span class="note-pill">Performative</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="mini-strip section-panel reveal" aria-label="Mini signal strip">
+        <div class="strip-list">
+          <article class="strip-item">
+            <span>Music pressure</span>
+            <strong>High</strong>
+          </article>
+          <article class="strip-item">
+            <span>Crowd density</span>
+            <strong>Rising</strong>
+          </article>
+          <article class="strip-item">
+            <span>Social heat</span>
+            <strong>Elevated</strong>
+          </article>
+          <article class="strip-item">
+            <span>Risk awareness</span>
+            <strong>Recommended</strong>
+          </article>
+        </div>
+      </section>
+
+      <section class="closing-panel section-panel reveal" aria-labelledby="closing-title">
+        <span class="section-tag">Move smarter</span>
+        <h2 id="closing-title">Catch the vibe before it catches you off guard.</h2>
+        <p>Carnival moves fast. The signal helps you move with more style, more context, and less guesswork.</p>
+        <div class="closing-actions">
+          <a class="button button-primary" href="index.html#buy">Explore the full guide</a>
+          <a class="button button-secondary" href="index.html#jamaica-pulse">Back to Jamaica Pulse</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Jamaica Pulse Experimental · Carnival Motion Study</p>
+    </footer>
+  </div>
+</body>
+</html>
