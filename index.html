@@ -1429,6 +1429,94 @@
     display:grid;
     gap:1rem;
   }
+  /* -- PULSE BAR (replaces pulse-summary) -- */
+  .pulse-bar{
+    display:grid;
+    grid-template-columns:minmax(90px, .38fr) minmax(0, 1.42fr) minmax(220px, .9fr);
+    align-items:center;
+    gap:1rem;
+  }
+  .pulse-selector{
+    position:relative;
+    overflow:hidden;
+    min-height:5.4rem;
+    display:grid;
+    align-content:center;
+    justify-items:center;
+    gap:.32rem;
+    padding:.62rem .55rem;
+    border-radius:18px;
+    border:1px solid rgba(253,246,236,.12);
+    background:
+      radial-gradient(circle at 50% 38%, rgba(232,185,106,.18), transparent 50%),
+      linear-gradient(180deg, rgba(253,246,236,.065), rgba(253,246,236,.02));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 10px 24px rgba(0,0,0,.16);
+  }
+  .pulse-selector .pulse-context-label{
+    position:relative;
+    z-index:1;
+    color:rgba(253,246,236,.56);
+    font-size:.52rem;
+    text-align:center;
+  }
+  .pulse-selector-body{
+    position:relative;
+    z-index:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .pulse-selector .pulse-mood-emoji{
+    font-size:clamp(1.9rem, 3.4vw, 2.6rem);
+  }
+  .pulse-bar-summary{
+    display:grid;
+    gap:.36rem;
+    min-width:0;
+  }
+  .pulse-bar-heading-row{
+    display:flex;
+    align-items:baseline;
+    gap:.72rem;
+    flex-wrap:wrap;
+  }
+  .pulse-bar .pulse-mood{
+    font-size:clamp(2rem, 3.2vw, 2.8rem);
+  }
+  .pulse-bar .pulse-interpretation{
+    margin-top:.12rem;
+  }
+  .pulse-bar-meter-zone{
+    display:grid;
+    align-self:center;
+    padding:.1rem 0;
+  }
+  .pulse-bar-footer{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:.5rem .9rem;
+    padding:.7rem 0 0;
+    border-top:1px solid rgba(253,246,236,.08);
+    font-family:var(--ui-sans);
+    font-size:.8rem;
+    color:rgba(253,246,236,.6);
+  }
+  .pulse-bar-footer strong{
+    color:rgba(253,246,236,.82);
+    font-weight:600;
+  }
+  .pulse-bar-footer-item{
+    display:inline-flex;
+    align-items:center;
+    gap:.42rem;
+  }
+  .pulse-bar-divider{
+    color:rgba(253,246,236,.22);
+    font-size:.7rem;
+    user-select:none;
+  }
+
   .pulse-summary{
     display:grid;
     gap:.9rem;
@@ -2333,6 +2421,14 @@
     .hero-pulse-meter-zone{
       grid-column:1 / -1;
     }
+    /* pulse-bar: collapse meter to full width below */
+    .pulse-bar{
+      grid-template-columns:minmax(84px, .38fr) minmax(0, 1fr);
+      gap:.85rem;
+    }
+    .pulse-bar-meter-zone{
+      grid-column:1 / -1;
+    }
     .pulse-summary-top{
       grid-template-columns:1fr;
     }
@@ -2499,6 +2595,28 @@
       padding:1.15rem;
       border-radius:24px;
     }
+    .pulse-bar{
+      grid-template-columns:minmax(76px, auto) minmax(0, 1fr);
+      gap:.72rem;
+    }
+    .pulse-selector{
+      min-height:4.8rem;
+      border-radius:14px;
+    }
+    .pulse-selector .pulse-mood-emoji{
+      font-size:1.9rem;
+    }
+    .pulse-bar-heading-row{
+      gap:.48rem;
+      align-items:baseline;
+    }
+    .pulse-bar-footer{
+      font-size:.75rem;
+      gap:.4rem .72rem;
+    }
+    .pulse-bar-divider{
+      display:none;
+    }
     .pulse-mood{
       font-size:1.8rem;
     }
@@ -2542,6 +2660,24 @@
     }
   }
   @media(max-width:480px){
+    .pulse-bar{
+      grid-template-columns:64px minmax(0, 1fr);
+      gap:.6rem;
+    }
+    .pulse-selector{
+      min-height:4.2rem;
+      padding:.5rem .42rem;
+      border-radius:12px;
+    }
+    .pulse-selector .pulse-mood-emoji{
+      font-size:1.7rem;
+    }
+    .pulse-bar .pulse-mood{
+      font-size:1.65rem;
+    }
+    .pulse-bar-footer{
+      font-size:.7rem;
+    }
     .pulse-summary-top{
       gap:.58rem;
     }
@@ -5735,42 +5871,28 @@
       </div>
 
       <article class="pulse-card reveal" aria-live="polite">
-        <div class="pulse-summary">
-          <div class="pulse-summary-top">
-            <div class="pulse-mood-lockup watchful-lockup" id="pulse-watchful-lockup">
-              <span class="pulse-context-label">Live mood reader</span>
-              <div class="pulse-mood-line">
-                <span class="pulse-mood-emoji" id="pulse-mood-emoji" aria-hidden="true">👀</span>
-                <div>
-                  <span class="pulse-mood-kicker">Current read</span>
-                  <h3 class="pulse-mood" id="pulse-mood-label">Watchful</h3>
-                </div>
-              </div>
-              <div class="pulse-score-line"><span>Mood score</span><strong id="pulse-score-value">64</strong><span>/ 100</span></div>
+        <div class="pulse-bar">
+          <div class="pulse-selector watchful-lockup" id="pulse-watchful-lockup">
+            <span class="pulse-context-label">Live mood</span>
+            <div class="pulse-selector-body">
+              <span class="pulse-mood-emoji" id="pulse-mood-emoji" aria-hidden="true">👀</span>
             </div>
-            <span class="pulse-shape" id="pulse-shape">Live pulse</span>
           </div>
 
-          <div class="pulse-meter-shell">
-            <div class="pulse-meter-copy">
-              <div class="pulse-reading">
-                <span class="pulse-reading-label">Signal reading</span>
-                <div class="pulse-interpretation" id="pulse-interpretation">
-                  <span class="pulse-signal-line">Jamaica feels alert and socially aware.</span>
-                  <span class="pulse-signal-line">There is still humour and movement.</span>
-                  <span class="pulse-signal-line">People are moving more carefully as pressure builds.</span>
-                </div>
-              </div>
-              <div class="pulse-drivers-block">
-                <span class="pulse-drivers-label">Shaped by</span>
-                <div class="pulse-drivers" id="pulse-drivers">
-                  <span class="pulse-driver-chip">Cost pressure</span>
-                  <span class="pulse-driver-chip">Global fuel tension</span>
-                  <span class="pulse-driver-chip">Guarded trust</span>
-                  <span class="pulse-driver-chip">Active cultural energy</span>
-                </div>
-              </div>
+          <div class="pulse-bar-summary">
+            <span class="pulse-mood-kicker">Current read</span>
+            <div class="pulse-bar-heading-row">
+              <h3 class="pulse-mood" id="pulse-mood-label">Watchful</h3>
+              <div class="pulse-score-line"><span>Mood score</span><strong id="pulse-score-value">64</strong><span>/ 100</span></div>
             </div>
+            <div class="pulse-interpretation" id="pulse-interpretation">
+              <span class="pulse-signal-line">Jamaica feels alert and socially aware.</span>
+              <span class="pulse-signal-line">There is still humour and movement.</span>
+              <span class="pulse-signal-line">People are moving more carefully as pressure builds.</span>
+            </div>
+          </div>
+
+          <div class="pulse-bar-meter-zone">
             <div class="pulse-meter" aria-label="Jamaica pulse meter">
               <div class="pulse-meter-track">
                 <span class="pulse-meter-fill" aria-hidden="true"></span>
@@ -5785,17 +5907,24 @@
               </div>
             </div>
           </div>
-          <div class="pulse-actions">
-            <button class="pulse-toggle" id="pulse-toggle" type="button" aria-expanded="false" aria-controls="pulse-detail">Explore full pulse</button>
-            <a class="pulse-carnival-link" href="carnival-signal.html">Open Carnival Signal</a>
-          </div>
+        </div>
+
+        <div class="pulse-bar-footer">
+          <span class="pulse-bar-footer-item"><strong>Shaped by:</strong> <span id="pulse-bar-drivers">cost pressure, guarded trust, active cultural energy</span></span>
+          <span class="pulse-bar-divider" aria-hidden="true"></span>
+          <span class="pulse-bar-footer-item"><strong>Updated:</strong> <span id="pulse-updated">April 9</span></span>
+        </div>
+
+        <div class="pulse-actions">
+          <button class="pulse-toggle" id="pulse-toggle" type="button" aria-expanded="false" aria-controls="pulse-detail">Explore full pulse</button>
+          <a class="pulse-carnival-link" href="carnival-signal.html">Open Carnival Signal</a>
         </div>
 
         <div class="pulse-detail" id="pulse-detail" aria-hidden="true">
           <div class="pulse-detail-inner">
             <div class="pulse-detail-top">
               <span class="pulse-detail-kicker">Pulse breakdown</span>
-              <span class="pulse-updated" id="pulse-updated">Last updated just now</span>
+              <span class="pulse-updated">Updated <span id="pulse-detail-updated"></span></span>
             </div>
 
             <div class="pulse-detail-columns">
@@ -5812,7 +5941,17 @@
                   <strong>What it means</strong>
                   <p>The human read behind the numbers.</p>
                 </div>
-                <div class="pulse-signals" id="pulse-signals"></div>
+                <div class="pulse-signals" id="pulse-signals">
+                  <div class="pulse-drivers-block" style="padding:.4rem 0 .2rem">
+                    <span class="pulse-drivers-label">Shaped by</span>
+                    <div class="pulse-drivers" id="pulse-drivers">
+                      <span class="pulse-driver-chip">Cost pressure</span>
+                      <span class="pulse-driver-chip">Global fuel tension</span>
+                      <span class="pulse-driver-chip">Guarded trust</span>
+                      <span class="pulse-driver-chip">Active cultural energy</span>
+                    </div>
+                  </div>
+                </div>
               </section>
             </div>
           </div>
@@ -6857,6 +6996,10 @@
     if (heroInterpretationNode) heroInterpretationNode.textContent = pulse.heroInterpretation || getPulsePreviewInterpretation(interpretation);
     if (heroDriversNode) heroDriversNode.textContent = heroDriverText;
     if (heroUpdatedNode) heroUpdatedNode.textContent = formatHeroPulseDate(pulse.updatedAt);
+    const barDriversNode = document.getElementById("pulse-bar-drivers");
+    if (barDriversNode) barDriversNode.textContent = heroDriverText;
+    const barDetailUpdatedNode = document.getElementById("pulse-detail-updated");
+    if (barDetailUpdatedNode) barDetailUpdatedNode.textContent = formatHeroPulseDate(pulse.updatedAt);
     if (heroShapeNode) heroShapeNode.textContent = `${moodLabel} right now`;
     if (driversNode) {
       driversNode.innerHTML = drivers.map((driver) => `
