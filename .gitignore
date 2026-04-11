@@ -1,0 +1,10 @@
+.aidesigner/*
+!.aidesigner/.gitkeep
+.agents/
+.claude/
+.codex/
+.edge-headless/
+.mcp.json
+decode-mobile.png
+direction-logs/
+live-index.html

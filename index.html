@@ -72,6 +72,7 @@
     --scroll-progress:0%;
     --guide-safe-top:7rem;
     --guide-safe-bottom:1rem;
+    --ui-sans:ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     --texture-organic:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%231B4332' stroke-opacity='.06' stroke-width='1.1'%3E%3Cpath d='M18 122c18-16 37-19 57-10'/%3E%3Cpath d='M87 32c12 10 16 24 11 41'/%3E%3Cpath d='M115 112c12-9 24-11 37-5'/%3E%3C/g%3E%3Cg fill='%23C9963A' fill-opacity='.035'%3E%3Ccircle cx='28' cy='38' r='2.2'/%3E%3Ccircle cx='121' cy='61' r='1.8'/%3E%3Ccircle cx='73' cy='126' r='2.1'/%3E%3C/g%3E%3C/svg%3E");
     --texture-vines:url("data:image/svg+xml,%3Csvg viewBox='0 0 640 320' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%231B4332' stroke-opacity='.055' stroke-width='1.35' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M-20 214c73-47 149-57 228-31 51 17 103 18 156-6 41-19 87-48 155-40 55 7 92 31 141 67'/%3E%3Cpath d='M7 96c47 4 83 21 107 49 16 19 33 33 65 42 24 7 47 4 67-12 25-20 34-49 65-68 37-22 76-28 141-18 53 8 106 30 154 64'/%3E%3C/g%3E%3Cg fill='none' stroke='%23C9963A' stroke-opacity='.05' stroke-width='1.1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M116 153c14-9 25-23 31-41'/%3E%3Cpath d='M123 149c-6-16-5-31 3-45'/%3E%3Cpath d='M293 204c13-9 23-21 30-38'/%3E%3Cpath d='M301 200c-6-15-5-28 2-41'/%3E%3Cpath d='M470 135c14-8 24-20 29-36'/%3E%3Cpath d='M477 131c-5-13-4-26 3-39'/%3E%3Cpath d='M548 237c13-8 24-20 29-35'/%3E%3Cpath d='M555 233c-5-13-4-26 2-38'/%3E%3C/g%3E%3C/svg%3E");
   }
@@ -374,35 +375,63 @@
     --pulse-score:64;
     --pulse-score-display:0;
     position:relative;
-    margin-top:1.45rem;
-    padding:.35rem 0 .25rem;
+    margin:1.65rem auto 0;
+    width:min(100%, 920px);
+    padding:0;
     animation:fadeUp .9s .68s ease both;
   }
   .hero-pulse-strip::before{
     content:'';
     position:absolute;
-    inset:auto 8% 0 8%;
-    height:72%;
+    inset:-18% 5% -10%;
     background:
-      radial-gradient(circle at 18% 48%, rgba(232,185,106,.06), transparent 24%),
-      radial-gradient(circle at 82% 48%, rgba(73,138,104,.08), transparent 24%);
+      radial-gradient(circle at 16% 42%, rgba(232,185,106,.16), transparent 24%),
+      radial-gradient(circle at 82% 58%, rgba(73,138,104,.14), transparent 28%);
     pointer-events:none;
-    opacity:.78;
-    filter:blur(2px);
+    opacity:.7;
+    filter:blur(16px);
   }
   .hero-pulse-strip > *{
     position:relative;
     z-index:1;
   }
-  .hero-pulse-main{
+  .hero-pulse-bar{
+    position:relative;
+    overflow:hidden;
     display:grid;
-    grid-template-columns:minmax(0, 1fr);
-    gap:.9rem;
-    align-items:start;
+    grid-template-columns:minmax(108px, .42fr) minmax(340px, 1.35fr) minmax(280px, 1fr);
+    align-items:center;
+    gap:1.15rem;
+    padding:1rem 1.1rem;
+    border-radius:30px;
+    clip-path:inset(0 round 30px);
+    border:1px solid rgba(253,246,236,.12);
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.085), rgba(255,255,255,.018) 46%, rgba(232,185,106,.045)),
+      radial-gradient(circle at 13% 18%, rgba(232,185,106,.12), transparent 24%),
+      linear-gradient(180deg, rgba(15,35,27,.94), rgba(8,20,16,.96));
+    box-shadow:0 26px 58px rgba(0,0,0,.26), inset 0 1px 0 rgba(255,255,255,.08);
+    isolation:isolate;
   }
-  .hero-pulse-intro{
-    display:grid;
-    gap:.42rem;
+  .hero-pulse-bar::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background-image:var(--texture-organic);
+    background-size:180px 180px;
+    opacity:.14;
+    pointer-events:none;
+    z-index:-1;
+  }
+  .hero-pulse-bar::after{
+    content:'';
+    position:absolute;
+    left:1rem;
+    right:1rem;
+    top:0;
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(253,246,236,.34), rgba(232,185,106,.3), transparent);
+    pointer-events:none;
   }
   .hero-pulse-kicker,
   .hero-pulse-reading-label,
@@ -416,18 +445,100 @@
   .pulse-context-label,
   .pulse-mood-kicker{
     color:var(--gold-light);
-    font-size:.56rem;
-    letter-spacing:.16em;
+    font-size:.54rem;
+    letter-spacing:.15em;
   }
-  .hero-pulse-kicker,
-  .hero-pulse-help{
+  .hero-pulse-kicker{
     margin:0;
   }
-  .hero-pulse-lockup{
+  .hero-pulse-selector{
+    --reel-final:-7.98rem;
+    --reel-step:2.9rem;
+    position:relative;
+    overflow:hidden;
+    min-height:5.7rem;
+    display:grid;
+    align-content:center;
+    gap:.35rem;
+    padding:.62rem .58rem;
+    border-radius:22px;
+    border:1px solid rgba(253,246,236,.12);
+    background:
+      radial-gradient(circle at 50% 38%, rgba(232,185,106,.16), transparent 44%),
+      linear-gradient(180deg, rgba(253,246,236,.06), rgba(253,246,236,.018));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.07), inset 0 -16px 28px rgba(0,0,0,.12);
+    touch-action:pan-y;
+  }
+  .hero-pulse-selector::before{
+    content:'';
+    position:absolute;
+    inset:.45rem;
+    border-radius:18px;
+    background:radial-gradient(circle at var(--watch-x) var(--watch-y), rgba(253,246,236,.12), transparent 54%);
+    opacity:.65;
+    pointer-events:none;
+  }
+  .hero-pulse-selector::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    border-radius:inherit;
+    background:linear-gradient(90deg, rgba(255,255,255,.08), transparent 20% 78%, rgba(255,255,255,.04));
+    opacity:.42;
+    pointer-events:none;
+  }
+  .hero-pulse-selector .hero-pulse-kicker{
+    position:relative;
+    z-index:2;
+    color:rgba(253,246,236,.58);
+    font-size:.48rem;
+    letter-spacing:.12em;
+    text-align:center;
+  }
+  .hero-mood-reel{
+    position:relative;
+    z-index:1;
+    height:4.35rem;
+    overflow:hidden;
+    border-radius:12px;
+    -webkit-mask-image:linear-gradient(180deg, transparent, #000 22%, #000 78%, transparent);
+    mask-image:linear-gradient(180deg, transparent, #000 22%, #000 78%, transparent);
+  }
+  .hero-mood-reel-track{
+    display:grid;
+    transform:translateY(var(--reel-final));
+    animation:heroMoodReelSettle 1.15s cubic-bezier(.19,.9,.2,1) .18s both;
+    will-change:transform, filter;
+  }
+  .hero-mood-reel-item{
+    height:var(--reel-step);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:rgba(253,246,236,.44);
+    filter:blur(.7px);
+    opacity:.24;
+    transform:scale(.88);
+    transition:opacity .24s ease, filter .24s ease, transform .24s ease;
+  }
+  .hero-mood-reel-item.is-active{
+    color:var(--cream);
+    filter:none;
+    opacity:1;
+    transform:scale(1);
+  }
+  .hero-mood-reel-emoji{
+    position:relative;
     display:inline-flex;
     align-items:center;
-    gap:.8rem;
-    flex-wrap:wrap;
+    justify-content:center;
+    min-width:2.3rem;
+    font-size:2.15rem;
+    line-height:1;
+    transform:translate3d(calc(var(--watch-look-x) * .32), calc(var(--watch-look-y) * .24), 0) rotate(var(--watch-tilt));
+    transform-origin:center;
+    filter:drop-shadow(0 9px 16px rgba(0,0,0,.2));
+    transition:transform .24s ease, filter .3s ease;
   }
   .watchful-lockup{
     --watch-x:50%;
@@ -479,48 +590,70 @@
     opacity:.72;
     transform:translateY(-50%) scale(1);
   }
-  .hero-pulse-mood{
-    display:inline-flex;
-    align-items:center;
-    gap:.45rem;
-    font-family:'Playfair Display',Georgia,serif;
-    font-size:clamp(2rem, 3vw, 2.9rem);
-    line-height:.94;
-    color:var(--cream);
-    transform:translate3d(var(--watch-shift-x), var(--watch-shift-y), 0);
-    transition:transform .24s ease, text-shadow .28s ease, color .28s ease;
+  .hero-pulse-selector.watchful-lockup::before{
+    inset:.45rem;
+    height:auto;
+    border:0;
+    border-radius:18px;
+    background:radial-gradient(circle at var(--watch-x) var(--watch-y), rgba(253,246,236,.12), transparent 54%);
+    opacity:.65;
+    transform:none;
+    z-index:0;
   }
-  .hero-pulse-mood-text{
-    display:grid;
-    gap:.16rem;
+  .hero-pulse-selector.watchful-lockup::after{
+    inset:0;
+    left:auto;
+    top:auto;
+    width:auto;
+    height:auto;
+    border-radius:inherit;
+    background:
+      linear-gradient(90deg, rgba(255,255,255,.07), transparent 23% 77%, rgba(255,255,255,.045)),
+      linear-gradient(180deg, rgba(255,255,255,.04), transparent 42%);
+    opacity:.5;
+    transform:none;
+    z-index:0;
   }
-  .hero-pulse-mood-text span{
-    color:rgba(253,246,236,.56);
-    font-family:'Space Mono',monospace;
-    font-size:.28em;
-    letter-spacing:.14em;
-    line-height:1;
-    text-transform:uppercase;
+  .hero-pulse-selector.watchful-lockup.is-watchful:hover::before,
+  .hero-pulse-selector.watchful-lockup.is-watchful:focus-within::before{
+    opacity:.88;
+    transform:none;
   }
-  .hero-pulse-mood strong{
-    font-size:1em;
-    color:var(--cream);
-    transition:color .28s ease, text-shadow .28s ease, letter-spacing .28s ease;
+  .hero-pulse-selector.watchful-lockup.is-watchful:hover::after,
+  .hero-pulse-selector.watchful-lockup.is-watchful:focus-within::after{
+    opacity:.56;
+    transform:none;
   }
-  .hero-pulse-emoji{
+  .hero-pulse-summary{
     position:relative;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    font-size:.92em;
-    line-height:1;
-    transform:translate3d(calc(var(--watch-shift-x) * .32 + var(--watch-look-x)), calc(var(--watch-shift-y) * .24 + var(--watch-look-y)), 0) rotate(var(--watch-tilt));
-    transform-origin:center;
-    filter:drop-shadow(0 6px 12px rgba(0,0,0,.18));
-    transition:transform .22s ease, filter .3s ease;
-    animation:watchfulFloat 4.8s ease-in-out infinite;
+    min-width:0;
+    display:grid;
+    gap:.42rem;
+    align-content:center;
+    text-align:left;
   }
-  .hero-pulse-emoji::before,
+  .hero-pulse-summary-head{
+    display:grid;
+    gap:.42rem;
+    min-width:0;
+  }
+  .hero-pulse-heading-row{
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:.8rem;
+    min-width:0;
+    flex-wrap:wrap;
+  }
+  .hero-pulse-label{
+    font-family:'Playfair Display',Georgia,serif;
+    font-size:2.62rem;
+    line-height:.92;
+    color:var(--cream);
+    letter-spacing:0;
+    transition:color .28s ease, text-shadow .28s ease;
+  }
+  .hero-mood-reel-emoji::before,
   .pulse-mood-emoji::before{
     content:'';
     position:absolute;
@@ -532,92 +665,110 @@
     animation:watchfulHalo 3.4s ease-in-out infinite;
     pointer-events:none;
   }
-  .watchful-lockup.is-watchful:hover .hero-pulse-mood,
+  .watchful-lockup.is-watchful:hover .hero-pulse-label,
   .watchful-lockup.is-watchful:hover .pulse-mood-line,
-  .watchful-lockup.is-watchful:focus-within .hero-pulse-mood,
+  .watchful-lockup.is-watchful:focus-within .hero-pulse-label,
   .watchful-lockup.is-watchful:focus-within .pulse-mood-line{
     text-shadow:0 10px 24px rgba(0,0,0,.16);
   }
-  .watchful-lockup.is-watchful:hover .hero-pulse-mood strong,
+  .watchful-lockup.is-watchful:hover .hero-pulse-label,
   .watchful-lockup.is-watchful:hover .pulse-mood,
-  .watchful-lockup.is-watchful:focus-within .hero-pulse-mood strong,
+  .watchful-lockup.is-watchful:focus-within .hero-pulse-label,
   .watchful-lockup.is-watchful:focus-within .pulse-mood{
     color:#fff5e8;
     text-shadow:0 0 18px rgba(232,185,106,.12);
-    letter-spacing:.01em;
   }
-  .watchful-lockup.is-watchful:hover .hero-pulse-emoji,
+  .watchful-lockup.is-watchful:hover .hero-mood-reel-emoji,
   .watchful-lockup.is-watchful:hover .pulse-mood-emoji,
-  .watchful-lockup.is-watchful:focus-within .hero-pulse-emoji,
+  .watchful-lockup.is-watchful:focus-within .hero-mood-reel-emoji,
   .watchful-lockup.is-watchful:focus-within .pulse-mood-emoji{
     filter:drop-shadow(0 10px 18px rgba(232,185,106,.18));
-    animation-play-state:paused;
   }
   .hero-pulse-score{
+    display:inline-flex;
+    align-items:center;
+    gap:.36rem;
+    padding:.36rem .56rem .34rem .62rem;
+    border-radius:8px;
+    border:1px solid rgba(253,246,236,.12);
+    background:
+      linear-gradient(135deg, rgba(253,246,236,.07), rgba(253,246,236,.018)),
+      radial-gradient(circle at 68% 42%, rgba(232,185,106,.1), transparent 58%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 10px 22px rgba(0,0,0,.12);
     font-family:'Space Mono',monospace;
-    font-size:.72rem;
+    font-size:.66rem;
     letter-spacing:.12em;
     text-transform:uppercase;
     color:rgba(253,246,236,.62);
     white-space:nowrap;
-    transform:translateY(.12rem);
   }
   .hero-pulse-score strong{
+    display:inline-flex;
+    justify-content:flex-end;
+    min-width:2ch;
     color:var(--cream);
     font-size:1.05rem;
+    font-variant-numeric:tabular-nums;
+    font-feature-settings:"tnum" 1;
+    transform-origin:center bottom;
+    transition:color .2s ease, text-shadow .2s ease, transform .2s ease;
+    will-change:contents, transform;
   }
-  .hero-pulse-meter-shell{
+  #hero-pulse-score-value.is-counting{
+    color:#fff4df;
+    text-shadow:0 0 16px rgba(232,185,106,.24), 0 8px 18px rgba(0,0,0,.28);
+    animation:heroScoreReadout 1.45s cubic-bezier(.19,.9,.22,1) both;
+  }
+  .hero-pulse-copy{
+    color:rgba(253,246,236,.74);
+    font-family:'Lora',Georgia,serif;
+    font-size:.96rem;
+    line-height:1.5;
+    max-width:37rem;
+    margin:0;
+  }
+  .hero-pulse-copy::before{
+    display:none;
+  }
+  .hero-pulse-meter-zone{
     position:relative;
     overflow:hidden;
+    min-width:0;
     display:grid;
-    grid-template-columns:minmax(0, 1.08fr) minmax(260px, .92fr);
-    gap:1.25rem;
-    align-items:end;
-    padding:.95rem 1rem .82rem;
-    border-radius:24px;
-    border:1px solid rgba(253,246,236,.08);
+    gap:.72rem;
+    padding:.92rem 1.05rem .82rem;
+    border-radius:22px;
+    border:1px solid rgba(253,246,236,.16);
     background:
-      radial-gradient(circle at top right, rgba(232,185,106,.1), transparent 28%),
-      linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.04), 0 18px 40px rgba(0,0,0,.14);
+      linear-gradient(135deg, rgba(253,246,236,.105), rgba(253,246,236,.022) 52%, rgba(232,185,106,.045)),
+      radial-gradient(circle at 76% 4%, rgba(232,185,106,.2), transparent 36%),
+      linear-gradient(180deg, rgba(6,17,13,.28), rgba(6,17,13,.08));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.12), inset 0 -1px 0 rgba(255,255,255,.04), 0 16px 34px rgba(0,0,0,.16);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
   }
-  .hero-pulse-meter-shell::before{
+  .hero-pulse-meter-zone::before{
     content:'';
     position:absolute;
-    top:0;
-    left:1rem;
-    right:1rem;
-    height:1px;
-    background:linear-gradient(90deg, rgba(232,185,106,.48), rgba(232,185,106,.06), transparent);
-    opacity:.7;
+    inset:0;
+    border-radius:inherit;
+    background:
+      linear-gradient(120deg, rgba(255,255,255,.11), transparent 28% 72%, rgba(255,255,255,.035)),
+      linear-gradient(90deg, rgba(253,246,236,.04), transparent);
+    opacity:.62;
     pointer-events:none;
-  }
-  .hero-pulse-meter-shell::after{
-    content:'';
-    position:absolute;
-    inset:auto auto -32% -2%;
-    width:10rem;
-    height:10rem;
-    border-radius:50%;
-    background:radial-gradient(circle, rgba(73,138,104,.12), transparent 72%);
-    filter:blur(6px);
-    pointer-events:none;
-  }
-  .hero-pulse-meter-copy{
-    display:grid;
-    gap:.4rem;
-    align-self:stretch;
-    padding-right:.15rem;
   }
   .hero-pulse-meter{
+    position:relative;
+    z-index:1;
     display:grid;
-    gap:.4rem;
-    align-self:end;
-    padding:.3rem 0 .1rem;
+    gap:.58rem;
+    align-self:center;
+    padding:.25rem .64rem .05rem;
   }
   .hero-pulse-meter-track{
     position:relative;
-    height:3px;
+    height:5px;
     border-radius:999px;
     background:
       linear-gradient(90deg,
@@ -627,7 +778,7 @@
         rgba(181,133,70,.46) 68%,
         rgba(122,60,42,.5) 100%);
     overflow:visible;
-    box-shadow:0 0 18px rgba(232,185,106,.08);
+    box-shadow:0 0 0 1px rgba(253,246,236,.055), 0 0 22px rgba(232,185,106,.1);
   }
   .hero-pulse-meter-track::after{
     content:'';
@@ -651,65 +802,114 @@
     background:linear-gradient(90deg, rgba(253,246,236,.22), rgba(253,246,236,.05));
     box-shadow:0 0 14px rgba(232,185,106,.12);
     animation:heroPulseFillGlow 3.4s ease-in-out infinite;
-    transition:width 1.18s cubic-bezier(.19,.9,.22,1);
+    transition:width 1.45s cubic-bezier(.19,.9,.22,1);
   }
   .hero-pulse-meter-marker{
     position:absolute;
     top:50%;
     left:calc(var(--pulse-score-display, 0) * 1%);
-    width:12px;
-    height:12px;
+    width:14px;
+    height:14px;
     border-radius:50%;
     background:linear-gradient(180deg, #f6d08b 0%, var(--gold) 100%);
-    border:1.5px solid rgba(10,24,18,.92);
-    box-shadow:0 0 0 4px rgba(232,185,106,.08), 0 8px 16px rgba(0,0,0,.28);
+    border:2px solid rgba(10,24,18,.92);
+    box-shadow:0 0 0 5px rgba(232,185,106,.1), 0 9px 18px rgba(0,0,0,.3);
     transform:translate(-50%, -50%);
     animation:heroPulseMarkerDrift 2.8s ease-in-out infinite;
-    transition:left 1.18s cubic-bezier(.19,.9,.22,1), box-shadow .34s ease;
+    transition:left 1.45s cubic-bezier(.19,.9,.22,1), box-shadow .34s ease;
   }
   .hero-pulse-states{
     display:grid;
-    grid-template-columns:repeat(5, minmax(0, 1fr));
-    gap:.3rem;
+    grid-template-columns:.82fr .82fr .9fr 1.22fr .86fr;
+    gap:.46rem;
+    align-items:center;
   }
   .hero-pulse-state{
+    display:inline-flex;
+    justify-content:center;
+    min-width:0;
+    padding:.16rem .1rem;
+    border-radius:6px;
     font-family:'Space Mono',monospace;
-    font-size:.48rem;
-    letter-spacing:.11em;
+    font-size:.43rem;
+    letter-spacing:.065em;
+    line-height:1;
     text-transform:uppercase;
     color:rgba(253,246,236,.4);
     text-align:center;
-    transition:color .18s ease, transform .18s ease;
+    white-space:nowrap;
+    transition:color .18s ease, transform .18s ease, background .18s ease, box-shadow .18s ease;
   }
   .hero-pulse-state.is-active{
     color:var(--gold-light);
+    background:rgba(232,185,106,.11);
+    box-shadow:inset 0 0 0 1px rgba(232,185,106,.16), 0 6px 14px rgba(0,0,0,.1);
     transform:translateY(-1px);
   }
-  .hero-pulse-copy{
-    color:rgba(253,246,236,.8);
-    font-size:.98rem;
-    line-height:1.55;
-    max-width:38ch;
-    margin:0;
-  }
-  .hero-pulse-help{
-    max-width:38rem;
-    color:rgba(253,246,236,.68);
-    font-size:.88rem;
-    line-height:1.55;
-  }
-  .hero-pulse-drivers{
+  .hero-pulse-support{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:.55rem .7rem;
+    padding:.75rem .9rem 0;
     color:rgba(253,246,236,.62);
     font-size:.78rem;
-    line-height:1.5;
+    line-height:1.45;
     margin:0;
   }
-  .hero-pulse-drivers strong{
+  .hero-pulse-support-item{
+    display:inline-flex;
+    align-items:baseline;
+    gap:.32rem;
+    min-width:0;
+    overflow-wrap:anywhere;
+  }
+  .hero-pulse-support strong{
     color:rgba(253,246,236,.82);
     font-weight:600;
   }
+  .hero-pulse-divider{
+    width:1px;
+    height:.75rem;
+    background:rgba(253,246,236,.18);
+  }
   .hero-copy > .cta-group{
     margin-top:1.35rem;
+  }
+  @keyframes heroMoodReelSettle{
+    0%{
+      transform:translateY(-2.85rem);
+      filter:blur(1.4px);
+    }
+    46%{
+      transform:translateY(-8.75rem);
+      filter:blur(.8px);
+    }
+    72%{
+      transform:translateY(-7.72rem);
+      filter:blur(.22px);
+    }
+    100%{
+      transform:translateY(var(--reel-final));
+      filter:none;
+    }
+  }
+  @keyframes heroScoreReadout{
+    0%{
+      opacity:.42;
+      transform:translateY(.24rem) scale(.9);
+      letter-spacing:.05em;
+    }
+    42%{
+      opacity:1;
+      transform:translateY(-.06rem) scale(1.04);
+    }
+    100%{
+      opacity:1;
+      transform:translateY(0) scale(1);
+      letter-spacing:.02em;
+    }
   }
   @keyframes heroPulseSweep{
     0%, 16%{
@@ -1431,7 +1631,7 @@
   .pulse-reading{
     display:grid;
     gap:.42rem;
-    max-width:30ch;
+    max-width:36ch;
   }
   .pulse-reading-label,
   .pulse-drivers-label{
@@ -1454,7 +1654,7 @@
   }
   .pulse-interpretation{
     display:grid;
-    gap:.22rem;
+    gap:0;
     margin:0;
   }
   .pulse-signal-line{
@@ -1512,36 +1712,38 @@
     justify-content:center;
     gap:.55rem;
     align-self:start;
-    padding:.82rem 1.15rem;
-    border-radius:999px;
+    min-height:2.65rem;
+    padding:.78rem 1rem;
+    border-radius:8px;
     border:1px solid rgba(253,246,236,.14);
     background:
-      linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.018)),
-      linear-gradient(90deg, rgba(232,185,106,.05), rgba(73,138,104,.04));
+      linear-gradient(135deg, rgba(253,246,236,.07), rgba(253,246,236,.018)),
+      linear-gradient(90deg, rgba(232,185,106,.04), rgba(73,138,104,.045));
     color:var(--cream);
-    font-family:'Space Mono',monospace;
-    font-size:.6rem;
-    letter-spacing:.14em;
+    font-family:var(--ui-sans);
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:.04em;
     text-transform:uppercase;
     cursor:pointer;
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 10px 24px rgba(0,0,0,.14);
-    transition:border-color .24s ease, background .24s ease, transform .24s ease, box-shadow .24s ease;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 10px 24px rgba(0,0,0,.14);
+    transition:border-color .24s ease, background .24s ease, transform .24s ease, box-shadow .24s ease, color .24s ease;
   }
   .pulse-carnival-link{
     background:
-      linear-gradient(180deg, rgba(232,185,106,.16), rgba(232,185,106,.07)),
-      linear-gradient(90deg, rgba(73,138,104,.1), rgba(232,185,106,.08));
-    color:var(--gold-light);
+      linear-gradient(135deg, rgba(232,185,106,.22), rgba(232,185,106,.075)),
+      linear-gradient(90deg, rgba(73,138,104,.16), rgba(232,185,106,.08));
+    color:#fff1d8;
     text-decoration:none;
   }
   .pulse-toggle:hover,
   .pulse-carnival-link:hover{
-    border-color:rgba(232,185,106,.34);
+    border-color:rgba(232,185,106,.42);
     background:
-      linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.026)),
-      linear-gradient(90deg, rgba(232,185,106,.08), rgba(73,138,104,.05));
-    transform:translateY(-1px);
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 14px 28px rgba(0,0,0,.16), 0 0 0 1px rgba(232,185,106,.06);
+      linear-gradient(135deg, rgba(255,255,255,.1), rgba(255,255,255,.028)),
+      linear-gradient(90deg, rgba(232,185,106,.13), rgba(73,138,104,.08));
+    transform:translateY(-2px);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 16px 30px rgba(0,0,0,.2), 0 0 0 3px rgba(232,185,106,.06);
   }
   .pulse-carnival-link:hover{
     color:var(--cream);
@@ -1556,6 +1758,10 @@
     content:'\2192';
     font-size:.82rem;
     line-height:1;
+    transition:transform .24s ease;
+  }
+  .pulse-carnival-link:hover::after{
+    transform:translateX(3px);
   }
   .pulse-toggle[aria-expanded="true"]::after{
     transform:rotate(180deg);
@@ -1574,14 +1780,14 @@
     opacity:1;
     transform:none;
     border-top-color:rgba(253,246,236,.08);
-    padding-top:1rem;
+    padding-top:.82rem;
     pointer-events:auto;
   }
   .pulse-detail-inner{
     overflow:hidden;
     min-height:0;
     display:grid;
-    gap:1rem;
+    gap:.78rem;
   }
   .pulse-detail-top{
     display:flex;
@@ -1592,22 +1798,23 @@
   }
   .pulse-detail-columns{
     display:grid;
-    grid-template-columns:minmax(0, .78fr) minmax(0, 1.22fr);
-    gap:1.15rem;
+    grid-template-columns:minmax(230px, .72fr) minmax(0, 1.28fr);
+    gap:.82rem;
     align-items:start;
   }
   .pulse-detail-block{
     position:relative;
     overflow:hidden;
     display:grid;
-    gap:.95rem;
-    padding:1.05rem;
-    border-radius:26px;
+    gap:.66rem;
+    padding:.82rem;
+    border-radius:18px;
     border:1px solid rgba(253,246,236,.1);
     background:
       radial-gradient(circle at top right, rgba(232,185,106,.1), transparent 28%),
       linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
     box-shadow:inset 0 1px 0 rgba(255,255,255,.04), 0 18px 44px rgba(0,0,0,.16);
+    font-family:var(--ui-sans);
   }
   .pulse-detail-block::before{
     content:'';
@@ -1642,22 +1849,26 @@
     background:radial-gradient(circle, rgba(73,138,104,.1), transparent 72%);
   }
   .pulse-detail-section-head{
-    display:grid;
-    gap:.38rem;
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:.75rem;
   }
   .pulse-detail-section-head strong{
     font-family:'Space Mono',monospace;
-    font-size:.54rem;
-    letter-spacing:.16em;
+    font-size:.48rem;
+    letter-spacing:.13em;
     text-transform:uppercase;
     color:var(--gold-light);
+    white-space:nowrap;
   }
   .pulse-detail-section-head p{
     color:rgba(253,246,236,.7);
-    font-size:.86rem;
-    line-height:1.6;
+    font-size:.74rem;
+    line-height:1.45;
     margin:0;
-    max-width:34ch;
+    max-width:28ch;
+    text-align:right;
   }
   .pulse-detail-kicker,
   .pulse-updated{
@@ -1682,20 +1893,27 @@
   }
   .pulse-metrics{
     display:grid;
-    grid-template-columns:repeat(2, minmax(0, 1fr));
-    gap:.8rem;
+    grid-template-columns:1fr;
+    gap:.42rem;
   }
   .pulse-metric{
     position:relative;
     overflow:hidden;
-    padding:1.05rem 1rem;
-    border-radius:22px;
+    display:grid;
+    grid-template-columns:2.35rem minmax(0, 1fr) auto;
+    grid-template-areas:
+      "icon label value"
+      "icon note value";
+    align-items:center;
+    gap:.16rem .7rem;
+    padding:.62rem .68rem .62rem .62rem;
+    border-radius:14px;
     border:1px solid rgba(253,246,236,.1);
     background:
       linear-gradient(180deg, rgba(253,246,236,.055), rgba(253,246,236,.02)),
       radial-gradient(circle at top right, rgba(232,185,106,.08), transparent 30%);
     box-shadow:0 12px 28px rgba(0,0,0,.12);
-    min-height:100%;
+    min-height:0;
     transition:transform .24s ease, border-color .24s ease, box-shadow .24s ease, opacity .3s ease, filter .3s ease;
   }
   .pulse-metric::before{
@@ -1707,10 +1925,19 @@
     height:1px;
     background:linear-gradient(90deg, rgba(232,185,106,.5), transparent 70%);
     opacity:.7;
+    pointer-events:none;
+  }
+  .pulse-metric::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    border-radius:inherit;
+    pointer-events:none;
+    box-shadow:inset 0 0 0 1px rgba(253,246,236,.03);
   }
   .pulse-metric:nth-child(1){
-    grid-column:1 / -1;
-    padding:1.2rem 1.15rem 1.1rem;
+    grid-column:auto;
+    padding:.72rem .76rem .72rem .68rem;
     background:
       radial-gradient(circle at top right, rgba(232,185,106,.14), transparent 34%),
       linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.022));
@@ -1718,25 +1945,74 @@
   .pulse-metric:nth-child(1) .pulse-metric-label{
     color:var(--gold-light);
   }
+  .pulse-metric-icon{
+    position:relative;
+    overflow:hidden;
+    grid-area:icon;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:2.12rem;
+    height:2.12rem;
+    border-radius:999px;
+    border:1px solid rgba(232,185,106,.16);
+    background:
+      radial-gradient(circle at 50% 44%, rgba(232,185,106,.2), transparent 58%),
+      radial-gradient(circle, rgba(250,247,242,.08), rgba(250,247,242,.025));
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 10px 18px rgba(0,0,0,.12);
+    font-size:1.08rem;
+    line-height:1;
+    transform-origin:center;
+    animation:pulseMetricTile 4.8s ease-in-out infinite;
+    clip-path:circle(50% at 50% 50%);
+  }
+  .pulse-metric-icon-inner{
+    display:inline-block;
+    transform-origin:center;
+    filter:drop-shadow(0 2px 6px rgba(0,0,0,.16));
+    animation:pulseMetricSignal 4.8s ease-in-out infinite;
+  }
+  .pulse-metric:nth-child(2) .pulse-metric-icon,
+  .pulse-metric:nth-child(2) .pulse-metric-icon-inner{animation-delay:.18s;}
+  .pulse-metric:nth-child(3) .pulse-metric-icon,
+  .pulse-metric:nth-child(3) .pulse-metric-icon-inner{animation-delay:.36s;}
+  .pulse-metric:nth-child(4) .pulse-metric-icon,
+  .pulse-metric:nth-child(4) .pulse-metric-icon-inner{animation-delay:.54s;}
+  .pulse-metric:nth-child(5) .pulse-metric-icon,
+  .pulse-metric:nth-child(5) .pulse-metric-icon-inner{animation-delay:.72s;}
+  .pulse-metric:nth-child(6) .pulse-metric-icon,
+  .pulse-metric:nth-child(6) .pulse-metric-icon-inner{animation-delay:.9s;}
   .pulse-metric-label{
     display:block;
-    font-family:'Space Mono',monospace;
-    font-size:.55rem;
-    letter-spacing:.16em;
+    grid-area:label;
+    font-family:var(--ui-sans);
+    font-weight:700;
+    font-size:.47rem;
+    letter-spacing:.08em;
     text-transform:uppercase;
     color:rgba(232,185,106,.78);
   }
   .pulse-metric-value{
-    display:block;
-    margin-top:.55rem;
-    font-family:'Playfair Display',Georgia,serif;
-    font-size:1.3rem;
+    display:inline-flex;
+    align-items:center;
+    justify-content:flex-end;
+    grid-area:value;
+    margin-top:0;
+    font-family:var(--ui-sans);
+    font-size:.92rem;
+    font-weight:800;
     line-height:1.15;
     color:var(--cream);
+    text-align:right;
+    white-space:nowrap;
+    padding:.28rem .5rem .3rem;
+    border-radius:8px;
+    border:1px solid rgba(253,246,236,.1);
+    background:rgba(253,246,236,.045);
     will-change:transform, opacity;
   }
   .pulse-metric:nth-child(1) .pulse-metric-value{
-    font-size:2rem;
+    font-size:1rem;
   }
   .pulse-metric-value.is-counting,
   #pulse-score-value.is-counting,
@@ -1745,10 +2021,11 @@
   }
   .pulse-metric-note{
     display:block;
-    margin-top:.42rem;
+    grid-area:note;
+    margin-top:0;
     color:rgba(253,246,236,.62);
-    font-size:.78rem;
-    line-height:1.5;
+    font-size:.68rem;
+    line-height:1.32;
   }
   .pulse-metric:hover{
     transform:translateY(-2px);
@@ -1757,21 +2034,21 @@
   }
   .pulse-signals{
     display:grid;
-    grid-template-columns:repeat(12, minmax(0, 1fr));
-    gap:.9rem;
+    grid-template-columns:1fr;
+    gap:.5rem;
   }
   .pulse-signal-card{
     position:relative;
     overflow:hidden;
-    grid-column:span 6;
-    padding:1.1rem 1rem 1rem;
-    border-radius:24px;
+    grid-column:1 / -1;
+    padding:.72rem .82rem .68rem;
+    border-radius:16px;
     border:1px solid rgba(253,246,236,.1);
     background:linear-gradient(180deg, rgba(253,246,236,.05), rgba(253,246,236,.025));
     box-shadow:0 18px 34px rgba(0,0,0,.16);
     display:grid;
-    gap:.82rem;
-    min-height:100%;
+    gap:.48rem;
+    min-height:0;
     transition:transform .26s ease, border-color .26s ease, box-shadow .26s ease, opacity .3s ease, filter .3s ease;
   }
   .pulse-signal-card.is-collapsible{
@@ -1791,22 +2068,22 @@
     content:'';
     position:absolute;
     inset:auto auto 0 0;
-    width:5px;
-    height:44%;
+    width:3px;
+    height:58%;
     border-radius:0 999px 999px 0;
     background:linear-gradient(180deg, rgba(232,185,106,.9), rgba(232,185,106,.1));
     opacity:.8;
   }
   .pulse-signal-card:nth-child(1){
     grid-column:1 / -1;
-    padding:1.2rem 1.15rem 1.1rem;
+    padding:.78rem .86rem .74rem;
   }
   .pulse-signal-toggle{
     position:relative;
     z-index:1;
     width:100%;
     display:grid;
-    gap:.78rem;
+    gap:.42rem;
     padding:0;
     border:0;
     background:none;
@@ -1823,7 +2100,7 @@
   }
   .pulse-signal-heading{
     display:grid;
-    gap:.72rem;
+    gap:.45rem;
   }
   .pulse-signal-card[data-tone="pressure"]{
     background:
@@ -1848,21 +2125,23 @@
   .pulse-signal-meta{
     display:flex;
     align-items:center;
-    justify-content:space-between;
-    gap:.7rem;
+    justify-content:flex-start;
+    gap:.42rem;
+    flex-wrap:wrap;
   }
   .pulse-signal-toggle .pulse-signal-meta{
-    align-items:flex-start;
+    align-items:center;
   }
   .pulse-signal-type,
   .pulse-signal-weight{
     display:inline-flex;
     align-items:center;
-    padding:.36rem .66rem;
+    padding:.26rem .5rem;
     border-radius:999px;
-    font-family:'Space Mono',monospace;
-    font-size:.52rem;
-    letter-spacing:.14em;
+    font-family:var(--ui-sans);
+    font-weight:700;
+    font-size:.43rem;
+    letter-spacing:.09em;
     text-transform:uppercase;
   }
   .pulse-signal-type{
@@ -1874,6 +2153,7 @@
     border:1px solid rgba(253,246,236,.08);
     background:rgba(0,0,0,.14);
     color:rgba(253,246,236,.62);
+    margin-left:auto;
   }
   .pulse-signal-toggle .pulse-signal-weight{
     gap:.45rem;
@@ -1906,18 +2186,19 @@
     transition:opacity .24s ease;
   }
   .pulse-signal-title{
-    font-family:'Playfair Display',Georgia,serif;
-    font-size:1.12rem;
-    line-height:1.12;
+    font-family:var(--ui-sans);
+    font-size:.92rem;
+    font-weight:760;
+    line-height:1.24;
     color:var(--cream);
-    max-width:22ch;
+    max-width:36ch;
   }
   .pulse-signal-card:nth-child(1) .pulse-signal-title{
-    font-size:1.42rem;
-    max-width:20ch;
+    font-size:1rem;
+    max-width:36ch;
   }
   .pulse-signal-card.is-collapsible .pulse-signal-title{
-    max-width:18ch;
+    max-width:36ch;
   }
   .pulse-signal-panel{
     display:grid;
@@ -1933,9 +2214,16 @@
   .pulse-signal-copy{
     margin:0;
     color:rgba(253,246,236,.74);
-    font-size:.85rem;
-    line-height:1.68;
-    max-width:44ch;
+    font-family:var(--ui-sans);
+    font-size:.76rem;
+    line-height:1.45;
+    max-width:58ch;
+  }
+  .pulse-signal-card:nth-child(1) .pulse-signal-copy{
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
   }
   .pulse-signal-card.is-open .pulse-signal-panel{
     grid-template-rows:1fr;
@@ -1952,9 +2240,9 @@
     opacity:0;
   }
   .pulse-signal-card:hover{
-    transform:translateY(-3px);
+    transform:translateY(-1px);
     border-color:rgba(232,185,106,.18);
-    box-shadow:0 22px 40px rgba(0,0,0,.2);
+    box-shadow:0 14px 26px rgba(0,0,0,.16);
   }
   .pulse-signal-card.is-collapsible:hover .pulse-signal-caret,
   .pulse-signal-card.is-collapsible:focus-within .pulse-signal-caret{
@@ -1993,19 +2281,38 @@
     60%{transform:translateY(-2px) scale(1.02);opacity:1;}
     100%{transform:translateY(0) scale(1);opacity:1;}
   }
+  @keyframes pulseMetricTile{
+    0%,100%{box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 10px 18px rgba(0,0,0,.12);}
+    18%{box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 0 0 3px rgba(232,185,106,.08), 0 12px 20px rgba(0,0,0,.14);}
+  }
+  @keyframes pulseMetricSignal{
+    0%,100%{transform:translateY(0) rotate(0deg) scale(1);}
+    18%{transform:translateY(-1px) rotate(-1.2deg) scale(1.03);}
+    36%{transform:translateY(0) rotate(1deg) scale(1);}
+  }
   @keyframes watchfulHalo{
     0%,100%{opacity:.24;transform:scale(.82);}
     50%{opacity:.48;transform:scale(1);}
   }
   @media(prefers-reduced-motion:reduce){
-    .hero-pulse-emoji,
+    .hero-mood-reel-track,
+    .hero-mood-reel-emoji,
+    .pulse-metric-icon,
+    .pulse-metric-icon-inner,
     .pulse-mood-emoji{
       animation:none;
     }
+    .hero-mood-reel-track{
+      transform:translateY(var(--reel-final));
+      filter:none;
+    }
+    #hero-pulse-score-value.is-counting{
+      animation:none;
+    }
     .watchful-lockup,
-    .hero-pulse-mood,
+    .hero-pulse-label,
     .pulse-mood-line,
-    .hero-pulse-emoji,
+    .hero-mood-reel-emoji,
     .pulse-mood-emoji,
     .hero-pulse-meter-fill,
     .hero-pulse-meter-marker,
@@ -2015,19 +2322,16 @@
     }
   }
   @media(max-width:980px){
-    .hero-pulse-main{
-      grid-template-columns:1fr;
-      gap:1.1rem;
-      align-items:start;
+    .hero-pulse-strip{
+      width:min(100%, 680px);
     }
-    .hero-pulse-meter-shell{
-      grid-template-columns:1fr;
-      gap:.8rem;
-      align-items:start;
-      padding:.92rem .95rem .78rem;
+    .hero-pulse-bar{
+      grid-template-columns:minmax(108px, .45fr) minmax(0, 1fr);
+      align-items:center;
+      gap:.85rem;
     }
-    .hero-pulse-header{
-      align-items:flex-start;
+    .hero-pulse-meter-zone{
+      grid-column:1 / -1;
     }
     .pulse-summary-top{
       grid-template-columns:1fr;
@@ -2045,13 +2349,13 @@
       grid-template-columns:1fr;
     }
     .pulse-metrics{
-      grid-template-columns:repeat(2, minmax(0, 1fr));
+      grid-template-columns:1fr;
     }
     .pulse-signals{
-      grid-template-columns:repeat(2, minmax(0, 1fr));
+      grid-template-columns:1fr;
     }
     .pulse-signal-card{
-      grid-column:auto;
+      grid-column:1 / -1;
     }
     .pulse-signal-card:nth-child(1){
       grid-column:1 / -1;
@@ -2060,12 +2364,40 @@
   @media(max-width:640px){
     .hero-pulse-strip{
       margin-top:1.1rem;
-      padding:.2rem 0 .15rem;
+      width:100%;
     }
-    .hero-pulse-meter-shell{
-      padding:.82rem .84rem .72rem;
+    .hero-pulse-bar{
+      grid-template-columns:1fr;
+      padding:.78rem;
       border-radius:22px;
-      gap:.72rem;
+      gap:.78rem;
+    }
+    .hero-pulse-selector{
+      width:100%;
+      max-width:8.6rem;
+      min-height:5.7rem;
+      justify-self:center;
+    }
+    .hero-pulse-summary{
+      text-align:center;
+      justify-items:center;
+      width:100%;
+    }
+    .hero-pulse-summary-head{
+      justify-items:center;
+      width:100%;
+    }
+    .hero-pulse-heading-row{
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:.46rem .68rem;
+    }
+    .hero-pulse-label{
+      font-size:2.12rem;
+    }
+    .hero-pulse-meter-zone{
+      padding:.72rem .72rem .66rem;
+      border-radius:16px;
     }
     .pulse-meter-shell{
       padding:.84rem .86rem .74rem;
@@ -2097,28 +2429,28 @@
     .pulse-score-line strong{
       font-size:.9rem;
     }
-    .hero-pulse-lockup{
-      gap:.45rem .55rem;
-    }
-    .hero-pulse-mood{
-      font-size:1.85rem;
-    }
     .hero-pulse-score{
       font-size:.62rem;
       letter-spacing:.1em;
-      transform:none;
     }
     .hero-pulse-state{
-      font-size:.42rem;
-      letter-spacing:.08em;
+      font-size:.37rem;
+      letter-spacing:.035em;
+      padding:.14rem .06rem;
     }
     .hero-pulse-copy{
       font-size:.88rem;
       max-width:none;
-      line-height:1.48;
+      line-height:1.46;
+      text-align:center;
     }
-    .hero-pulse-drivers{
+    .hero-pulse-support{
       font-size:.72rem;
+      padding:.7rem .25rem 0;
+      gap:.4rem .55rem;
+    }
+    .hero-pulse-divider{
+      display:none;
     }
     .pulse-interpretation{
       max-width:none;
@@ -2135,6 +2467,14 @@
     .pulse-driver-chip{
       font-size:.68rem;
       padding:.32rem .52rem;
+    }
+    .pulse-detail-section-head{
+      display:grid;
+      gap:.28rem;
+    }
+    .pulse-detail-section-head p{
+      text-align:left;
+      max-width:none;
     }
     .pulse-signal-card.is-collapsible .pulse-signal-title{
       max-width:none;
@@ -2168,6 +2508,25 @@
     .pulse-metrics,
     .pulse-signals{
       grid-template-columns:1fr;
+    }
+    .pulse-metric{
+      grid-template-columns:2.05rem minmax(0, 1fr) auto;
+      gap:.14rem .54rem;
+      padding:.58rem .6rem;
+    }
+    .pulse-metric-icon{
+      width:1.88rem;
+      height:1.88rem;
+      font-size:.98rem;
+    }
+    .pulse-metric-value{
+      max-width:8.6rem;
+      font-size:.78rem;
+      white-space:normal;
+      text-wrap:balance;
+    }
+    .pulse-metric:nth-child(1) .pulse-metric-value{
+      font-size:.82rem;
     }
     .pulse-metric:nth-child(1),
     .pulse-signal-card:nth-child(1),
@@ -2210,6 +2569,21 @@
     }
     .pulse-signal-line{
       font-size:.86rem;
+    }
+    .pulse-metric{
+      grid-template-columns:1.95rem minmax(0, 1fr);
+      grid-template-areas:
+        "icon label"
+        "icon value"
+        "icon note";
+      align-items:start;
+      gap:.12rem .5rem;
+    }
+    .pulse-metric-value{
+      justify-self:start;
+      text-align:left;
+      max-width:100%;
+      margin-top:.14rem;
     }
     .pulse-driver-chip{
       font-size:.64rem;
@@ -4311,11 +4685,11 @@
   }
   .hero-inner{
     display:block;
-    width:min(700px, 100%);
+    width:min(940px, 100%);
     margin:0 auto;
   }
   .hero-copy{
-    max-width:700px;
+    max-width:940px;
     text-align:center;
     margin:0 auto;
   }
@@ -5159,22 +5533,32 @@
     </div>
 
     <div class="hero-pulse-strip" id="hero-pulse-strip" aria-label="Jamaica Pulse preview">
-      <div class="hero-pulse-main">
-        <div class="hero-pulse-intro">
-          <p class="hero-pulse-kicker">Live mood reader</p>
-          <div class="hero-pulse-lockup watchful-lockup" id="hero-watchful-lockup">
-            <span class="hero-pulse-mood"><span class="hero-pulse-emoji" id="hero-pulse-emoji" aria-hidden="true">👀</span><span class="hero-pulse-mood-text"><span>Current read</span><strong id="hero-pulse-label">Watchful</strong></span></span>
-            <span class="hero-pulse-score">Mood score <strong id="hero-pulse-score-value">64</strong> / 100</span>
+      <div class="hero-pulse-bar">
+        <div class="hero-pulse-selector watchful-lockup" id="hero-watchful-lockup" aria-hidden="true">
+          <p class="hero-pulse-kicker">Live mood</p>
+          <div class="hero-mood-reel">
+            <div class="hero-mood-reel-track">
+              <span class="hero-mood-reel-item"><span class="hero-mood-reel-emoji">🙂</span></span>
+              <span class="hero-mood-reel-item"><span class="hero-mood-reel-emoji">😌</span></span>
+              <span class="hero-mood-reel-item"><span class="hero-mood-reel-emoji">😐</span></span>
+              <span class="hero-mood-reel-item is-active"><span class="hero-mood-reel-emoji" id="hero-pulse-emoji">👀</span></span>
+              <span class="hero-mood-reel-item"><span class="hero-mood-reel-emoji">😬</span></span>
+            </div>
           </div>
-          <p class="hero-pulse-help">A quick read of the social temperature in Jamaica right now.</p>
         </div>
 
-        <div class="hero-pulse-meter-shell">
-          <div class="hero-pulse-meter-copy">
-            <span class="hero-pulse-reading-label">What that means</span>
-            <p class="hero-pulse-copy" id="hero-pulse-interpretation">Jamaica feels alert and socially aware right now.</p>
-            <p class="hero-pulse-drivers"><strong>Shaped by:</strong> <span id="hero-pulse-drivers">cost pressure, guarded trust, active cultural energy</span></p>
+        <div class="hero-pulse-summary">
+          <div class="hero-pulse-summary-head">
+            <span class="hero-pulse-reading-label">Current read</span>
+            <div class="hero-pulse-heading-row">
+              <strong class="hero-pulse-label" id="hero-pulse-label">Watchful</strong>
+              <span class="hero-pulse-score">Mood score <strong id="hero-pulse-score-value">0</strong> / 100</span>
+            </div>
           </div>
+          <p class="hero-pulse-copy" id="hero-pulse-interpretation">Jamaica feels alert, socially aware, and slightly guarded right now.</p>
+        </div>
+
+        <div class="hero-pulse-meter-zone">
           <div class="hero-pulse-meter" aria-label="Jamaica pulse spectrum">
             <div class="hero-pulse-meter-track">
               <span class="hero-pulse-meter-fill" aria-hidden="true"></span>
@@ -5190,11 +5574,16 @@
           </div>
         </div>
       </div>
+      <p class="hero-pulse-support">
+        <span class="hero-pulse-support-item"><strong>Shaped by:</strong> <span id="hero-pulse-drivers">cost pressure, guarded trust, active cultural energy</span></span>
+        <span class="hero-pulse-divider" aria-hidden="true"></span>
+        <span class="hero-pulse-support-item"><strong>Updated:</strong> <span id="hero-pulse-updated">April 9</span></span>
+      </p>
     </div>
 
     <div class="cta-group">
-      <a href="#jamaica-pulse" class="btn-primary" id="hero-pulse-cta" data-open-pulse="true">Explore the pulse</a>
-      <a href="https://payhip.com/b/5QwFv" target="_blank" rel="noopener noreferrer" class="btn-secondary buy-link" data-buy-source="hero">Get the full guide</a>
+      <a href="#jamaica-pulse" class="btn-primary" id="hero-pulse-cta" data-open-pulse="true">Explore the Pulse</a>
+      <a href="https://payhip.com/b/5QwFv" target="_blank" rel="noopener noreferrer" class="btn-secondary buy-link" data-buy-source="hero">Get the Full Guide</a>
     </div>
     </div>
 
@@ -5405,7 +5794,7 @@
         <div class="pulse-detail" id="pulse-detail" aria-hidden="true">
           <div class="pulse-detail-inner">
             <div class="pulse-detail-top">
-              <span class="pulse-detail-kicker">Full pulse</span>
+              <span class="pulse-detail-kicker">Pulse breakdown</span>
               <span class="pulse-updated" id="pulse-updated">Last updated just now</span>
             </div>
 
@@ -5413,15 +5802,15 @@
               <section class="pulse-detail-block" data-surface="metrics">
                 <div class="pulse-detail-section-head">
                   <strong>Readings</strong>
-                  <p>Fast indicators behind the current mood.</p>
+                  <p>The numbers translated into plain signals.</p>
                 </div>
                 <div class="pulse-metrics" id="pulse-metrics"></div>
               </section>
 
               <section class="pulse-detail-block" data-surface="signals">
                 <div class="pulse-detail-section-head">
-                  <strong>Signal Board</strong>
-                  <p>The deeper currents shaping the pulse right now.</p>
+                  <strong>What it means</strong>
+                  <p>The human read behind the numbers.</p>
                 </div>
                 <div class="pulse-signals" id="pulse-signals"></div>
               </section>
@@ -5626,7 +6015,7 @@
 </section>
 
 <!-- -- WHO IS THIS FOR -------------------------------------------------------- -->
-<section class="forwho" id="who-its-for" data-nav-section="who-its-for" hidden data-home-disabled="true">
+<section class="forwho" id="who-its-for" data-nav-section="who-its-for">
   <div class="container">
     <div class="reveal" style="text-align:center;margin-bottom:1rem;">
       <span class="section-label">Who it's for</span>
@@ -5756,6 +6145,7 @@
           <ul class="check-list">
             <li>You want to understand Jamaica beyond the tourist view.</li>
             <li>You feel these patterns but want clearer words for them.</li>
+            <li>You are in the diaspora and want to reconnect without guessing.</li>
             <li>You move in Jamaican social or business spaces.</li>
             <li>You want useful insight, not vague theory.</li>
           </ul>
@@ -6064,64 +6454,74 @@
   // Phase 1 fallback dataset for the Jamaica Pulse section.
   // Replace this with external JSON or API-fed data in Phase 2 without changing the render layer.
   const JAMAICA_PULSE_FALLBACK = {
-    updatedAt: "2026-04-09T10:20:00-05:00",
-    moodScore: 64,
-    interpretation: "Jamaica feels alert and socially aware right now. There is still humour and movement, but cost pressure, global fuel tension, and careful reading are shaping the mood.",
+    updatedAt: "2026-04-11T09:00:00-05:00",
+    moodScore: 66,
+    heroInterpretation: "Jamaica feels alert, hopeful in places, and still a little guarded.",
+    interpretation: "Jamaica feels alert, hopeful in places, and still a little guarded. Jobs and happiness give the mood some lift, but higher fuel prices, the economy, and the offshore oil watch keep the pulse alert.",
     signalLines: [
-      "Jamaica feels alert and socially aware.",
-      "There is still humour and movement.",
-      "People are moving more carefully as pressure builds."
+      "Jamaica feels alert, socially aware, and slightly guarded right now."
     ],
     drivers: [
-      "cost pressure",
-      "global fuel tension",
-      "offshore oil watch",
-      "guarded trust",
-      "active cultural energy"
+      "gas prices up",
+      "oil watch",
+      "birthrate decline"
+    ],
+    heroDrivers: [
+      "gas prices up",
+      "oil watch",
+      "birthrate decline"
     ],
     headlines: [
       {
-        type: "Cost pressure",
+        type: "Economy",
         tone: "pressure",
-        weight: "Pressure up",
-        title: "Everyday spending is still shaping patience and decision-making.",
-        summary: "Food, transport, and bills remain part of the emotional weather, so people are stretching, comparing, and planning harder."
+        weight: "Pressure",
+        title: "The economy took a hit, so people are still cautious.",
+        summary: "GDP fell 7.1% in late 2025 after the Hurricane Melissa shock. That keeps the mood watchful."
       },
       {
-        type: "Offshore watch",
-        tone: "watch",
-        weight: "Expectation rising",
-        title: "Possible offshore oil movement is adding curiosity, caution, and conversation.",
-        summary: "People are reading what it could mean for prices, power, and future opportunity, but with the usual wait-and-see instinct still in place."
-      },
-      {
-        type: "Cultural energy",
-        tone: "energy",
-        weight: "Energy high",
-        title: "The social current still feels quick, funny, and sharply observant.",
-        summary: "People are still making meaning in real time through jokes, side comments, style, and what gets noticed first."
-      },
-      {
-        type: "Public trust",
-        tone: "watch",
-        weight: "Trust guarded",
-        title: "Hope is present, but trust is still being given carefully.",
-        summary: "Movement is happening, but more people want proof, consistency, and clearer signals before they relax into belief."
-      },
-      {
-        type: "Positive movement",
+        type: "Happiness",
         tone: "lift",
-        weight: "Lift rising",
-        title: "Creative ambition and outward-facing energy are still part of the mood.",
-        summary: "People are still building, exporting, performing, and looking for momentum even while the pressure stays real."
+        weight: "Lift",
+        title: "There is still real warmth under the pressure.",
+        summary: "Jamaica ranks 49th in the 2026 World Happiness Report, with a 6.305 happiness score."
+      },
+      {
+        type: "Gas prices",
+        tone: "watch",
+        weight: "Watch",
+        title: "Gas prices are back in people's heads.",
+        summary: "Petrojam's latest ex-refinery update raised gasoline and diesel by $4.50 per litre from April 9, so transport costs stay part of the mood."
+      },
+      {
+        type: "Jobs",
+        tone: "lift",
+        weight: "Steady",
+        title: "Jobs are helping the mood hold steady.",
+        summary: "Unemployment was 3.6% in January 2026. That adds support, even if not everyone feels it equally."
+      },
+      {
+        type: "Oil watch",
+        tone: "energy",
+        weight: "Early signs",
+        title: "The offshore oil story is adding curiosity, not certainty yet.",
+        summary: "United Oil & Gas reported offshore hydrocarbon signs from the Walton-Morant survey, but the next real question is whether it can move toward drilling and prove commercial value."
+      },
+      {
+        type: "Birthrate",
+        tone: "watch",
+        weight: "Declining",
+        title: "The falling birthrate is a quieter long-term signal.",
+        summary: "Jamaica's birthrate fell to 11.62 births per 1,000 people in 2023, down from 11.85 the year before."
       }
     ],
     metrics: [
-      { label: "Happiness read", value: "66/100", note: "Warmth still carries real weight" },
-      { label: "Cost pressure", value: "Elevated", note: "Food and transport still affect mood" },
-      { label: "Energy watch", value: "Tight", note: "Global gas tension keeps fuel sensitivity high" },
-      { label: "FX watch", value: "JMD watchful", note: "People stay sensitive to price drift" },
-      { label: "Island tempo", value: "Active", note: "Tourism, culture, and hustle stay in motion" }
+      { icon: "🙂", label: "Mood", value: "Feeling good", note: "Jamaica ranks 49th for happiness" },
+      { icon: "😬", label: "Money pressure", value: "Tough", note: "The economy took a late-2025 hit" },
+      { icon: "🔥", label: "Gas prices", value: "Rising", note: "Gas and diesel went up again" },
+      { icon: "💼", label: "Jobs", value: "Stable", note: "Unemployment is still low" },
+      { icon: "🫧", label: "Oil talk", value: "Maybe", note: "Offshore signs, not a sure discovery yet" },
+      { icon: "👶", label: "Birthrate", value: "Dropping", note: "Fewer births per 1,000 people" }
     ]
   };
 
@@ -6173,6 +6573,16 @@
       hour: "numeric",
       minute: "2-digit"
     }).format(nextDate)}`;
+  }
+
+  function formatHeroPulseDate(value) {
+    const nextDate = new Date(value);
+    if (Number.isNaN(nextDate.getTime())) return "Recently";
+
+    return new Intl.DateTimeFormat("en-US", {
+      month: "long",
+      day: "numeric"
+    }).format(nextDate);
   }
 
   function getPulsePreviewInterpretation(value) {
@@ -6318,12 +6728,13 @@
       };
     }
 
-    const numberMatch = text.match(/^\d+(?:\.\d+)?$/);
+    const numberMatch = text.match(/^(-?\d+(?:\.\d+)?)(%?)$/);
     if (numberMatch) {
       return {
         type: "number",
-        value: Number(numberMatch[0]),
-        decimals: numberMatch[0].includes(".") ? numberMatch[0].split(".")[1].length : 0
+        value: Number(numberMatch[1]),
+        decimals: numberMatch[1].includes(".") ? numberMatch[1].split(".")[1].length : 0,
+        suffix: numberMatch[2]
       };
     }
 
@@ -6341,8 +6752,8 @@
 
     if (spec.type === "number") {
       const nextValue = spec.value * progress;
-      if (spec.decimals > 0) return nextValue.toFixed(spec.decimals);
-      return String(Math.round(nextValue));
+      if (spec.decimals > 0) return `${nextValue.toFixed(spec.decimals)}${spec.suffix || ""}`;
+      return `${Math.round(nextValue)}${spec.suffix || ""}`;
     }
 
     return "";
@@ -6400,6 +6811,7 @@
     const heroScoreNode = document.getElementById("hero-pulse-score-value");
     const heroInterpretationNode = document.getElementById("hero-pulse-interpretation");
     const heroDriversNode = document.getElementById("hero-pulse-drivers");
+    const heroUpdatedNode = document.getElementById("hero-pulse-updated");
     const heroShapeNode = document.getElementById("hero-pulse-shape");
     const pulseOpenTriggers = Array.from(document.querySelectorAll("[data-open-pulse]"));
     const metricsRoot = document.getElementById("pulse-metrics");
@@ -6428,6 +6840,10 @@
     const drivers = Array.isArray(pulse.drivers) && pulse.drivers.length
       ? pulse.drivers
       : (pulse.headlines || []).slice(0, 3).map((item) => item.type.toLowerCase());
+    const heroDrivers = Array.isArray(pulse.heroDrivers) && pulse.heroDrivers.length
+      ? pulse.heroDrivers
+      : drivers.filter((driver) => ["cost pressure", "guarded trust", "active cultural energy"].includes(String(driver).toLowerCase())).slice(0, 3);
+    const heroDriverText = heroDrivers.length >= 3 ? heroDrivers.join(", ") : "cost pressure, guarded trust, active cultural energy";
 
     if (moodLabelNode) moodLabelNode.textContent = moodLabel;
     if (moodEmojiNode) moodEmojiNode.textContent = moodEmoji;
@@ -6438,8 +6854,9 @@
     }
     if (heroMoodLabelNode) heroMoodLabelNode.textContent = moodLabel;
     if (heroMoodEmojiNode) heroMoodEmojiNode.textContent = moodEmoji;
-    if (heroInterpretationNode) heroInterpretationNode.textContent = getPulsePreviewInterpretation(interpretation);
-    if (heroDriversNode) heroDriversNode.textContent = drivers.join(", ");
+    if (heroInterpretationNode) heroInterpretationNode.textContent = pulse.heroInterpretation || getPulsePreviewInterpretation(interpretation);
+    if (heroDriversNode) heroDriversNode.textContent = heroDriverText;
+    if (heroUpdatedNode) heroUpdatedNode.textContent = formatHeroPulseDate(pulse.updatedAt);
     if (heroShapeNode) heroShapeNode.textContent = `${moodLabel} right now`;
     if (driversNode) {
       driversNode.innerHTML = drivers.map((driver) => `
@@ -6457,16 +6874,17 @@
     animatePulseMeter(pulseSection, score);
     if (heroPulseStrip) animatePulseMeter(heroPulseStrip, score);
     if (scoreNode) animateValueNode(scoreNode, String(score), 960);
-    if (heroScoreNode) animateValueNode(heroScoreNode, String(score), 960);
+    if (heroScoreNode) animateValueNode(heroScoreNode, String(score), 1450);
     meterStateNodes.forEach((node) => {
       node.classList.toggle("is-active", node.dataset.pulseState === spectrumState);
     });
 
     metricsRoot.innerHTML = (pulse.metrics || []).map((metric) => `
       <article class="pulse-metric">
-        <span class="pulse-metric-label">${metric.label}</span>
-        <strong class="pulse-metric-value">${metric.value}</strong>
-        <span class="pulse-metric-note">${metric.note}</span>
+        <span class="pulse-metric-icon" aria-hidden="true"><span class="pulse-metric-icon-inner">${escapeHtml(metric.icon || "👀")}</span></span>
+        <span class="pulse-metric-label">${escapeHtml(metric.label || "")}</span>
+        <strong class="pulse-metric-value">${escapeHtml(metric.value || "")}</strong>
+        <span class="pulse-metric-note">${escapeHtml(metric.note || "")}</span>
       </article>
     `).join("");
 

@@ -8,25 +8,25 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const VIBE_OUTCOMES = {
-  Exciting: {
+  Sweet: {
     heat: "Hot",
-    insight: "The crowd is reading the moment as pure release with attention still glued to the room."
+    insight: "That fits. The road feels good when the music, costume, and company line up."
   },
-  Chaotic: {
+  Hype: {
     heat: "High",
-    insight: "You are picking up on crowd compression, unpredictability, and the moments where energy starts outrunning control."
+    insight: "You are catching the loud part: truck pressure, big hooks, and everybody wanting the moment."
   },
-  Sexy: {
+  Flirty: {
     heat: "Flirt",
-    insight: "That read makes sense. Visibility, styling, and social performance are all part of the atmosphere tonight."
+    insight: "That makes sense. Styling, waistline, confidence, and being seen are part of the language."
   },
   Watchful: {
     heat: "Alert",
-    insight: "This pick leans into the awareness layer. People are having fun, but they are still scanning timing, transport, and who is around them."
+    insight: "That is a real read. People are having fun, but still watching timing, transport, and who is around."
   },
-  Overhyped: {
+  "Too much": {
     heat: "Mixed",
-    insight: "You are catching the gap between online gloss and street reality. The energy is real, but not every moment lands at the same level."
+    insight: "That is part of it too. The energy is real, but not every moment lands clean."
   }
 };
 
@@ -128,7 +128,7 @@ function initVibeTest(reducedMotion) {
   options.forEach((option) => {
     option.addEventListener("click", () => {
       const choice = option.dataset.option || option.textContent.trim();
-      const vibeOutcome = VIBE_OUTCOMES[choice] || VIBE_OUTCOMES.Exciting;
+      const vibeOutcome = VIBE_OUTCOMES[choice] || VIBE_OUTCOMES.Sweet;
 
       options.forEach((button) => {
         const isSelected = button === option;
