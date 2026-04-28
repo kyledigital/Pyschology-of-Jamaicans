@@ -20,11 +20,11 @@
 <meta name="twitter:description" content="A live cultural read of how Jamaica feels right now, with a deeper guide behind the pulse."/>
 <meta name="twitter:image" content="https://jamaicanpsychology.kylehector.com/assets/images/kyle-hector-author.png"/>
 <script src="assets/js/cultural-signals.js"></script>
+<script src="assets/js/jamaica-pulse-live-data.js"></script>
 <script>
   const PAYHIP_PRODUCT_URL = "https://payhip.com/b/5QwFv";
   const SUPPORT_EMAIL = "kylehector12@gmail.com";
   const PAYHIP_STORE_NAME = "Kylehector";  // optional, for embed
-  const SALE_END_AT = "2026-04-18T23:59:59-05:00";
 </script>
 <!-- Google Analytics (GA4) placeholder: paste your GA4 script below and replace G-XXXXXXXXXX with your Measurement ID. -->
 <!--
@@ -1098,58 +1098,6 @@
     line-height:1.7;
     margin:0;
   }
-  .sale-timer{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    gap:.55rem;
-    flex-wrap:wrap;
-    margin-top:.35rem;
-    padding:.78rem 1.08rem;
-    border-radius:999px;
-    border:1px solid rgba(232,185,106,.52);
-    background:linear-gradient(180deg, rgba(10,20,16,.42), rgba(10,20,16,.28));
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 0 0 1px rgba(232,185,106,.08), 0 10px 28px rgba(0,0,0,.16);
-    font-family:'Space Mono',monospace;
-    font-size:.76rem;
-    letter-spacing:.11em;
-    text-transform:uppercase;
-    color:rgba(253,246,236,.94);
-    animation:saleTimerPulse 1.25s ease-in-out infinite;
-  }
-  .sale-timer strong{
-    display:inline-flex;
-    align-items:center;
-    padding:.16rem .45rem;
-    border-radius:999px;
-    background:rgba(232,185,106,.14);
-    color:#ffd78f;
-    font-weight:700;
-    box-shadow:0 0 18px rgba(232,185,106,.14);
-  }
-  .sale-timer.is-compact{
-    margin-top:0;
-    padding:.5rem .78rem;
-    font-size:.65rem;
-    letter-spacing:.06em;
-  }
-  .sale-timer.is-inline{
-    display:flex;
-    margin:1rem auto 0;
-    width:fit-content;
-    max-width:100%;
-  }
-  @keyframes saleTimerPulse{
-    0%,100%{
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 0 0 1px rgba(232,185,106,.08), 0 10px 28px rgba(0,0,0,.16);
-      transform:translateY(0);
-    }
-    50%{
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 0 0 1px rgba(232,185,106,.16), 0 12px 32px rgba(0,0,0,.18), 0 0 20px rgba(232,185,106,.12);
-      transform:translateY(-1px);
-    }
-  }
-
   .btn-primary{
     display:inline-flex;
     align-items:center;
@@ -1961,11 +1909,33 @@
       radial-gradient(circle at top right, rgba(73,138,104,.12), transparent 32%),
       linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.018));
   }
+  .pulse-detail-block[data-surface="desks"]{
+    background:
+      radial-gradient(circle at top right, rgba(49,109,141,.12), transparent 34%),
+      linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.018));
+  }
+  .pulse-detail-block[data-surface="sources"]{
+    background:
+      radial-gradient(circle at top right, rgba(92,85,148,.12), transparent 34%),
+      linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.018));
+  }
   .pulse-detail-block[data-surface="signals"]::before{
     background:linear-gradient(90deg, rgba(73,138,104,.72), rgba(73,138,104,.12), transparent);
   }
+  .pulse-detail-block[data-surface="desks"]::before{
+    background:linear-gradient(90deg, rgba(49,109,141,.72), rgba(49,109,141,.12), transparent);
+  }
+  .pulse-detail-block[data-surface="sources"]::before{
+    background:linear-gradient(90deg, rgba(92,85,148,.72), rgba(92,85,148,.12), transparent);
+  }
   .pulse-detail-block[data-surface="signals"]::after{
     background:radial-gradient(circle, rgba(73,138,104,.1), transparent 72%);
+  }
+  .pulse-detail-block[data-surface="desks"]::after{
+    background:radial-gradient(circle, rgba(49,109,141,.1), transparent 72%);
+  }
+  .pulse-detail-block[data-surface="sources"]::after{
+    background:radial-gradient(circle, rgba(92,85,148,.1), transparent 72%);
   }
   .pulse-detail-section-head{
     display:flex;
@@ -2155,6 +2125,25 @@
     display:grid;
     grid-template-columns:1fr;
     gap:.5rem;
+  }
+  .pulse-drivers-block{
+    display:grid;
+    gap:.52rem;
+    padding:.24rem 0 .12rem;
+  }
+  .pulse-drivers-label{
+    display:inline-flex;
+    align-items:center;
+    width:max-content;
+    padding:.3rem .58rem;
+    border-radius:999px;
+    border:1px solid rgba(232,185,106,.14);
+    background:rgba(232,185,106,.06);
+    color:rgba(232,185,106,.82);
+    font-family:'Space Mono',monospace;
+    font-size:.5rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
   }
   .pulse-signal-card{
     position:relative;
@@ -2390,6 +2379,142 @@
   .pulse-detail.is-open .pulse-metric:nth-child(4),
   .pulse-detail.is-open .pulse-signal-card:nth-child(4){transition-delay:.2s;}
   .pulse-detail.is-open .pulse-metric:nth-child(5){transition-delay:.25s;}
+  .pulse-intel-grid{
+    display:grid;
+    grid-template-columns:minmax(0, 1.18fr) minmax(0, .82fr);
+    gap:.85rem;
+    margin-top:.85rem;
+  }
+  .pulse-desks,
+  .pulse-source-list{
+    display:grid;
+    gap:.52rem;
+  }
+  .pulse-desk-card,
+  .pulse-source-item{
+    position:relative;
+    overflow:hidden;
+    border-radius:16px;
+    border:1px solid rgba(253,246,236,.1);
+    background:linear-gradient(180deg, rgba(253,246,236,.05), rgba(253,246,236,.022));
+    box-shadow:0 18px 34px rgba(0,0,0,.16);
+  }
+  .pulse-desk-card{
+    padding:.8rem .84rem .78rem;
+    display:grid;
+    gap:.52rem;
+  }
+  .pulse-source-item{
+    padding:.74rem .8rem;
+    display:grid;
+    gap:.38rem;
+  }
+  .pulse-desk-card::before,
+  .pulse-source-item::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:1px;
+    background:linear-gradient(90deg, rgba(255,255,255,.16), transparent 76%);
+    opacity:.65;
+  }
+  .pulse-desk-card::after{
+    content:'';
+    position:absolute;
+    inset:auto auto 0 0;
+    width:3px;
+    height:62%;
+    border-radius:0 999px 999px 0;
+    background:linear-gradient(180deg, rgba(232,185,106,.9), rgba(232,185,106,.12));
+    opacity:.8;
+  }
+  .pulse-desk-card[data-tone="pressure"]::after{
+    background:linear-gradient(180deg, rgba(198,98,72,.92), rgba(198,98,72,.14));
+  }
+  .pulse-desk-card[data-tone="lift"]::after{
+    background:linear-gradient(180deg, rgba(88,199,110,.92), rgba(88,199,110,.14));
+  }
+  .pulse-desk-card[data-tone="energy"]::after{
+    background:linear-gradient(180deg, rgba(84,170,214,.92), rgba(84,170,214,.14));
+  }
+  .pulse-desk-head,
+  .pulse-source-top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:.6rem;
+  }
+  .pulse-desk-title,
+  .pulse-source-name{
+    margin:0;
+    color:var(--cream);
+    font-family:var(--ui-sans);
+    font-size:.88rem;
+    font-weight:760;
+    line-height:1.24;
+  }
+  .pulse-desk-status,
+  .pulse-source-kind{
+    display:inline-flex;
+    align-items:center;
+    flex:0 0 auto;
+    padding:.28rem .54rem;
+    border-radius:999px;
+    border:1px solid rgba(253,246,236,.1);
+    background:rgba(253,246,236,.045);
+    color:rgba(253,246,236,.66);
+    font-size:.48rem;
+    font-weight:700;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+  }
+  .pulse-desk-copy,
+  .pulse-source-note{
+    margin:0;
+    color:rgba(253,246,236,.72);
+    font-size:.74rem;
+    line-height:1.45;
+  }
+  .pulse-desk-meta,
+  .pulse-source-status{
+    display:inline-flex;
+    align-items:center;
+    width:max-content;
+    padding-top:.08rem;
+    color:rgba(232,185,106,.76);
+    font-family:'Space Mono',monospace;
+    font-size:.52rem;
+    letter-spacing:.11em;
+    text-transform:uppercase;
+  }
+  .pulse-desk-chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.34rem;
+  }
+  .pulse-detail .pulse-desk-card,
+  .pulse-detail .pulse-source-item{
+    opacity:0;
+    transform:translateY(16px);
+    filter:blur(2px);
+    transition:transform .26s ease, border-color .26s ease, box-shadow .26s ease, opacity .3s ease, filter .3s ease;
+  }
+  .pulse-detail.is-open .pulse-desk-card,
+  .pulse-detail.is-open .pulse-source-item{
+    opacity:1;
+    transform:none;
+    filter:none;
+  }
+  .pulse-detail.is-open .pulse-desk-card:nth-child(1),
+  .pulse-detail.is-open .pulse-source-item:nth-child(1){transition-delay:.08s;}
+  .pulse-detail.is-open .pulse-desk-card:nth-child(2),
+  .pulse-detail.is-open .pulse-source-item:nth-child(2){transition-delay:.13s;}
+  .pulse-detail.is-open .pulse-desk-card:nth-child(3),
+  .pulse-detail.is-open .pulse-source-item:nth-child(3){transition-delay:.18s;}
+  .pulse-detail.is-open .pulse-desk-card:nth-child(4),
+  .pulse-detail.is-open .pulse-source-item:nth-child(4){transition-delay:.23s;}
 
   @keyframes watchfulFloat{
     0%,100%{transform:translate3d(calc(var(--watch-shift-x) * .26 + var(--watch-look-x)), calc(var(--watch-shift-y) * .22 + var(--watch-look-y)), 0) rotate(calc(var(--watch-tilt) - 1.5deg));}
@@ -2473,6 +2598,9 @@
       max-width:34ch;
     }
     .pulse-detail-columns{
+      grid-template-columns:1fr;
+    }
+    .pulse-intel-grid{
       grid-template-columns:1fr;
     }
     .pulse-metrics{
@@ -4930,9 +5058,6 @@
     justify-content:center;
     margin-top:1.2rem;
   }
-  .hero-meta .sale-timer{
-    display:none;
-  }
   .hero-meta p{
     max-width:34ch;
     font-size:.96rem;
@@ -5243,9 +5368,11 @@
       max-width:none;
       aspect-ratio:16 / 8;
     }
-    .author-avatar,
-    .author-feature{
+    .author-avatar{
       width:min(100%, 180px);
+    }
+    .author-feature{
+      display:none;
     }
     .decoder-spotlight .reveal{
       padding-top:1rem !important;
@@ -5478,20 +5605,18 @@
       padding:4.4rem 1rem;
     }
     .author-grid{
-      gap:1.25rem;
+      display: block;
     }
     .author-copy{
-      order:1;
     }
     .author-visual{
-      order:2;
-      justify-items:center;
+      float: right;
+      width: 130px;
+      margin-left: 1.25rem;
+      margin-bottom: 0.5rem;
     }
     .author-visual-stack{
-      grid-template-columns:112px minmax(0, 148px);
-      gap:.9rem;
-      align-items:end;
-      justify-items:stretch;
+      display: block;
     }
     .author-avatar{
       width:112px;
@@ -5704,10 +5829,6 @@
     </ul>
     <div class="hero-meta" hidden>
       <p>28 chapters. Instant PDF. Secure Payhip checkout.</p>
-      <div class="sale-timer" data-sale-countdown>
-        <span>Sale ends in</span>
-        <strong data-sale-countdown-value>14 days</strong>
-      </div>
     </div>
 
     <p class="hero-signal-preview" aria-live="polite">
@@ -5915,7 +6036,7 @@
 
         <div class="pulse-actions">
           <button class="pulse-toggle" id="pulse-toggle" type="button" aria-expanded="false" aria-controls="pulse-detail">Explore full pulse</button>
-          <a class="pulse-carnival-link" href="carnival-signal.html">Open Carnival Signal</a>
+          <a class="pulse-carnival-link" href="carnival-signal.html" style="display: none;">Open Carnival Signal</a>
         </div>
 
         <div class="pulse-detail" id="pulse-detail" aria-hidden="true">
@@ -5950,6 +6071,24 @@
                     </div>
                   </div>
                 </div>
+              </section>
+            </div>
+
+            <div class="pulse-intel-grid">
+              <section class="pulse-detail-block" data-surface="desks">
+                <div class="pulse-detail-section-head">
+                  <strong>What we're watching</strong>
+                  <p>The everyday signals shaping how Jamaica feels right now.</p>
+                </div>
+                <div class="pulse-desks" id="pulse-desks"></div>
+              </section>
+
+              <section class="pulse-detail-block" data-surface="sources">
+                <div class="pulse-detail-section-head">
+                  <strong>What this is based on</strong>
+                  <p>The facts we check, plus the parts that still need human judgment.</p>
+                </div>
+                <div class="pulse-source-list" id="pulse-source-list"></div>
               </section>
             </div>
           </div>
@@ -6268,7 +6407,7 @@
         </div>
         <div class="cta-stat">
           <strong>$9</strong>
-          <span>launch price while it lasts</span>
+          <span>digital guide</span>
         </div>
         <div class="cta-stat">
           <strong>Instant</strong>
@@ -6306,18 +6445,14 @@
         </figure>
       </div>
 
-      <p class="price-kicker">Early launch price</p>
+      <p class="price-kicker">Digital guide</p>
 
       <div class="price-block">
         <div class="price">$9 <span style="font-size:1.5rem;color:var(--gold-light);">USD</span></div>
         <div class="price-note">Instant digital download · PDF · 28 chapters</div>
       </div>
-      <p class="price-warning">Launch price is live for a limited time.</p>
+      <p class="price-warning">Available now as an instant digital download.</p>
       <p class="price-value">For $9, you get the deeper context behind the pulse, in one practical guide you can return to anytime.</p>
-      <div class="sale-timer is-inline" data-sale-countdown>
-        <span>Sale ends in</span>
-        <strong data-sale-countdown-value>14 days</strong>
-      </div>
 
       <br/>
       <div class="buy-cta-stack is-centered">
@@ -6399,11 +6534,7 @@
 <div class="sticky-cta" id="sticky-cta" aria-hidden="true">
   <div class="sticky-cta-inner">
     <div class="sticky-copy">
-      <p class="sticky-title">Launch price live</p>
-      <div class="sale-timer is-compact" data-sale-countdown>
-        <span>Ends in</span>
-        <strong data-sale-countdown-value>14 days</strong>
-      </div>
+      <p class="sticky-title">Full guide available</p>
       <p class="sticky-price">Get the book for $9 USD</p>
     </div>
     <div class="buy-cta-stack is-sticky">
@@ -6591,74 +6722,137 @@
   // Phase 1 fallback dataset for the Jamaica Pulse section.
   // Replace this with external JSON or API-fed data in Phase 2 without changing the render layer.
   const JAMAICA_PULSE_FALLBACK = {
-    updatedAt: "2026-04-11T09:00:00-05:00",
-    moodScore: 66,
-    heroInterpretation: "Jamaica feels alert, hopeful in places, and still a little guarded.",
-    interpretation: "Jamaica feels alert, hopeful in places, and still a little guarded. Jobs and happiness give the mood some lift, but higher fuel prices, the economy, and the offshore oil watch keep the pulse alert.",
+    updatedAt: "2026-04-22T11:30:00-05:00",
+    moodScore: 67,
+    moodLabel: "Watchful",
+    heroInterpretation: "The pulse is holding because work and tourism are still moving, but price pressure and weather risk are keeping patience thin.",
+    interpretation: "Jamaica's pulse is being held up by real supports, not just vibes. STATIN reported unemployment at 3.6% in January 2026, while March 2026 inflation came in at 4.3%, back inside the Bank of Jamaica target range. But BOJ warned on March 31, 2026 that imported oil, shipping, and other commodity costs could push energy and transport prices higher again. Add a 7.1% GDP drop in the October to December 2025 quarter and the start of the April to December tropical weather window, and the clearest read is this: people are still moving, but they are moving more carefully.",
     signalLines: [
-      "Jamaica feels alert, socially aware, and slightly guarded right now."
+      "Low unemployment is helping people keep going, but it is not removing strain.",
+      "Tourism is adding real lift, especially where jobs, transport, and small spending touch the ground.",
+      "The main pressure point is imported cost: if fuel and shipping stay hot, patience tightens fast."
     ],
     drivers: [
-      "gas prices up",
-      "oil watch",
-      "birthrate decline"
+      "low unemployment",
+      "tourism inflow",
+      "energy-led inflation risk",
+      "weather exposure"
     ],
     heroDrivers: [
-      "gas prices up",
-      "oil watch",
-      "birthrate decline"
+      "low unemployment",
+      "energy-led inflation risk",
+      "weather exposure"
     ],
     headlines: [
       {
-        type: "Economy",
+        type: "Prices",
         tone: "pressure",
-        weight: "Pressure",
-        title: "The economy took a hit, so people are still cautious.",
-        summary: "GDP fell 7.1% in late 2025 after the Hurricane Melissa shock. That keeps the mood watchful."
+        weight: "Main pressure",
+        title: "The pressure point is not collapse. It is how fast imported costs can thin people's patience.",
+        summary: "STATIN put March 2026 inflation at 4.3%, but BOJ said on March 31, 2026 that oil, LNG, fertilizer, and shipping costs could still lift energy and transport inflation through the year."
       },
       {
-        type: "Happiness",
+        type: "Work",
         tone: "lift",
-        weight: "Lift",
-        title: "There is still real warmth under the pressure.",
-        summary: "Jamaica ranks 49th in the 2026 World Happiness Report, with a 6.305 happiness score."
+        weight: "Main support",
+        title: "People still have a reason to keep moving because the jobs floor is holding.",
+        summary: "STATIN reported unemployment at 3.6% in January 2026. That does not mean life feels easy, but it does mean the base mood is effort and movement, not shutdown."
       },
       {
-        type: "Gas prices",
-        tone: "watch",
-        weight: "Watch",
-        title: "Gas prices are back in people's heads.",
-        summary: "Petrojam's latest ex-refinery update raised gasoline and diesel by $4.50 per litre from April 9, so transport costs stay part of the mood."
-      },
-      {
-        type: "Jobs",
-        tone: "lift",
-        weight: "Steady",
-        title: "Jobs are helping the mood hold steady.",
-        summary: "Unemployment was 3.6% in January 2026. That adds support, even if not everyone feels it equally."
-      },
-      {
-        type: "Oil watch",
+        type: "Tourism",
         tone: "energy",
-        weight: "Early signs",
-        title: "The offshore oil story is adding curiosity, not certainty yet.",
-        summary: "United Oil & Gas reported offshore hydrocarbon signs from the Walton-Morant survey, but the next real question is whether it can move toward drilling and prove commercial value."
+        weight: "Fresh lift",
+        title: "A lot of the optimism right now is coming from opportunity flow, not comfort.",
+        summary: "The Ministry of Tourism said Jamaica added more than 62,000 Latin American arrivals in 2025 and USD 116 million in earnings from that market, feeding real activity into 2026."
       },
       {
-        type: "Birthrate",
+        type: "Weather",
         tone: "watch",
-        weight: "Declining",
-        title: "The falling birthrate is a quieter long-term signal.",
-        summary: "Jamaica's birthrate fell to 11.62 births per 1,000 people in 2023, down from 11.85 the year before."
+        weight: "Planning risk",
+        title: "Weather is moving from background risk to planning risk.",
+        summary: "The Meteorological Service says tropical systems affect Jamaica from April to December, with the official hurricane season running June to November, so disruption is moving into the planning layer now."
+      },
+      {
+        type: "Recovery",
+        tone: "watch",
+        weight: "Still uneven",
+        title: "The country is active, but it is still carrying the bruise from late 2025.",
+        summary: "STATIN's key indicators show GDP fell 7.1% in the October to December 2025 quarter, which helps explain why the mood can stay busy while still feeling guarded."
       }
     ],
     metrics: [
-      { icon: "🙂", label: "Mood", value: "Feeling good", note: "Jamaica ranks 49th for happiness" },
-      { icon: "😬", label: "Money pressure", value: "Tough", note: "The economy took a late-2025 hit" },
-      { icon: "🔥", label: "Gas prices", value: "Rising", note: "Gas and diesel went up again" },
-      { icon: "💼", label: "Jobs", value: "Stable", note: "Unemployment is still low" },
-      { icon: "🫧", label: "Oil talk", value: "Maybe", note: "Offshore signs, not a sure discovery yet" },
-      { icon: "👶", label: "Birthrate", value: "Dropping", note: "Fewer births per 1,000 people" }
+      { icon: "👀", label: "Public mood", value: "Held together", note: "Work is steady, but patience is thin" },
+      { icon: "📈", label: "Inflation", value: "4.3%", note: "March 2026, back inside BOJ target" },
+      { icon: "💼", label: "Jobs", value: "3.6%", note: "January 2026 unemployment remains low" },
+      { icon: "✈️", label: "Tourism", value: "Expanding", note: "LATAM arrivals rose by 62,000 in 2025" },
+      { icon: "🌦️", label: "Weather", value: "Risk window open", note: "Tropical systems affect April to December" },
+      { icon: "🏗️", label: "Recovery", value: "Uneven", note: "GDP fell 7.1% in Oct to Dec 2025" }
+    ],
+    desks: [
+      {
+        name: "Street Mood",
+        status: "Patience is thinner",
+        tone: "watch",
+        summary: "The key street insight right now is not that people have gone cold. It is that pressure is shortening the distance between normal interaction and irritation, so tone and timing matter more.",
+        chips: ["respect", "tone", "patience", "guarded trust"],
+        cadence: "Daily check-in"
+      },
+      {
+        name: "Cost and Transport",
+        status: "Imported pressure risk",
+        tone: "pressure",
+        summary: "This is the first place the macro story turns personal. BOJ's warning around imported energy and shipping costs matters here because fuel and movement costs are what people feel fastest.",
+        chips: ["fuel", "fares", "food prices", "shipping"],
+        cadence: "Weekly reality check"
+      },
+      {
+        name: "Weather and Island Risk",
+        status: "Risk season opening",
+        tone: "energy",
+        summary: "The weather desk matters more now because Jamaica is entering the part of the year where disruption has to be budgeted early. Weather is not scenery. It is operational pressure.",
+        chips: ["storm season", "road risk", "utilities", "planning"],
+        cadence: "Seasonal check"
+      },
+      {
+        name: "Work and Opportunity",
+        status: "Support is real, but uneven",
+        tone: "lift",
+        summary: "This is where the country gets some lift. Low unemployment and stronger tourism demand are keeping movement alive, but the benefit is not spreading evenly enough to make the mood fully relaxed.",
+        chips: ["jobs", "tourism", "diaspora", "small business"],
+        cadence: "Monthly check-in"
+      }
+    ],
+    sourceWatch: [
+      {
+        name: "STATIN and BOJ",
+        kind: "Prices and jobs",
+        status: "Primary anchor",
+        note: "STATIN reported 4.3% inflation for March 2026 and 3.6% unemployment for January 2026. BOJ kept rates at 5.50% on March 31, 2026 but warned imported energy and shipping costs could push prices up again."
+      },
+      {
+        name: "Ministry of Tourism",
+        kind: "Opportunity flow",
+        status: "Adding real lift",
+        note: "The Ministry of Tourism said Jamaica added more than 62,000 Latin American arrivals in 2025 and USD 116 million in earnings from that market, which supports jobs and on-the-ground spending."
+      },
+      {
+        name: "Met Service and ODPEM",
+        kind: "Weather check",
+        status: "Season turning",
+        note: "The Meteorological Service says tropical systems affect Jamaica from April to December, with hurricane season from June to November, so weather pressure is moving into everyday planning."
+      },
+      {
+        name: "STATIN growth data",
+        kind: "Recovery check",
+        status: "Still uneven",
+        note: "STATIN's key indicators show GDP fell 7.1% in the October to December 2025 quarter, which helps explain why the national mood stays active without feeling secure."
+      },
+      {
+        name: "Editorial street read",
+        kind: "On-the-ground read",
+        status: "Needs human judgment",
+        note: "The numbers show what is pushing and what is supporting. The human read is still what tells us whether that balance feels hopeful, irritated, disciplined, or close to snapping."
+      }
     ]
   };
 
@@ -6763,6 +6957,59 @@
       .map((sentence) => sentence.trim())
       .filter(Boolean)
       .slice(0, 3);
+  }
+
+  function renderPulseDrivers(drivers) {
+    const driverList = Array.isArray(drivers) ? drivers.filter(Boolean) : [];
+    if (!driverList.length) return "";
+
+    return `
+      <div class="pulse-drivers-block">
+        <span class="pulse-drivers-label">Shaped by</span>
+        <div class="pulse-drivers">
+          ${driverList.map((driver) => `<span class="pulse-driver-chip">${escapeHtml(formatPulseDriverLabel(driver))}</span>`).join("")}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderPulseDesks(desks) {
+    const deskList = Array.isArray(desks) ? desks.filter(Boolean) : [];
+    if (!deskList.length) return "";
+
+    return deskList.map((desk) => {
+      const chips = Array.isArray(desk.chips) ? desk.chips.filter(Boolean) : [];
+
+      return `
+        <article class="pulse-desk-card" data-tone="${escapeHtml(desk.tone || "watch")}">
+          <div class="pulse-desk-head">
+            <h3 class="pulse-desk-title">${escapeHtml(desk.name || "Signal desk")}</h3>
+            <span class="pulse-desk-status">${escapeHtml(desk.status || "Live")}</span>
+          </div>
+          <p class="pulse-desk-copy">${escapeHtml(desk.summary || "")}</p>
+          <div class="pulse-desk-chips">
+            ${chips.map((chip) => `<span class="pulse-driver-chip">${escapeHtml(formatPulseDriverLabel(chip))}</span>`).join("")}
+          </div>
+          <span class="pulse-desk-meta">${escapeHtml(desk.cadence || "Live watch")}</span>
+        </article>
+      `;
+    }).join("");
+  }
+
+  function renderPulseSourceWatch(items) {
+    const sourceList = Array.isArray(items) ? items.filter(Boolean) : [];
+    if (!sourceList.length) return "";
+
+    return sourceList.map((item) => `
+      <article class="pulse-source-item">
+        <div class="pulse-source-top">
+          <h3 class="pulse-source-name">${escapeHtml(item.name || "Source")}</h3>
+          <span class="pulse-source-kind">${escapeHtml(item.kind || "Layer")}</span>
+        </div>
+        <span class="pulse-source-status">${escapeHtml(item.status || "Watching")}</span>
+        <p class="pulse-source-note">${escapeHtml(item.note || "")}</p>
+      </article>
+    `).join("");
   }
 
   function initialiseWatchfulLockup(lockup) {
@@ -6953,12 +7200,13 @@
     const pulseOpenTriggers = Array.from(document.querySelectorAll("[data-open-pulse]"));
     const metricsRoot = document.getElementById("pulse-metrics");
     const signalsRoot = document.getElementById("pulse-signals");
+    const desksRoot = document.getElementById("pulse-desks");
+    const sourceWatchRoot = document.getElementById("pulse-source-list");
     const pulseWatchfulLockup = document.getElementById("pulse-watchful-lockup");
     const moodLabelNode = document.getElementById("pulse-mood-label");
     const moodEmojiNode = document.getElementById("pulse-mood-emoji");
     const scoreNode = document.getElementById("pulse-score-value");
     const interpretationNode = document.getElementById("pulse-interpretation");
-    const driversNode = document.getElementById("pulse-drivers");
     const shapeNode = document.getElementById("pulse-shape");
     const updatedNode = document.getElementById("pulse-updated");
     const meterStateNodes = Array.from(document.querySelectorAll("[data-pulse-state]"));
@@ -6999,11 +7247,6 @@
     const barDetailUpdatedNode = document.getElementById("pulse-detail-updated");
     if (barDetailUpdatedNode) barDetailUpdatedNode.textContent = formatHeroPulseDate(pulse.updatedAt);
     if (heroShapeNode) heroShapeNode.textContent = `${moodLabel} right now`;
-    if (driversNode) {
-      driversNode.innerHTML = drivers.map((driver) => `
-        <span class="pulse-driver-chip">${escapeHtml(formatPulseDriverLabel(driver))}</span>
-      `).join("");
-    }
     if (shapeNode) shapeNode.textContent = `${moodLabel} right now`;
     if (updatedNode) updatedNode.textContent = formatPulseTimestamp(pulse.updatedAt);
 
@@ -7033,7 +7276,8 @@
       node.dataset.finalValue = node.textContent.trim();
     });
 
-    signalsRoot.innerHTML = (pulse.headlines || []).map((item, index) => {
+    const driverMarkup = renderPulseDrivers(drivers);
+    const headlineMarkup = (pulse.headlines || []).map((item, index) => {
       const cardId = `pulse-signal-panel-${index}`;
       const tone = escapeHtml(item.tone || "watch");
       const type = escapeHtml(item.type || "Signal");
@@ -7073,6 +7317,16 @@
         </article>
       `;
     }).join("");
+
+    signalsRoot.innerHTML = `${driverMarkup}${headlineMarkup}`;
+
+    if (desksRoot) {
+      desksRoot.innerHTML = renderPulseDesks(pulse.desks);
+    }
+
+    if (sourceWatchRoot) {
+      sourceWatchRoot.innerHTML = renderPulseSourceWatch(pulse.sourceWatch);
+    }
 
     if (!signalsRoot.dataset.bound) {
       signalsRoot.dataset.bound = "true";
@@ -7124,44 +7378,6 @@
         });
       });
     }
-  }
-
-  function formatSaleCountdown(targetDate) {
-    const remainingMs = targetDate.getTime() - Date.now();
-
-    if (remainingMs <= 0) {
-      return "Sale ended";
-    }
-
-    const totalSeconds = Math.floor(remainingMs / 1000);
-    const days = Math.floor(totalSeconds / 86400);
-    const hours = Math.floor((totalSeconds % 86400) / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
-
-    if (days > 0) {
-      return `${days}d ${String(hours).padStart(2, "0")}h ${String(minutes).padStart(2, "0")}m ${String(seconds).padStart(2, "0")}s`;
-    }
-
-    return `${String(hours).padStart(2, "0")}h ${String(minutes).padStart(2, "0")}m ${String(seconds).padStart(2, "0")}s`;
-  }
-
-  function initialiseSaleCountdown() {
-    const countdownNodes = document.querySelectorAll("[data-sale-countdown-value]");
-    if (!countdownNodes.length || !SALE_END_AT) return;
-
-    const targetDate = new Date(SALE_END_AT);
-    if (Number.isNaN(targetDate.getTime())) return;
-
-    const updateCountdown = () => {
-      const nextValue = formatSaleCountdown(targetDate);
-      countdownNodes.forEach((node) => {
-        node.textContent = nextValue;
-      });
-    };
-
-    updateCountdown();
-    window.setInterval(updateCountdown, 1000);
   }
 
   function initialiseChapterTypewriter() {
@@ -7220,7 +7436,6 @@
     console.log("support_email_storage_unavailable");
   }
 
-  initialiseSaleCountdown();
   populateSignalOfTheMoment();
   renderJamaicaPulse();
   initialiseChapterTypewriter();
